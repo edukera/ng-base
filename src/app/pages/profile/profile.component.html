@@ -1,0 +1,14 @@
+<p>profile works!</p>
+<p>
+  <mat-form-field>
+    <mat-label>Theme</mat-label>
+    <mat-select (selectionChange)="onSelectionChange($event)">
+      @for (theme of possibleThemes; track theme) {
+        <mat-option [value]="theme.value">{{theme.viewValue}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</p>
+<p>
+  <button mat-flat-button (click)="signOut()">Sign Out</button>
+</p>
