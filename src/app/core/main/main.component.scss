@@ -1,9 +1,12 @@
+$default-sidenav-width: 200px;
+$minimized-sidenav-width: 57px;
+
 .sidenav-container {
   height: 100%;
 }
 
 .sidenav {
-  width: 200px;
+  width: $default-sidenav-width;
 }
 
 .sidenav .mat-toolbar {
@@ -18,4 +21,37 @@
 
 .profile {
   margin-left: auto;
+}
+
+mat-sidenav {
+  transition: width 0.3s ease;
+
+  &.minimized {
+    width: $minimized-sidenav-width;
+  }
+}
+
+mat-toolbar {
+  transition: width 0.3s ease;
+
+  &.minimized {
+    padding-left: 10px
+  }
+}
+
+mat-sidenav-content {
+  margin-left: $default-sidenav-width !important;
+  transition: margin-left 0.3s ease !important;
+
+  &.minimized {
+    margin-left: $minimized-sidenav-width !important;
+  }
+}
+
+.minimize-button {
+  transition: transform 0.3s ease;
+
+  &.minimized {
+    transform: translateX($minimized-sidenav-width - $default-sidenav-width);
+  }
 }

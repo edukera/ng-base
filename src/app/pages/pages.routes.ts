@@ -1,10 +1,13 @@
-import { Routes } from '@angular/router';
+import { Route } from '@angular/router';
 
-export const mainRoutes: Routes = [
+type RouteWithIcon = Route & { icon: string }
+
+export const mainRoutes: RouteWithIcon[] = [
   {
     path: '',
     pathMatch: 'full',
     redirectTo: 'dashboard',
+    icon: ''
   },
   {
     path: 'dashboard',
@@ -12,7 +15,8 @@ export const mainRoutes: Routes = [
       import('./dashboard/dashboard.component').then(
         (c) => c.DashboardComponent
       ),
-    title: 'Dashboard'
+    title: 'Dashboard',
+    icon: 'dashboard'
   },
   {
     path: 'blank',
@@ -20,7 +24,8 @@ export const mainRoutes: Routes = [
       import('./blank/blank.component').then(
         (c) => c.BlankComponent
       ),
-    title: 'Blank'
+    title: 'Blank',
+    icon: 'check_box_outline_blank'
   },
   {
     path: 'profile',
@@ -28,5 +33,6 @@ export const mainRoutes: Routes = [
       import('./profile/profile.component').then(
         (c) => c.ProfileComponent
       ),
+    icon: ''
   }
 ];

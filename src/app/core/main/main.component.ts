@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,6 +18,7 @@ import { mainRoutes } from '../../pages/pages.routes';
   styleUrl: './main.component.scss',
   standalone: true,
   imports: [
+    CommonModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -32,6 +33,11 @@ import { mainRoutes } from '../../pages/pages.routes';
 export class MainComponent {
   rootRoutes = mainRoutes.filter(r=>r.path && r.path !== 'profile');
   private breakpointObserver = inject(BreakpointObserver);
+  isMinimized = false;
+
+  toggleSidenavWidth() {
+    this.isMinimized = !this.isMinimized;
+  }
 
   constructor(private router: Router) {}
 

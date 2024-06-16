@@ -7,6 +7,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule, MatSelectChange} from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ThemeService, Theme } from '../../services/theme.service';
+import { MatIconModule } from '@angular/material/icon';
 
 interface ThemeValue {
   value: Theme | 'system';
@@ -16,7 +17,7 @@ interface ThemeValue {
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [MatButtonModule, FormsModule, MatInputModule, MatSelectModule, MatFormFieldModule],
+  imports: [MatButtonModule, FormsModule, MatInputModule, MatSelectModule, MatFormFieldModule, MatIconModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
