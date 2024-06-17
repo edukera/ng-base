@@ -5,8 +5,8 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar [class.minimized]="isMinimized">
       <span *ngIf="!isMinimized">Menu</span>
-      <button mat-icon-button (click)="toggleSidenavWidth()" class="minimize-button" [class.minimized]="isMinimized">
-        <mat-icon>{{ isMinimized ? "keyboard_tab" : "keyboard_backspace" }}</mat-icon>
+      <button mat-icon-button (click)="toggleSidenavWidth()" class="minimize-button hide-minimizer" [class.minimized]="isMinimized">
+        <mat-icon>{{ isMinimized ? "east" : "west" }}</mat-icon>
       </button>
     </mat-toolbar>
     <mat-nav-list>
@@ -17,6 +17,8 @@
           #link="routerLinkActive"
           routerLinkActive="active-link"
           [activated]="link.isActive"
+          [matTooltip]="isMinimized ? item.title : ''"
+          matTooltipPosition="after"
         >
         <mat-icon matListItemIcon>
           {{ item.icon }}
@@ -42,7 +44,7 @@
         class="profile"
         type="button"
         mat-icon-button
-        (click)="displayProdile()"
+        (click)="displayProfile()"
         matTooltip="Show Profile"
       >
         <mat-icon>

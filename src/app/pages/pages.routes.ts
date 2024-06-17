@@ -1,13 +1,14 @@
 import { Route } from '@angular/router';
 
-type RouteWithIcon = Route & { icon: string }
+type RouteWithIcon = Route & { title: string, icon: string }
 
 export const mainRoutes: RouteWithIcon[] = [
   {
     path: '',
     pathMatch: 'full',
     redirectTo: 'dashboard',
-    icon: ''
+    icon: '',
+    title: ''
   },
   {
     path: 'dashboard',
@@ -33,6 +34,7 @@ export const mainRoutes: RouteWithIcon[] = [
       import('./profile/profile.component').then(
         (c) => c.ProfileComponent
       ),
-    icon: ''
+    icon: '',
+    title: ''
   }
 ];

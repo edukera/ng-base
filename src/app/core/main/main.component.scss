@@ -1,5 +1,6 @@
 $default-sidenav-width: 200px;
 $minimized-sidenav-width: 57px;
+$handset-breakpoint: 600px;
 
 .sidenav-container {
   height: 100%;
@@ -33,6 +34,7 @@ mat-sidenav {
 
 mat-toolbar {
   transition: width 0.3s ease;
+  justify-content: space-between;
 
   &.minimized {
     padding-left: 10px
@@ -45,13 +47,20 @@ mat-sidenav-content {
 
   &.minimized {
     margin-left: $minimized-sidenav-width !important;
+
+    @media (max-width: $handset-breakpoint) {
+      margin-left: 0px !important;
+    }
+  }
+
+}
+
+@media (max-width: $handset-breakpoint) {
+  mat-sidenav-content {
+    margin-left: 0px !important;
   }
 }
 
 .minimize-button {
   transition: transform 0.3s ease;
-
-  &.minimized {
-    transform: translateX($minimized-sidenav-width - $default-sidenav-width);
-  }
 }

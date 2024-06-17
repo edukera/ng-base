@@ -1,6 +1,6 @@
 <div class="grid-container">
   <mat-grid-list cols="2" rowHeight="350px">
-    @for (card of cards | async; track card) {
+    @for (card of cards | async; track card.id) {
       <mat-grid-tile [colspan]="card.cols" [rowspan]="card.rows">
         <mat-card class="dashboard-card" appearance="outlined">
           <mat-card-header>
