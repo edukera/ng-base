@@ -27,14 +27,5 @@ export const mainRoutes: RouteWithIcon[] = [
       ),
     title: 'Blank',
     icon: 'check_box_outline_blank'
-  },
-  {
-    path: 'profile',
-    loadComponent: () =>
-      import('./profile/profile.component').then(
-        (c) => c.ProfileComponent
-      ),
-    icon: '',
-    title: ''
   }
 ];

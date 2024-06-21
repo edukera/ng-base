@@ -14,18 +14,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app.routes';
 
-// Components
+// Components & pages
 import { AppComponent } from './app.component';
+import { ContainerComponent } from './components/container/container.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './core/forgot-password/forgot-password.component';
 import { LoginComponent } from './core/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { MainComponent } from './core/main/main.component';
 import { SplashComponent } from './core/splash/splash.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ContainerComponent,
     LoginComponent,
     MainComponent,
     SplashComponent,
@@ -35,6 +38,7 @@ import { SplashComponent } from './core/splash/splash.component';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,

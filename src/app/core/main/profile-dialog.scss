@@ -1,0 +1,28 @@
+.profile-tab-icon {
+  margin-right: 8px;
+}
+
+.profile-panel {
+  min-width: 400px;
+  margin-top: 12px
+}
+
+mat-form-field{
+  margin-bottom: -1.25em !important;
+  width: 100%
+}
+
+mat-grid-tile.title-tile {
+  ::ng-deep .mat-grid-tile-content {
+    justify-content: flex-start !important;
+    align-items: center; // Si vous voulez centrer verticalement le contenu
+    padding-left: 1rem; // Optionnel: ajoute une marge intérieure à gauche
+  }
+}
+
+mat-grid-tile.value-tile {
+  ::ng-deep .mat-grid-tile-content {
+    width: 100%
+  }
+}
+

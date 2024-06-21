@@ -7,7 +7,6 @@ import { MainComponent } from './core/main/main.component';
 import { AuthGuard } from './guards/auth.guard';
 import { SplashComponent } from './core/splash/splash.component';
 import { mainRoutes } from './pages/pages.routes';
-import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'splash', pathMatch: 'full' },

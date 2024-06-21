@@ -1,0 +1,21 @@
+.container {
+  padding-left: 16px;
+  padding-right: 16px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.small-margin {
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.medium-margin {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.large-margin {
+  margin-left: 30%;
+  margin-right: 30%;
+}

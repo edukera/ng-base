@@ -21,7 +21,7 @@ $handset-breakpoint: 600px;
 }
 
 .profile {
-  margin-left: auto;
+  padding: 3px !important
 }
 
 mat-sidenav {
@@ -63,4 +63,17 @@ mat-sidenav-content {
 
 .minimize-button {
   transition: transform 0.3s ease;
+}
+
+.user-photo {
+  width: 34px;
+  height: 34px;
+  border-radius: 100%;
+}
+
+::ng-deep .profile-menu {
+  width: 200px;
+  padding-left: 8px;
+  padding-right: 8px
+
 }
