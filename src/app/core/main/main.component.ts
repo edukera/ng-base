@@ -39,7 +39,7 @@ export interface DialogData {
 }
 
 interface ThemeValue {
-  value: Theme | 'system';
+  value: Theme;
   viewValue: string;
 }
 
@@ -160,13 +160,13 @@ export class ProfileDialog {
   onThemeChange(event: MatSelectChange) {
     this.selectedTheme.set(event.value)
     this.prefService.setPreferences({ ...this.prefs(), theme: this.selectedTheme() })
-    switch (event.value as (Theme | 'system')) {
+    switch (event.value as Theme) {
       case 'system': {
         break
       }
       default: {
         const theme : Theme = event.value
-        this.themeService.toggleTheme(theme)
+        this.themeService.setTheme(theme)
       }
     }
   }
@@ -176,7 +176,7 @@ export class ProfileDialog {
     this.prefService.setPreferences({ ...this.prefs(), lang: this.selectedLang() })
   }
 
-  getThemeIcon(theme : Theme | 'system') : string {
+  getThemeIcon(theme : Theme) : string {
     switch (theme) {
       case 'dark': return "dark_mode";
       case 'light': return "light_mode";

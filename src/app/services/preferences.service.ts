@@ -2,7 +2,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore, doc, docData, DocumentReference, setDoc, DocumentData } from '@angular/fire/firestore';
 import { AuthService } from './auth.service'; // Un service d'authentification que vous auriez défini pour gérer l'auth
-import { Theme } from './theme.service';
+import { Theme, ThemeService } from './theme.service';
 import { Observable } from 'rxjs';
 
 type Lang = 'fr' | 'en' | 'system'
@@ -22,7 +22,10 @@ export class UserPreferencesService {
   private _prefs: UserPreferences = { name: 'NA', email: 'NA', theme: 'system', lang: 'system' };
   private docRef : DocumentReference<DocumentData, DocumentData> | null = null
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private themeService: ThemeService
+  ) {
     this.init()
   }
 
@@ -35,9 +38,14 @@ export class UserPreferencesService {
         const prefObservable = docData(this.docRef) as Observable<UserPreferences>
         prefObservable.subscribe({
           next : (prefs) => {
-            if (prefs == undefined) {
+            if (prefs === undefined) {
               this.setPreferences(this._prefs)
-            } else { console.log(prefs); this._prefs = prefs } },
+            } else {
+              console.log(prefs);
+              this._prefs = prefs;
+              this.themeService.setTheme(this._prefs.theme)
+            }
+          },
           error: (err) => {
             console.error(err)
           }
