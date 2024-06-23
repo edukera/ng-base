@@ -19,7 +19,6 @@ export class AuthGuard {
         if (user) {
           return true;
         } else {
-          console.log('no user found')
           this.router.navigate(['/splash']);
           return false;
         }

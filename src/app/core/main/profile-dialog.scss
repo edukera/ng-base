@@ -1,28 +1,65 @@
+.profile-tabs {
+  padding-top: 16px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 .profile-tab-icon {
   margin-right: 8px;
 }
 
 .profile-panel {
   min-width: 400px;
-  margin-top: 12px
+  margin-top: 18px
 }
 
-mat-form-field{
+mat-form-field {
   margin-bottom: -1.25em !important;
-  width: 100%
 }
 
 mat-grid-tile.title-tile {
   ::ng-deep .mat-grid-tile-content {
     justify-content: flex-start !important;
-    align-items: center; // Si vous voulez centrer verticalement le contenu
-    padding-left: 1rem; // Optionnel: ajoute une marge intérieure à gauche
+    align-items: center;
+    //padding-left: 1rem;
   }
 }
 
 mat-grid-tile.value-tile {
   ::ng-deep .mat-grid-tile-content {
-    width: 100%
+    //width: 100%;
+    justify-content: flex-end !important;
+    align-items: center;
+    //padding-right: 1rem;
+    font-size: var(--mat-select-trigger-text-size);
   }
 }
 
+::ng-deep .mat-mdc-select-value {
+  text-align: right;
+  margin-right: 12px
+}
+
+::ng-deep .mat-mdc-option {
+  justify-content: flex-end !important;
+}
+
+::ng-deep .mdc-list-item__primary-text {
+  margin-right: 24px !important
+}
+
+::ng-deep .mat-pseudo-checkbox {
+  display: none !important
+}
+
+::ng-deep .mdc-notched-outline__leading {
+  border: none !important
+}
+
+::ng-deep .mdc-notched-outline__notch {
+  border: none !important
+}
+
+::ng-deep .mdc-notched-outline__trailing {
+  border: none !important
+}

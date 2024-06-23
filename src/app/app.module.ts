@@ -20,7 +20,6 @@ import { ContainerComponent } from './components/container/container.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './core/forgot-password/forgot-password.component';
 import { LoginComponent } from './core/login/login.component';
-import { ProfileComponent } from './pages/profile/profile.component';
 import { MainComponent } from './core/main/main.component';
 import { SplashComponent } from './core/splash/splash.component';
 import { CommonModule } from '@angular/common';
@@ -34,7 +33,6 @@ import { CommonModule } from '@angular/common';
     SplashComponent,
     ForgotPasswordComponent,
     DashboardComponent,
-    ProfileComponent
   ],
   imports: [
     BrowserModule,

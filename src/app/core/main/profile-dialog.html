@@ -1,5 +1,5 @@
-<mat-dialog-content>
-  <mat-tab-group [selectedIndex]="panelId()">
+<mat-dialog-content class="profile-tabs">
+  <mat-tab-group [selectedIndex]="panelId()" animationDuration="0ms">
     <mat-tab>
       <ng-template mat-tab-label>
         <mat-icon class="profile-tab-icon">person</mat-icon>
@@ -14,7 +14,7 @@
         <mat-grid-tile class="value-tile"
           [colspan]="6"
           [rowspan]="1">
-        Jared Palmer
+          {{ prefs().name }}
         </mat-grid-tile>
         <mat-grid-tile class="title-tile"
           [colspan]="4"
@@ -24,7 +24,7 @@
         <mat-grid-tile class="value-tile"
           [colspan]="6"
           [rowspan]="1">
-          jaredacme.inc
+          {{ prefs().email }}
         </mat-grid-tile>
       </mat-grid-list>
     </mat-tab>
@@ -33,7 +33,7 @@
         <mat-icon class="profile-tab-icon">settings</mat-icon>
         Settings
       </ng-template>
-      <mat-grid-list cols="10" rowHeight="100px" class="profile-panel">
+      <mat-grid-list cols="10" rowHeight="50px" class="profile-panel">
         <mat-grid-tile class="title-tile"
           [colspan]="4"
           [rowspan]="1">
@@ -43,11 +43,9 @@
           [colspan]="6"
           [rowspan]="1">
           <mat-form-field appearance="outline" class="profile-select">
-            <mat-icon matPrefix outlined>{{ getSelectedThemeIcon() }} </mat-icon>
-            <mat-select (selectionChange)="onSelectionChange($event)">
+            <mat-select (selectionChange)="onThemeChange($event)" [(value)]="selectedTheme">
               @for (theme of possibleThemes; track theme) {
                 <mat-option [value]="theme.value">
-                  <mat-icon matPrefix>{{ getThemeIcon(theme.value) }} </mat-icon>
                   {{theme.viewValue}}
                 </mat-option>
               }
@@ -63,9 +61,10 @@
           [colspan]="6"
           [rowspan]="1">
           <mat-form-field appearance="outline" class="profile-select">
-            <mat-select>
+            <mat-select (selectionChange)="onLangChange($event)" [(value)]="selectedLang">
               <mat-option value="en">English</mat-option>
               <mat-option value="fr">French</mat-option>
+              <mat-option value="system">System</mat-option>
               <!-- Ajoutez d'autres options de langue si nécessaire -->
             </mat-select>
           </mat-form-field>
@@ -75,6 +74,6 @@
   </mat-tab-group>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="close()">Ok</button>
+  <button mat-stroked-button (click)="close()">Ok</button>
 </mat-dialog-actions>
 

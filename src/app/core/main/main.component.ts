@@ -1,6 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe, CommonModule } from '@angular/common';
-import { Component, inject, model } from '@angular/core';
+import { Component, inject, model, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -31,9 +31,11 @@ import { ThemeService, Theme } from '../../services/theme.service';
 import { mainRoutes } from '../../pages/pages.routes';
 import { AuthService } from '../../services/auth.service';
 import {MatTabsModule} from '@angular/material/tabs';
+import { UserPreferences, UserPreferencesService } from '../../services/preferences.service';
 
 export interface DialogData {
   panelId: number;
+  prefs: UserPreferences
 }
 
 interface ThemeValue {
@@ -74,7 +76,11 @@ export class MainComponent {
     this.isMinimized = !this.isMinimized;
   }
 
-  constructor(private router: Router, public authService: AuthService) {}
+  constructor(
+    private router: Router,
+    public authService: AuthService,
+    private prefsService : UserPreferencesService
+  ) {}
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -98,7 +104,7 @@ export class MainComponent {
   openProfileDialog(panelId: number): void {
     this.profilePanel.set(panelId)
     const dialogRef = this.dialog.open(ProfileDialog, {
-      data: {panelId: this.profilePanel() },
+      data: { panelId: this.profilePanel(), prefs: this.prefsService.preferences },
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -132,6 +138,9 @@ export class ProfileDialog {
   readonly dialogRef = inject(MatDialogRef<ProfileDialog>);
   readonly data = inject<DialogData>(MAT_DIALOG_DATA);
   readonly panelId = model(this.data.panelId);
+  readonly prefs   = model(this.data.prefs)
+  readonly selectedTheme = model(this.data.prefs.theme)
+  readonly selectedLang = model(this.data.prefs.lang)
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -143,13 +152,14 @@ export class ProfileDialog {
     { value: 'system', viewValue: 'System' },
   ]
 
-  selectedTheme : Theme | 'system' = 'light'
+  constructor(
+    private themeService: ThemeService,
+    private prefService: UserPreferencesService
+  ) {}
 
-  constructor(public authService: AuthService, private router: Router, private themeService: ThemeService) {}
-
-  onSelectionChange(event: MatSelectChange) {
-    console.log('Selected value:', event.value);
-    this.selectedTheme = event.value
+  onThemeChange(event: MatSelectChange) {
+    this.selectedTheme.set(event.value)
+    this.prefService.setPreferences({ ...this.prefs(), theme: this.selectedTheme() })
     switch (event.value as (Theme | 'system')) {
       case 'system': {
         break
@@ -161,6 +171,11 @@ export class ProfileDialog {
     }
   }
 
+  onLangChange(event: MatSelectChange) {
+    this.selectedLang.set(event.value)
+    this.prefService.setPreferences({ ...this.prefs(), lang: this.selectedLang() })
+  }
+
   getThemeIcon(theme : Theme | 'system') : string {
     switch (theme) {
       case 'dark': return "dark_mode";
@@ -170,7 +185,7 @@ export class ProfileDialog {
   }
 
   getSelectedThemeIcon() {
-    return this.getThemeIcon(this.selectedTheme)
+    return this.getThemeIcon(this.selectedTheme())
   }
 
   close() {
