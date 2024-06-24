@@ -1,37 +1,29 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component, inject, model, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatDividerModule } from '@angular/material/divider';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatSelectModule, MatSelectChange} from '@angular/material/select';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogRef,
-  MatDialogTitle,
-} from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {FormsModule} from '@angular/forms';
 
-import { ThemeService, Theme } from '../../services/theme.service';
 import { mainRoutes } from '../../pages/pages.routes';
 import { AuthService } from '../../services/auth.service';
-import {MatTabsModule} from '@angular/material/tabs';
 import { UserPreferences, UserPreferencesService } from '../../services/preferences.service';
+import { Theme, ThemeService } from '../../services/theme.service';
 
 export interface DialogData {
   panelId: number;
@@ -65,7 +57,7 @@ interface ThemeValue {
   ]
 })
 export class MainComponent {
-  rootRoutes = mainRoutes.filter(r=>r.path && r.path !== 'profile');
+  rootRoutes = mainRoutes.filter(r=>r.path && r.path !== 'profile')
   private breakpointObserver = inject(BreakpointObserver);
   isMinimized = false;
   readonly dialog = inject(MatDialog);
@@ -147,9 +139,9 @@ export class ProfileDialog {
   }
 
   possibleThemes: ThemeValue[] = [
-    { value: 'light', viewValue: 'Light' },
-    { value: 'dark', viewValue: 'Dark' },
-    { value: 'system', viewValue: 'System' },
+    { value: 'light', viewValue: $localize`Light` },
+    { value: 'dark', viewValue: $localize`Dark` },
+    { value: 'system', viewValue: $localize`System` },
   ]
 
   constructor(
@@ -173,7 +165,13 @@ export class ProfileDialog {
 
   onLangChange(event: MatSelectChange) {
     this.selectedLang.set(event.value)
-    this.prefService.setPreferences({ ...this.prefs(), lang: this.selectedLang() })
+    this.prefService.setPreferences({ ...this.prefs(), lang: this.selectedLang() }, () => {
+      if (this.selectedLang() === 'fr') {
+        window.location.href = '/fr';
+      } else if (this.selectedLang() === 'en') {
+        window.location.href = '/en';
+      }
+    })
   }
 
   getThemeIcon(theme : Theme) : string {

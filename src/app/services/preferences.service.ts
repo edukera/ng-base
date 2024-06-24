@@ -1,9 +1,11 @@
 // src/app/services/user-preferences.service.ts
-import { Injectable, inject } from '@angular/core';
-import { Firestore, doc, docData, DocumentReference, setDoc, DocumentData } from '@angular/fire/firestore';
-import { AuthService } from './auth.service'; // Un service d'authentification que vous auriez défini pour gérer l'auth
-import { Theme, ThemeService } from './theme.service';
+import { inject, Injectable } from '@angular/core';
+import { doc, docData, DocumentData, DocumentReference, Firestore, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+
+import { AuthService } from './auth.service';
+// Un service d'authentification que vous auriez défini pour gérer l'auth
+import { Theme, ThemeService } from './theme.service';
 
 type Lang = 'fr' | 'en' | 'system'
 
@@ -56,10 +58,12 @@ export class UserPreferencesService {
 
   public get preferences() { return this._prefs }
 
-  public setPreferences(preferences: UserPreferences) {
+  public setPreferences(preferences: UserPreferences, continuation ?: { () : void }) {
     if (this.docRef !== null) {
       setDoc(this.docRef, preferences).then(() => {
         console.log("pref written")
+        if (continuation)
+          continuation()
       })
     } else {
       console.error('no doc ref!')

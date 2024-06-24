@@ -16,7 +16,7 @@ export const mainRoutes: RouteWithIcon[] = [
       import('./dashboard/dashboard.component').then(
         (c) => c.DashboardComponent
       ),
-    title: 'Dashboard',
+    title: $localize`Dashboard`,
     icon: 'dashboard'
   },
   {
@@ -25,7 +25,7 @@ export const mainRoutes: RouteWithIcon[] = [
       import('./blank/blank.component').then(
         (c) => c.BlankComponent
       ),
-    title: 'Blank',
+    title: $localize`Blank`,
     icon: 'check_box_outline_blank'
   }
 ];

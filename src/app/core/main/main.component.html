@@ -4,7 +4,7 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar [class.minimized]="isMinimized">
-      <span *ngIf="!isMinimized">Menu</span>
+      <span *ngIf="!isMinimized" i18n>Menu</span>
       <button mat-icon-button (click)="toggleSidenavWidth()" class="minimize-button hide-minimizer" [class.minimized]="isMinimized">
         <mat-icon>{{ isMinimized ? "east" : "west" }}</mat-icon>
       </button>
@@ -52,16 +52,16 @@
       <mat-menu #menu="matMenu" class="profile-menu">
         <button mat-menu-item (click)="openProfileDialog(0)">
           <mat-icon>person</mat-icon>
-          <span>Profile</span>
+          <span i18n>Profile</span>
         </button>
         <button mat-menu-item (click)="openProfileDialog(1)">
           <mat-icon>settings</mat-icon>
-          <span>Settings</span>
+          <span i18n>Settings</span>
         </button>
         <mat-divider></mat-divider>
         <button mat-menu-item (click)="signOut()">
           <mat-icon>logout</mat-icon>
-          <span>Log out</span>
+          <span i18n>Log out</span>
         </button>
       </mat-menu>
     </mat-toolbar>

@@ -3,13 +3,13 @@
     <mat-tab>
       <ng-template mat-tab-label>
         <mat-icon class="profile-tab-icon">person</mat-icon>
-        Profile
+        <ng-container i18n>Profile</ng-container>
       </ng-template>
       <mat-grid-list cols="10" rowHeight="50px" class="profile-panel">
         <mat-grid-tile class="title-tile"
           [colspan]="4"
           [rowspan]="1">
-        Name
+        <ng-container i18n>Name</ng-container>
         </mat-grid-tile>
         <mat-grid-tile class="value-tile"
           [colspan]="6"
@@ -19,7 +19,7 @@
         <mat-grid-tile class="title-tile"
           [colspan]="4"
           [rowspan]="1">
-        Email
+        <ng-container i18n>Email</ng-container>
         </mat-grid-tile>
         <mat-grid-tile class="value-tile"
           [colspan]="6"
@@ -31,13 +31,13 @@
     <mat-tab>
       <ng-template mat-tab-label>
         <mat-icon class="profile-tab-icon">settings</mat-icon>
-        Settings
+        <ng-container i18n>Settings</ng-container>
       </ng-template>
       <mat-grid-list cols="10" rowHeight="50px" class="profile-panel">
         <mat-grid-tile class="title-tile"
           [colspan]="4"
           [rowspan]="1">
-        Theme
+        <ng-container i18n>Theme</ng-container>
         </mat-grid-tile>
         <mat-grid-tile class="value-tile"
           [colspan]="6"
@@ -46,7 +46,7 @@
             <mat-select (selectionChange)="onThemeChange($event)" [(value)]="selectedTheme">
               @for (theme of possibleThemes; track theme) {
                 <mat-option [value]="theme.value">
-                  {{theme.viewValue}}
+                  {{ theme.viewValue }}
                 </mat-option>
               }
             </mat-select>
@@ -55,16 +55,16 @@
         <mat-grid-tile class="title-tile"
           [colspan]="4"
           [rowspan]="1">
-        Language
+        <ng-container i18n>Language</ng-container>
         </mat-grid-tile>
         <mat-grid-tile class="value-tile"
           [colspan]="6"
           [rowspan]="1">
           <mat-form-field appearance="outline" class="profile-select">
             <mat-select (selectionChange)="onLangChange($event)" [(value)]="selectedLang">
-              <mat-option value="en">English</mat-option>
-              <mat-option value="fr">French</mat-option>
-              <mat-option value="system">System</mat-option>
+              <mat-option value="en" i18n>English</mat-option>
+              <mat-option value="fr" i18n>French</mat-option>
+              <mat-option value="system" i18n>System</mat-option>
               <!-- Ajoutez d'autres options de langue si nécessaire -->
             </mat-select>
           </mat-form-field>

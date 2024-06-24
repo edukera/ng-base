@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="refresh" content="0; URL=/#/404.html" />
+</head>
+<body>
+  <script>
+    var path = window.location.pathname;
+    var redirectPath = '/en' + path;
+    if (path.startsWith('/fr')) {
+      redirectPath = path;
+    }
+    window.location.replace(redirectPath);
+  </script>
+</body>
+</html>
