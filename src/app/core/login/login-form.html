@@ -1,0 +1,32 @@
+<form class="login-form">
+  <mat-drawer-container class="form-title">
+    <h5 i18n>Welcome back</h5>
+  </mat-drawer-container>
+  <mat-form-field class="login-form-element">
+    <mat-label i18n>Email</mat-label>
+    <input matInput placeholder="john.doe@email.com">
+  </mat-form-field>
+  <button i18n mat-flat-button color="primary" type="submit" class="login-form-element-simple">Continue</button>
+  <div class="divider">
+    <mat-drawer-container class="login-form-text" i18n>Don't have an account yet? </mat-drawer-container>
+    <a i18n mat-button color="primary" type="submit">Sign in</a>
+  </div>
+  <div class="divider">
+    <mat-divider class="divider-element"></mat-divider>
+    <mat-drawer-container class="login-form-text" i18n>OR</mat-drawer-container>
+    <mat-divider class="divider-element"></mat-divider>
+  </div>
+  <button i18n mat-stroked-button color="primary" type="submit" (click)="signInWithGoogle()" class="login-form-element">
+    <img src="./assets/google-logo.png" class="google-logo"/>
+    Continue with Google
+  </button>
+  <button i18n mat-stroked-button color="primary" type="submit" class="login-form-element">
+    <img src="./assets/microsoft-logo.png" class="microsoft-logo"/>
+    Continue with Microsoft
+  </button>
+  <button i18n mat-stroked-button color="primary" type="submit" class="login-form-element">
+    <img [hidden]="!isLight" src="./assets/apple-logo-light.png" class="apple-logo"/>
+    <img [hidden]="isLight" src="./assets/apple-logo-dark.png" class="apple-logo"/>
+    Continue with Apple
+  </button>
+</form>

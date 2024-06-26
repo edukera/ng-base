@@ -1,0 +1,62 @@
+.login-form {
+  padding-left: 20%;
+  padding-right: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px
+}
+
+.login-form-element-simple {
+  width: 100%;
+}
+
+.login-form-element {
+  width: 100%;
+
+  ::ng-deep .mdc-button__label {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%
+  }
+}
+
+.google-logo {
+  width: 25px;
+  margin-right: 18px
+}
+
+.microsoft-logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+  margin-left: 2px
+}
+
+.apple-logo {
+  width: 25px;
+  margin-right: 18px
+}
+
+.divider {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.divider-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+}
+
+.login-form-text {
+  margin-left: 24px;
+  margin-right: 24px;
+  font-size: smaller;
+}
+
+.form-title {
+  text-align: center
+}

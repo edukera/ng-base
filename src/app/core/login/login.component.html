@@ -1,4 +1,28 @@
-<p i18n>Hello login</p>
-<p>
-  <button i18n (click)="signInWithGoogle()">Sign in with Google</button>
-</p>
+<!-- login.component.html -->
+<div class="login-container">
+  <mat-grid-list cols="9" rowHeight="100vh">
+    <mat-grid-tile [colspan]="6" class="login-image">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3">
+      <div class="login-form-container">
+        <div class="login-form-header">
+          <img src="./assets/logo.png" class="logo"/>
+        </div>
+        <div class="login-form-content">
+          <login-form style="width: 100%"></login-form>
+        </div>
+        <div class="login-form-footer">
+          <div class="login-form-footer-content">
+            <mat-drawer-container class="login-form-footer-left">
+              <a i18n mat-button color="primary">Terms of use</a>
+            </mat-drawer-container>
+            <mat-divider [vertical]="true" class="login-form-footer-divider"></mat-divider>
+            <mat-drawer-container class="login-form-footer-right">
+              <a i18n mat-button color="primary">Privacy policy</a>
+            </mat-drawer-container>
+          </div>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

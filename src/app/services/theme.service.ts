@@ -47,4 +47,12 @@ export class ThemeService {
       return theme;
     });
   }
+
+  getTheme() {
+    return this.theme;
+  }
+
+  getDefaultTheme() {
+    return this.defaultTheme
+  }
 }
