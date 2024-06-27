@@ -50,13 +50,9 @@
         <img *ngIf="user.photoURL" [src]="user.photoURL" alt="User Photo" class="user-photo">
       </button>
       <mat-menu #menu="matMenu" class="profile-menu">
-        <button mat-menu-item (click)="openProfileDialog(0)">
-          <mat-icon>person</mat-icon>
-          <span i18n>Profile</span>
-        </button>
         <button mat-menu-item (click)="openProfileDialog(1)">
           <mat-icon>settings</mat-icon>
-          <span i18n>Settings</span>
+          <span i18n>Preferences</span>
         </button>
         <mat-divider></mat-divider>
         <button mat-menu-item (click)="signOut()">
