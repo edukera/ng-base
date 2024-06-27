@@ -1,5 +1,6 @@
-import { Component, effect } from '@angular/core';
+import { Component, OnInit, effect, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
@@ -11,6 +12,7 @@ import { ThemeService, Theme } from '../../services/theme.service';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {FormsModule} from '@angular/forms';
+import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'login-form',
@@ -68,7 +70,40 @@ class LoginFormComponent {
     MatButtonModule,
   ]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  leftSpan = 6
+  rightSpan = 3
+
+  private breakpointObserver = inject(BreakpointObserver);
+
+  layoutchanges = this.breakpointObserver.observe([
+    Breakpoints.Large,
+    Breakpoints.Medium,
+    Breakpoints.Small,
+    Breakpoints.Handset
+  ])
+
+  ngOnInit(): void {
+    this.layoutchanges.subscribe(() =>
+      this.breakpointChanged()
+    );
+  }
+
+  private breakpointChanged() {
+    if(this.breakpointObserver.isMatched(Breakpoints.Large)) {
+      this.leftSpan = 6
+      this.rightSpan = 3
+    } else if(this.breakpointObserver.isMatched(Breakpoints.Medium)) {
+      this.leftSpan = 5
+      this.rightSpan = 4
+    } else if(this.breakpointObserver.isMatched(Breakpoints.Small)) {
+      this.leftSpan = 0
+      this.rightSpan = 9
+    } else if(this.breakpointObserver.isMatched(Breakpoints.Handset)) {
+      this.leftSpan = 0
+      this.rightSpan = 9
+    }
+  }
 
 }
 
