@@ -41,6 +41,7 @@
   display: flex;
   width: 100%;
   align-items: center;
+  justify-content: center;
 }
 
 .divider-element {
@@ -63,4 +64,25 @@
 
 .form-title {
   text-align: center
+}
+
+.mat-drawer-container {
+  ::ng-deep .mat-drawer-content {
+    overflow: hidden;
+  }
+}
+
+.read-only {
+  pointer-events: none;
+}
+
+.read-only ~ button {
+  pointer-events: auto;
+}
+
+.desc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: smaller
 }

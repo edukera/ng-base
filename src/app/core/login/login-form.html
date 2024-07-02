@@ -1,15 +1,62 @@
 <form class="login-form">
-  <mat-drawer-container class="form-title">
-    <h5 i18n>Welcome back</h5>
-  </mat-drawer-container>
-  <mat-form-field appearance="outline" class="login-form-element">
-    <mat-label i18n>Email</mat-label>
-    <input matInput placeholder="john.doe@email.com">
-  </mat-form-field>
-  <button i18n mat-flat-button color="primary" type="submit" class="login-form-element-simple">Continue</button>
-  <div class="divider">
+  <div>
+    <mat-drawer-container class="form-title">
+      <h5 i18n>{{getTitle()}}</h5>
+    </mat-drawer-container>
+    <mat-drawer-container *ngIf="showDesc()" class="desc">
+      <p>{{getDesc()}}</p>
+    </mat-drawer-container>
+  </div>
+  <div>
+    <mat-form-field appearance="outline" class="login-form-element">
+      <mat-label i18n>Email address</mat-label>
+      <input
+        [readonly]="showModify()"
+        matInput
+        [class.read-only]="showModify()"
+        placeholder="john.doe@email.com"
+        [formControl]="email"
+        (blur)="updateEmailErrorMessage()"
+        required
+      />
+      <button *ngIf="showModify()" mat-button color="primary" type="submit" matSuffix i18n (click)="modifyEmail()">
+        Modify
+      </button>
+      @if (email.invalid) {
+        <mat-error>{{errorEmailMessage()}}</mat-error>
+      }
+    </mat-form-field>
+    <div *ngIf="showPwd()">
+      <mat-form-field appearance="outline" class="login-form-element">
+        <mat-label i18n>Password</mat-label>
+        <input
+          [type]="hidePwd ? 'password' : 'text'"
+          matInput
+          [formControl]="password"
+          (blur)="updatePwdErrorMessage()"
+          required
+        />
+        <mat-icon *ngIf="hidePwd" (click)="switchVisibility()" matSuffix>visibility</mat-icon>
+        <mat-icon *ngIf="!hidePwd" (click)="switchVisibility()" matSuffix>visibility_off</mat-icon>
+        @if (password.invalid) {
+          <mat-error>{{errorPwdMessage()}}</mat-error>
+        }
+      </mat-form-field>
+      <mat-drawer-container *ngIf="showForgot()" class="drawer-container">
+        <a i18n mat-button color="primary" type="submit">Forgot password?</a>
+      </mat-drawer-container>
+    </div>
+  </div>
+  <button i18n mat-flat-button color="primary" type="submit" class="login-form-element-simple" (click)="continue()">
+    Continue
+  </button>
+  <div *ngIf="showSignIn()" class="divider">
     <mat-drawer-container class="login-form-text" i18n>Don't have an account yet? </mat-drawer-container>
-    <a i18n mat-button color="primary" type="submit">Sign in</a>
+    <a i18n mat-button color="primary" type="submit" (click)="toSignIn()">Sign in</a>
+  </div>
+  <div *ngIf="showConnect()" class="divider">
+    <mat-drawer-container class="login-form-text" i18n>Already have an account? </mat-drawer-container>
+    <a i18n mat-button color="primary" type="submit" (click)="toConnect()">Connect</a>
   </div>
   <div class="divider">
     <mat-divider class="divider-element"></mat-divider>
