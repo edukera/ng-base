@@ -18,8 +18,33 @@ import {merge} from 'rxjs';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 // https://medium.com/@ojiofor/angular-reactive-forms-strong-password-validation-8dbcce92eb6c
-const StrongPasswordRegx: RegExp =
-  /^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{12,}$/;
+type PwdCheckRule = "atLeast12Chars" | "atLeast1Special" | "atLeast1Digit"
+
+class StrongPwdRegExp {
+  static atLeast12Chars:  RegExp = /.{12,}/
+  static atLeast1Special: RegExp = /[^a-zA-Z0-9]/
+  static atLeast1Digit:   RegExp = /(.*[0-9].*)/
+  static isValid(value: string) : boolean {
+    return (
+      this.atLeast12Chars.test(value) &&
+      this.atLeast1Special.test(value)   &&
+      this.atLeast1Digit.test(value)
+    )
+  }
+  static testRule(value: string, rule: PwdCheckRule) : boolean {
+    switch (rule) {
+      case "atLeast12Chars": {
+        return this.atLeast12Chars.test(value)
+      }
+      case "atLeast1Digit": {
+        return this.atLeast1Digit.test(value)
+      }
+      case "atLeast1Special": {
+        return this.atLeast1Special.test(value)
+      }
+    }
+  }
+}
 
 type LoginFormStatus = "Login1" | "Login2" | "Register1" | "Register2"
 
@@ -45,7 +70,7 @@ class LoginFormComponent {
   hidePwd: boolean = true;
   status : LoginFormStatus = "Login1"
   readonly email = new FormControl('', [Validators.required, Validators.email]);
-  readonly password = new FormControl('', [Validators.required, Validators.pattern(StrongPasswordRegx)])
+  readonly pwd = new FormControl('', []);
   errorEmailMessage = signal('');
   errorPwdMessage = signal('')
 
@@ -54,9 +79,6 @@ class LoginFormComponent {
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateEmailErrorMessage());
-    merge(this.password.statusChanges, this.password.valueChanges)
-      .pipe(takeUntilDestroyed())
-      .subscribe(() => this.updatePwdErrorMessage());
     effect(() => {
       var currentTheme = this.themeService.getTheme()()
       if (currentTheme == 'system') {
@@ -125,18 +147,21 @@ class LoginFormComponent {
     }
   }
 
-  updatePwdErrorMessage() {
-    if (this.password.hasError('required')) {
-      this.errorPwdMessage.set('You must enter a password');
-    } else if (this.password.dirty) {
-      this.errorPwdMessage.set('Invalid Password')
-    }
-  }
-
   showPwd() : boolean {
     switch (this.status) {
       case "Login1": case "Register1": return false;
       default: return true
+    }
+  }
+
+  showPwdFeedback() : boolean {
+    if (this.pwd.dirty) {
+      switch (this.status) {
+        case "Register2": return true;
+        default: return false
+      }
+    } else {
+      return false
     }
   }
 
@@ -160,8 +185,15 @@ class LoginFormComponent {
         break;
       }
       case "Register1": {
-        this.status = "Register2";
+        if (this.email.valid)
+          this.status = "Register2";
         break;
+      }
+      case "Register2": {
+        if (StrongPwdRegExp.isValid(this.pwd?.value || '')) {
+          console.log("Password OK")
+        };
+        break
       }
       default: {
         // do nothing
@@ -191,6 +223,15 @@ class LoginFormComponent {
       console.error('Login failed', err);
     });
   }
+
+  getPwdCheckItemClass(rule: PwdCheckRule) {
+    return {
+      'item': true,
+      'dark-item': !this.isLight,
+      'check-item': StrongPwdRegExp.testRule(this.pwd?.value ?? "", rule)
+    }
+  }
+
 }
 
 @Component({

@@ -1,3 +1,6 @@
+@use '@angular/material' as mat;
+@import '../../../styles.scss';
+
 .login-form {
   padding-left: 20%;
   padding-right: 20%;
@@ -85,4 +88,33 @@
   justify-content: center;
   align-items: center;
   font-size: smaller
+}
+
+.pwd-feedback {
+  font-size: smaller;
+  padding: 12px;
+  border: 1px solid grey;
+  border-radius: 4px;
+}
+
+.item {
+  margin-left: 20px
+}
+
+.check-item {
+  margin-left: 0px !important;
+  position: relative;
+  padding-left: 20px;
+  color: mat.get-theme-color($light-theme, primary);
+
+  &::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
+}
+
+.check-item.dark-item {
+  color: mat.get-theme-color($dark-theme, primary) !important
 }

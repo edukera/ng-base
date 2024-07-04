@@ -17,7 +17,6 @@
         placeholder="john.doe@email.com"
         [formControl]="email"
         (blur)="updateEmailErrorMessage()"
-        required
       />
       <button *ngIf="showModify()" mat-button color="primary" type="submit" matSuffix i18n (click)="modifyEmail()">
         Modify
@@ -32,20 +31,21 @@
         <input
           [type]="hidePwd ? 'password' : 'text'"
           matInput
-          [formControl]="password"
-          (blur)="updatePwdErrorMessage()"
-          required
+          [formControl]="pwd"
         />
         <mat-icon *ngIf="hidePwd" (click)="switchVisibility()" matSuffix>visibility</mat-icon>
         <mat-icon *ngIf="!hidePwd" (click)="switchVisibility()" matSuffix>visibility_off</mat-icon>
-        @if (password.invalid) {
-          <mat-error>{{errorPwdMessage()}}</mat-error>
-        }
       </mat-form-field>
       <mat-drawer-container *ngIf="showForgot()" class="drawer-container">
         <a i18n mat-button color="primary" type="submit">Forgot password?</a>
       </mat-drawer-container>
     </div>
+    <mat-drawer-container *ngIf="showPwdFeedback()" class="pwd-feedback">
+      <p>Your password must contain:</p>
+      <div i18n [ngClass]="getPwdCheckItemClass('atLeast12Chars')">At least 12 characters</div>
+      <div i18n [ngClass]="getPwdCheckItemClass('atLeast1Digit')">At least one digit.</div>
+      <div i18n [ngClass]="getPwdCheckItemClass('atLeast1Special')">At least one special character.</div>
+    </mat-drawer-container>
   </div>
   <button i18n mat-flat-button color="primary" type="submit" class="login-form-element-simple" (click)="continue()">
     Continue
