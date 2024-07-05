@@ -227,4 +227,9 @@ export class LoginFormComponent {
       'check-item': StrongPwdRegExp.testRule(this.pwd?.value ?? "", rule)
     }
   }
+
+  gotoReset() {
+    this.router.navigate(['/reset-password'])
+  }
+
 }

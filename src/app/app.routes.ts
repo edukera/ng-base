@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ForgotPasswordComponent } from './core/forgot-password/forgot-password.component';
+import { ConfirmEmailComponent } from './core/confirm-email/confirm-email.component';
 import { LoginComponent } from './core/login/login.component';
 import { MainComponent } from './core/main/main.component';
-import { AuthGuard } from './guards/auth.guard';
+import { ResetPasswordComponent } from './core/reset-password/reset-password.component';
 import { SplashComponent } from './core/splash/splash.component';
+import { AuthGuard } from './guards/auth.guard';
 import { mainRoutes } from './pages/pages.routes';
-import { ConfirmEmailComponent } from './core/confirm-email/confirm-email.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'splash', pathMatch: 'full' },
   { path: 'splash', component: SplashComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'confirm-email', component: ConfirmEmailComponent },
   {
     path: 'main',

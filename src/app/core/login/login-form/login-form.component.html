@@ -37,7 +37,7 @@
         <mat-icon *ngIf="!hidePwd" (click)="switchVisibility()" matSuffix>visibility_off</mat-icon>
       </mat-form-field>
       <mat-drawer-container *ngIf="showForgot()" class="drawer-container">
-        <a i18n mat-button color="primary" type="submit">Forgot password?</a>
+        <a i18n mat-button color="primary" type="submit" (click)="gotoReset()">Forgot password?</a>
       </mat-drawer-container>
     </div>
     <mat-drawer-container *ngIf="showPwdFeedback()" class="pwd-feedback">
