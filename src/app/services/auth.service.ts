@@ -3,7 +3,15 @@ import { User, onAuthStateChanged } from 'firebase/auth';
 import { BehaviorSubject, Observable, firstValueFrom } from 'rxjs';
 import { skip } from 'rxjs/operators';
 
-import { Auth, GoogleAuthProvider, signInWithPopup, signOut } from '@angular/fire/auth';
+import {
+  Auth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  signOut
+} from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +44,35 @@ export class AuthService {
         this.currentUser.next(result.user);
         return result;
       });
+  }
+
+  pwdSignIn(email: string, password: string) {
+    signInWithEmailAndPassword(this.auth, email, password)
+    .then((result) => {
+      // Signed in
+      this.currentUser.next(result.user);
+      const user = this.currentUser.getValue()
+      if (user !== null)
+        sendEmailVerification(user)
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+  }
+
+  createUserWithPwd(email: string, password: string) {
+    createUserWithEmailAndPassword(this.auth, email, password)
+    .then((result) => {
+      // Signed up
+      this.currentUser.next(result.user)
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+    });
   }
 
   signOut() {

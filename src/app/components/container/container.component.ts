@@ -1,37 +1,43 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Importer CommonModule
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
-  selector: 'app-container',
+  selector: 'ng-base-container',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatGridListModule],
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss'
 })
-export class ContainerComponent implements OnInit {
-  marginClass: string = '';
-  @Input() maxWidth: string = '1200px';
+export class NgContainerComponent implements OnInit {
+  paddingClass = "large-padding"
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  private breakpointObserver = inject(BreakpointObserver);
+
+  layoutchanges = this.breakpointObserver.observe([
+    Breakpoints.Large,
+    Breakpoints.Medium,
+    Breakpoints.Small,
+    Breakpoints.Handset
+  ])
 
   ngOnInit(): void {
-    this.breakpointObserver.observe([
-      Breakpoints.Small, Breakpoints.Medium, Breakpoints.Large
-    ]).subscribe(result => {
-      if (result.matches) {
-        if (this.breakpointObserver.isMatched(Breakpoints.Small)) {
-          console.log('Small')
-          this.marginClass = 'small-margin';
-        } else if (this.breakpointObserver.isMatched(Breakpoints.Medium)) {
-          console.log('Medium')
-          this.marginClass = 'medium-margin';
-        } else if (this.breakpointObserver.isMatched(Breakpoints.Large)) {
-          console.log('Large')
-          this.marginClass = 'large-margin';
-        }
-      }
-    });
+    this.layoutchanges.subscribe(() =>
+      this.breakpointChanged()
+    );
+  }
+
+  breakpointChanged() {
+    if (this.breakpointObserver.isMatched(Breakpoints.Small)) {
+      this.paddingClass = "small-padding"
+    } else if (this.breakpointObserver.isMatched(Breakpoints.Medium)) {
+      this.paddingClass = "medium-padding"
+    } else if (this.breakpointObserver.isMatched(Breakpoints.Large)) {
+      this.paddingClass = "large-padding"
+    } else if(this.breakpointObserver.isMatched(Breakpoints.Handset)) {
+      this.paddingClass = "handset-padding"
+    }
   }
 
 }

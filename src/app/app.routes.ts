@@ -7,12 +7,14 @@ import { MainComponent } from './core/main/main.component';
 import { AuthGuard } from './guards/auth.guard';
 import { SplashComponent } from './core/splash/splash.component';
 import { mainRoutes } from './pages/pages.routes';
+import { ConfirmEmailComponent } from './core/confirm-email/confirm-email.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'splash', pathMatch: 'full' },
   { path: 'splash', component: SplashComponent },
   { path: 'login', component: LoginComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'confirm-email', component: ConfirmEmailComponent },
   {
     path: 'main',
     component: MainComponent,

@@ -1,21 +1,26 @@
 .container {
-  padding-left: 16px;
-  padding-right: 16px;
+  height: 100%;
+  overflow: auto;
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
 }
 
-.small-margin {
-  margin-left: 0%;
-  margin-right: 0%;
+.large-padding {
+  padding-left: 35%;
+  padding-right: 35%
 }
 
-.medium-margin {
-  margin-left: 10%;
-  margin-right: 10%;
+.medium-padding {
+  padding-left: 25%;
+  padding-right: 25%
 }
 
-.large-margin {
-  margin-left: 30%;
-  margin-right: 30%;
+.small-padding {
+  padding-left: 5%;
+  padding-right: 5%
+}
+
+.handset-padding {
+  padding-left: 5%;
+  padding-right: 5%
 }

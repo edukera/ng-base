@@ -1,0 +1,49 @@
+:host {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  overflow: hidden;
+  flex: 1 0 auto;
+}
+
+.header, .footer {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 50px
+}
+
+.footer-content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 100px
+}
+
+.footer-left {
+  font-size: smaller;
+
+  ::ng-deep mat-drawer-content {
+    overflow: hidden;
+  }
+}
+
+.footer-divider {
+  width: 12px;
+  margin-right: 12px;
+  height: 25%;
+}
+
+.footer-right {
+  font-size: smaller;
+
+  ::ng-deep mat-drawer-content {
+    overflow: hidden;
+  }
+}

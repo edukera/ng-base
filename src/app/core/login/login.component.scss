@@ -1,4 +1,3 @@
-/* login.component.css */
 .login-container {
   height: 100vh;
 }
@@ -22,67 +21,10 @@
   }
 }
 
-.login-form-wrapper {
-  width: 100%;
+.ng-base-container {
   height: 100%;
+  width: 100%;
   overflow: auto;
-}
-
-.login-form-container {
-  width: 100%;
-  height: 100%;
   display: flex;
-  min-height: 600px;
-  overflow: auto;
   flex-direction: column;
 }
-
-.login-form-header, .form-footer {
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.login-form-content {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%
-}
-
-.logo {
-  width: 50px
-}
-
-.login-form-footer-content {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  height: 100px
-}
-
-.login-form-footer-left {
-  font-size: smaller;
-
-  ::ng-deep mat-drawer-content {
-    overflow: hidden;
-  }
-}
-
-.login-form-footer-divider {
-  width: 12px;
-  margin-right: 12px;
-  height: 25%;
-}
-
-.login-form-footer-right {
-  font-size: smaller;
-
-  ::ng-deep mat-drawer-content {
-    overflow: hidden;
-  }
-}
-
