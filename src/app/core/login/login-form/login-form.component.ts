@@ -42,7 +42,11 @@ class StrongPwdRegExp {
   }
 }
 
-type LoginFormStatus = "Login1" | "Login2" | "Register1" | "Register2"
+type LoginFormState =
+  "Login1"     // enter email + go to register button
+| "Login2"     // enter pwd
+| "Register1"  // enter email + go to connexion button
+| "Register2"  // enter pwd with pwd check process
 
 @Component({
   selector: 'login-form',
@@ -64,11 +68,11 @@ type LoginFormStatus = "Login1" | "Login2" | "Register1" | "Register2"
 export class LoginFormComponent {
   isLight: boolean;
   hidePwd: boolean = true;
-  status : LoginFormStatus = "Login1"
+  state : LoginFormState = "Login1"
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   readonly pwd = new FormControl('', []);
   errorEmailMessage = signal('');
-  errorPwdMessage = signal('')
+  errorPwdMessage = signal('');
 
   constructor(public authService: AuthService, private router: Router, private themeService: ThemeService) {
     this.isLight = true
@@ -85,7 +89,7 @@ export class LoginFormComponent {
   }
 
   getTitle() {
-    switch (this.status) {
+    switch (this.state) {
       case "Login1": return "Welcome back";
       case "Login2": return "Enter your password";
       case "Register1": case "Register2": return "Create your account"
@@ -93,14 +97,14 @@ export class LoginFormComponent {
   }
 
   showDesc() : boolean {
-    switch (this.status) {
+    switch (this.state) {
       case "Register1": case "Register2": return true;
       default: return false
     }
   }
 
   getDesc() {
-    switch (this.status) {
+    switch (this.state) {
       case "Register1": return "Sign in to ng-base"
       case "Register2": return "Define password to access ng-base"
       default: return "NA"
@@ -108,27 +112,27 @@ export class LoginFormComponent {
   }
 
   showModify() : boolean {
-    switch (this.status) {
+    switch (this.state) {
       case "Login1": case "Register1": return false;
       default: return true
     }
   }
 
   showForgot() : boolean {
-    switch (this.status) {
+    switch (this.state) {
       case "Login2": return true;
       default: return false
     }
   }
 
   modifyEmail() {
-    switch (this.status) {
+    switch (this.state) {
       case "Login2": {
-        this.status = "Login1"
+        this.state = "Login1"
         break;
       }
       case "Register2": {
-        this.status = "Register1"
+        this.state = "Register1"
       }
     }
   }
@@ -144,7 +148,7 @@ export class LoginFormComponent {
   }
 
   showPwd() : boolean {
-    switch (this.status) {
+    switch (this.state) {
       case "Login1": case "Register1": return false;
       default: return true
     }
@@ -152,7 +156,7 @@ export class LoginFormComponent {
 
   showPwdFeedback() : boolean {
     if (this.pwd.dirty) {
-      switch (this.status) {
+      switch (this.state) {
         case "Register2": return true;
         default: return false
       }
@@ -166,46 +170,84 @@ export class LoginFormComponent {
   }
 
   toSignIn() {
-    this.status = "Register1"
+    this.state = "Register1"
   }
 
   toConnect() {
-    this.status = "Login1"
+    this.state = "Login1"
+  }
+
+  private assertValidity() : asserts this is { email: FormControl<string>, pwd: FormControl<string> } {
+    if (!this.email.valid || this.email.value === null) {
+      throw new Error("Invalid Email.")
+    }
+    if (!this.pwd.valid || this.pwd.value === null) {
+      throw new Error("Invalid Password.")
+    }
   }
 
   continue() {
-    switch (this.status) {
+    switch (this.state) {
       case "Login1": {
         if (this.email.valid)
-          this.status = "Login2";
+          this.state = "Login2";
+        break;
+      }
+      case "Login2": {
+        try {
+          this.assertValidity()
+          this.authService.pwdSignIn(this.email.value, this.pwd.value).then(res => {
+            this.router.navigate(['/main'])
+          }).catch((err: any) => {
+            if (err.code === "auth/invalid-credential") {
+              this.pwd.setErrors({ invalidAuth: true })
+            }
+          });
+        } catch(e) {
+          console.error(e)
+        }
         break;
       }
       case "Register1": {
         if (this.email.valid)
-          this.status = "Register2";
+          this.state = "Register2";
         break;
       }
       case "Register2": {
-        if (StrongPwdRegExp.isValid(this.pwd?.value || '')) {
-          this.router.navigate(['/confirm-email'])
-        };
+        try {
+          this.assertValidity()
+          if (StrongPwdRegExp.isValid(this.pwd.value)) {
+            this.authService.createUserWithPwd(this.email.value, this.pwd.value).then(() => {
+              this.authService.sendVerificationEmail().then(() => {
+                this.router.navigate(['/confirm-email'])
+              })
+              .catch((err: Error) => {
+                // todo: display error snack msg
+              })
+            })
+            .catch((err: Error) => {
+              // TODO: display error snack msg
+            })
+          } else {
+            throw new Error("Password does not follow rules.")
+          }
+        } catch(e) {
+          console.error(e)
+        }
         break
-      }
-      default: {
-        // do nothing
       }
     }
   }
 
   showSignIn() : boolean {
-    switch (this.status) {
+    switch (this.state) {
       case "Login1": case "Login2": return true;
       default: return false
     }
   }
 
   showConnect() : boolean {
-    switch (this.status) {
+    switch (this.state) {
       case "Register1": case "Register2": return true;
       default: return false
     }
@@ -216,7 +258,7 @@ export class LoginFormComponent {
       console.log('Logged in successfully', res);
       this.router.navigate(['/main'])
     }).catch(err => {
-      console.error('Login failed', err);
+      // TODO: display error snack bar
     });
   }
 

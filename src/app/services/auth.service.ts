@@ -10,6 +10,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  sendPasswordResetEmail,
   signOut
 } from '@angular/fire/auth';
 
@@ -43,42 +44,63 @@ export class AuthService {
       .then(result => {
         this.currentUser.next(result.user);
         return result;
+      })
+      .catch((error) => {
+        console.error(error)
+        throw error
       });
   }
 
   pwdSignIn(email: string, password: string) {
-    signInWithEmailAndPassword(this.auth, email, password)
+    return signInWithEmailAndPassword(this.auth, email, password)
     .then((result) => {
-      // Signed in
+      console.log('Logged in successfully', result);
       this.currentUser.next(result.user);
-      const user = this.currentUser.getValue()
-      if (user !== null)
-        sendEmailVerification(user)
-      // ...
+      return result
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      throw error
     });
   }
 
   createUserWithPwd(email: string, password: string) {
-    createUserWithEmailAndPassword(this.auth, email, password)
+    return createUserWithEmailAndPassword(this.auth, email, password)
     .then((result) => {
       // Signed up
       this.currentUser.next(result.user)
+      console.log("Account created")
+      return result
     })
     .catch((error) => {
-      const errorCode = error.code;
+      //const errorCode = error.code;
       const errorMessage = error.message;
+      console.error(errorMessage)
+      throw error
       // ..
     });
+  }
+
+  sendVerificationEmail() {
+    const user = this.currentUser.getValue()
+    if (user !== null) {
+      return sendEmailVerification(user).then(() => {
+        console.log("Verification email sent")
+      }).catch((error) => {
+        console.error(error)
+        throw error
+      });
+    }
+    throw new Error("Cannot send verification email: null user")
   }
 
   signOut() {
     return signOut(this.auth).then(() => {
       this.currentUser.next(null);
     });
+  }
+
+  sendResetPwdEmail(email: string) {
+    sendPasswordResetEmail(this.auth, email, )
   }
 
   get user$(): Observable<User | null> {
