@@ -106,4 +106,18 @@ export class AuthService {
   get user$(): Observable<User | null> {
     return this.currentUser.asObservable();
   }
+
+  getDataProvider() : string | null {
+    const user = this.currentUser.getValue()
+    if (user !== null) {
+      if (user.providerData.length > 0) {
+        return user.providerData[0].providerId
+      } else {
+        return null
+      }
+    } else {
+      return null
+    }
+  }
+
 }

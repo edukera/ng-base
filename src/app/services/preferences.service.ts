@@ -21,7 +21,7 @@ export interface UserPreferences {
 })
 export class UserPreferencesService {
   private firestore = inject(Firestore);
-  private _prefs: UserPreferences = { name: 'NA', email: 'NA', theme: 'system', lang: 'system' };
+  private _prefs: UserPreferences = { name: '', email: '', theme: 'system', lang: 'system' };
   private docRef : DocumentReference<DocumentData, DocumentData> | null = null
 
   constructor(
@@ -35,7 +35,7 @@ export class UserPreferencesService {
     this.authService.user$.subscribe(user => {
       console.log(user)
       if (user !== null) {
-        this._prefs = { ...this._prefs, email: user.email ?? 'NA', name: user.displayName ?? 'NA' }
+        this._prefs = { ...this._prefs, email: user.email ?? 'NA', name: user.displayName ?? '' }
         this.docRef = doc(this.firestore, 'user_preferences/' + user.uid);
         const prefObservable = docData(this.docRef) as Observable<UserPreferences>
         prefObservable.subscribe({

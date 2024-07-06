@@ -3,15 +3,25 @@
   <form class="profile-panel">
     <mat-form-field appearance="outline">
       <mat-label i18n>Name</mat-label>
-      <input matInput disabled placeholder="Fill your name" [value]="prefs().name">
+      <input
+        tabindex="-1"
+        matInput
+        [disabled]="!isNameEditable()"
+        placeholder="Fill your name"
+        [value]="prefs().name"
+        (blur)="onNameChange($event)"
+      >
+      @if (isNameEditable()) {
+        <mat-icon matSuffix>edit</mat-icon>
+      }
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label i18n>Email</mat-label>
-      <input matInput disabled placeholder="Fill your name" [value]="prefs().email">
+      <input tabindex="-1" matInput disabled placeholder="Fill your email" [value]="prefs().email">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label i18n>Theme</mat-label>
-      <mat-select (selectionChange)="onThemeChange($event)" [(value)]="selectedTheme">
+      <mat-select tabindex="-1" (selectionChange)="onThemeChange($event)" [(value)]="selectedTheme">
         @for (theme of possibleThemes; track theme) {
           <mat-option [value]="theme.value">
             {{ theme.viewValue }}
@@ -21,7 +31,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label i18n>Language</mat-label>
-      <mat-select (selectionChange)="onLangChange($event)" [(value)]="selectedLang">
+      <mat-select tabindex="-1" (selectionChange)="onLangChange($event)" [(value)]="selectedLang">
         <mat-option value="en" i18n>English</mat-option>
         <mat-option value="fr" i18n>French</mat-option>
         <mat-option value="system" i18n>System</mat-option>
