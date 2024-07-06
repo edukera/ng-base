@@ -113,7 +113,15 @@ export class PreferencesComponent {
   }
 
   isNameEditable() {
+    return this.isProviderEmail()
+  }
+
+  isProviderEmail() {
     return "password" === this.authService.getDataProvider()
+  }
+
+  isEmailVerified() {
+    return this.authService.isEmailVerified()
   }
 
 }

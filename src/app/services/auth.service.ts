@@ -120,4 +120,12 @@ export class AuthService {
     }
   }
 
+  isEmailVerified() : boolean {
+    const user = this.currentUser.getValue()
+    if (user !== null) {
+      return user.emailVerified
+    }
+    else return false
+  }
+
 }

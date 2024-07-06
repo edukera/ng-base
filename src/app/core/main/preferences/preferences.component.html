@@ -4,7 +4,16 @@
     <mat-form-field appearance="outline">
       <mat-label i18n>Email</mat-label>
       <input tabindex="-1" matInput readonly placeholder="Fill your email" [value]="prefs().email">
+      @if (isProviderEmail() && isEmailVerified()) {
+        <mat-hint i18n matTextSuffix>(verified)</mat-hint>
+      }
+      @if (isProviderEmail() && !isEmailVerified()) {
+        <mat-error i18n matTextSuffix>not verified!</mat-error>
+      }
     </mat-form-field>
+    @if (isProviderEmail() && !isEmailVerified()) {
+      <button mat-button class="send-verif">Send verification email</button>
+    }
     <mat-form-field appearance="outline">
       <mat-label i18n>Name</mat-label>
       <input
