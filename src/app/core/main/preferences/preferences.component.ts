@@ -65,8 +65,10 @@ export class PreferencesComponent {
   ) {}
 
   onNameChange(event: FocusEvent) {
-    const value = (event.target as HTMLInputElement).value
-    this.prefService.setPreferences({ ...this.prefs(), name: value })
+    const value = (event.target as HTMLInputElement).value.trim()
+    if (this.prefService.preferences.name !== value) {
+      this.prefService.setPreferences({ ...this.prefs(), name: value })
+    }
   }
 
   onThemeChange(event: MatSelectChange) {

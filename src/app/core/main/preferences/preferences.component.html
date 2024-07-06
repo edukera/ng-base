@@ -2,6 +2,10 @@
 <mat-dialog-content>
   <form class="profile-panel">
     <mat-form-field appearance="outline">
+      <mat-label i18n>Email</mat-label>
+      <input tabindex="-1" matInput readonly placeholder="Fill your email" [value]="prefs().email">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label i18n>Name</mat-label>
       <input
         tabindex="-1"
@@ -16,10 +20,6 @@
       }
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label i18n>Email</mat-label>
-      <input tabindex="-1" matInput disabled placeholder="Fill your email" [value]="prefs().email">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
       <mat-label i18n>Theme</mat-label>
       <mat-select tabindex="-1" (selectionChange)="onThemeChange($event)" [(value)]="selectedTheme">
         @for (theme of possibleThemes; track theme) {
@@ -29,6 +29,7 @@
         }
       </mat-select>
     </mat-form-field>
+
     <mat-form-field appearance="outline">
       <mat-label i18n>Language</mat-label>
       <mat-select tabindex="-1" (selectionChange)="onLangChange($event)" [(value)]="selectedLang">
