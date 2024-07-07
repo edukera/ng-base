@@ -1,0 +1,23 @@
+<ng-base-container>
+  <ng-base-container-content>
+    <mat-drawer-container class="wrapper">
+      <div *ngIf="isVerifyEmail()" class="container">
+        <div i18n class="title">Tell us about you</div>
+        <mat-form-field appearance="outline" class="element">
+          <mat-label i18n>Name</mat-label>
+          <input
+            matInput
+            [value]="name()"
+            placeholder="Fill your name"
+            (blur)="onNameChange($event)"
+          >
+        </mat-form-field>
+        <div i18n class="text bottom">
+          By clicking "Agree", you agree to our <a href="https://www.google.com/" target="_blank" class="link">Terms</a>.
+          Our <a href="https://www.google.com/" target="_blank" class="link">Privacy Policy</a> explains how we process personal data.
+        </div>
+        <button i18n mat-flat-button type="submit" (click)="accept()" class="element">Agree</button>
+      </div>
+    </mat-drawer-container>
+  </ng-base-container-content>
+</ng-base-container>

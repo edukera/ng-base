@@ -1,17 +1,18 @@
-import { merge } from 'rxjs';
-import { Component, effect, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, effect, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Router } from '@angular/router';
-import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
+import { merge } from 'rxjs';
+
 import { AuthService } from '../../../services/auth.service';
-import { ThemeService, Theme } from '../../../services/theme.service';
+import { Theme, ThemeService } from '../../../services/theme.service';
 
 // https://medium.com/@ojiofor/angular-reactive-forms-strong-password-validation-8dbcce92eb6c
 type PwdCheckRule = "atLeast12Chars" | "atLeast1Special" | "atLeast1Digit"
@@ -219,7 +220,7 @@ export class LoginFormComponent {
           if (StrongPwdRegExp.isValid(this.pwd.value)) {
             this.authService.createUserWithPwd(this.email.value, this.pwd.value).then(() => {
               this.authService.sendVerificationEmail().then(() => {
-                this.router.navigate(['/confirm-email'])
+                this.router.navigate(['/verify-email'])
               })
               .catch((err: Error) => {
                 // todo: display error snack msg

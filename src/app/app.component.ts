@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
-import { AuthService } from './services/auth.service';
+
 import { SplashComponent } from './core/splash/splash.component';
-import { CommonModule } from '@angular/common';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -20,8 +21,11 @@ export class AppComponent {
 
   ngOnInit() {
     this.authService.waitForAuthState().then(user => {
+      const currentUrl = this.router.url;
       if (user) {
-        this.router.navigate(['/main']);
+        if (!currentUrl.startsWith("/action")) {
+          this.router.navigate(['/main']);
+        }
       } else {
         this.router.navigate(['/login']);
       }

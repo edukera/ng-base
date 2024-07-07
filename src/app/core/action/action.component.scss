@@ -1,0 +1,41 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  max-width: 370px;
+}
+
+.title {
+  font-weight: bolder;
+  font-size: xx-large;
+  margin-bottom: 12px;
+  line-height: 1.8;
+}
+
+.element {
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.text {
+  font-weight: lighter;
+  padding: 0 !important;
+  text-align: justify;
+}
+
+.link {
+  color: var(--mdc-text-button-label-text-color)
+}
+
+.bottom {
+  margin-bottom: 12px;
+}

@@ -1,18 +1,8 @@
-import { Injectable, inject } from '@angular/core';
-import { User, onAuthStateChanged } from 'firebase/auth';
-import { BehaviorSubject, Observable, firstValueFrom } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { applyActionCode, Auth, createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from '@angular/fire/auth';
+import { onAuthStateChanged, User } from 'firebase/auth';
+import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
 import { skip } from 'rxjs/operators';
-
-import {
-  Auth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
-  sendPasswordResetEmail,
-  signOut
-} from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -126,6 +116,18 @@ export class AuthService {
       return user.emailVerified
     }
     else return false
+  }
+
+  applyCode(code: string) {
+    return applyActionCode(this.auth, code)
+  }
+
+  getEmail() : string | null {
+    const user = this.currentUser.getValue()
+    if (user !== null) {
+      return user.email
+    }
+    return null
   }
 
 }

@@ -24,3 +24,18 @@ http-server -p 8080
 ## Deploy
 
 Deploy on githup pages with [angular-cli-ghpages](https://www.npmjs.com/package/angular-cli-ghpages)
+
+## Firebase
+
+### Action link
+
+Edit %LINK% for email templates. Replace
+
+```
+https://ng-base-2b40d.firebaseapp.com/__/auth/action
+
+with dev link:
+
+```
+http://localhost:4200/action
+```
