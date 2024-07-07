@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, effect, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -9,39 +8,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
-import { merge } from 'rxjs';
 
 import { AuthService } from '../../../services/auth.service';
-import { Theme, ThemeService } from '../../../services/theme.service';
-
-// https://medium.com/@ojiofor/angular-reactive-forms-strong-password-validation-8dbcce92eb6c
-type PwdCheckRule = "atLeast12Chars" | "atLeast1Special" | "atLeast1Digit"
-
-class StrongPwdRegExp {
-  static atLeast12Chars:  RegExp = /.{12,}/
-  static atLeast1Special: RegExp = /[^a-zA-Z0-9]/
-  static atLeast1Digit:   RegExp = /(.*[0-9].*)/
-  static isValid(value: string) : boolean {
-    return (
-      this.atLeast12Chars.test(value) &&
-      this.atLeast1Special.test(value)   &&
-      this.atLeast1Digit.test(value)
-    )
-  }
-  static testRule(value: string, rule: PwdCheckRule) : boolean {
-    switch (rule) {
-      case "atLeast12Chars": {
-        return this.atLeast12Chars.test(value)
-      }
-      case "atLeast1Digit": {
-        return this.atLeast1Digit.test(value)
-      }
-      case "atLeast1Special": {
-        return this.atLeast1Special.test(value)
-      }
-    }
-  }
-}
+import { ThemeService } from '../../../services/theme.service';
+import { PasswordInputComponent } from '../../../components/password-input/password-input.component';
+import { PasswordFeedbackComponent } from '../../../components/password-feedback/password-feedback.component';
+import { StrongPwdRegExp } from '../../../components/password-feedback/password-feedback.component';
+import { EmailInputComponent } from '../../../components/email-input/email-input.component';
 
 type LoginFormState =
   "Login1"     // enter email + go to register button
@@ -63,23 +36,20 @@ type LoginFormState =
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    EmailInputComponent,
+    PasswordInputComponent,
+    PasswordFeedbackComponent
   ]
 })
 export class LoginFormComponent {
-  isLight: boolean;
-  hidePwd: boolean = true;
   state : LoginFormState = "Login1"
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   readonly pwd = new FormControl('', []);
-  errorEmailMessage = signal('');
-  errorPwdMessage = signal('');
+  isLight: boolean;
 
   constructor(public authService: AuthService, private router: Router, private themeService: ThemeService) {
     this.isLight = true
-    merge(this.email.statusChanges, this.email.valueChanges)
-      .pipe(takeUntilDestroyed())
-      .subscribe(() => this.updateEmailErrorMessage());
     effect(() => {
       var currentTheme = this.themeService.getTheme()()
       if (currentTheme == 'system') {
@@ -126,25 +96,18 @@ export class LoginFormComponent {
     }
   }
 
-  modifyEmail() {
-    switch (this.state) {
-      case "Login2": {
-        this.state = "Login1"
-        break;
+  modifyEmail(state: string) {
+    return () => {
+      switch (state as LoginFormState) {
+        case "Login2": {
+          this.state = "Login1"
+          break;
+        }
+        case "Register2": {
+          this.state = "Register1";
+          break;
+        }
       }
-      case "Register2": {
-        this.state = "Register1"
-      }
-    }
-  }
-
-  updateEmailErrorMessage() {
-    if (this.email.hasError('required')) {
-      this.errorEmailMessage.set('You must enter a value');
-    } else if (this.email.hasError('email')) {
-      this.errorEmailMessage.set('Not a valid email');
-    } else {
-      this.errorEmailMessage.set('');
     }
   }
 
@@ -164,10 +127,6 @@ export class LoginFormComponent {
     } else {
       return false
     }
-  }
-
-  switchVisibility() {
-    this.hidePwd = !this.hidePwd
   }
 
   toSignIn() {
@@ -261,14 +220,6 @@ export class LoginFormComponent {
     }).catch(err => {
       // TODO: display error snack bar
     });
-  }
-
-  getPwdCheckItemClass(rule: PwdCheckRule) {
-    return {
-      'item': true,
-      'dark-item': !this.isLight,
-      'check-item': StrongPwdRegExp.testRule(this.pwd?.value ?? "", rule)
-    }
   }
 
   gotoReset() {

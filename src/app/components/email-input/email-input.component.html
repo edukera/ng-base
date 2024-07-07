@@ -1,0 +1,17 @@
+<mat-form-field appearance="outline" class="form-element">
+  <mat-label i18n>Email address</mat-label>
+  <input
+    [readonly]="showModify"
+    matInput
+    [class.read-only]="showModify"
+    placeholder="john.doe@email.com"
+    [formControl]="email"
+    (blur)="updateEmailErrorMessage()"
+  />
+  <button *ngIf="showModify" mat-button color="primary" type="submit" matSuffix i18n (click)="action()">
+    Modify
+  </button>
+  @if (email.invalid) {
+    <mat-error>{{errorEmailMessage()}}</mat-error>
+  }
+</mat-form-field>
