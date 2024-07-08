@@ -7,6 +7,7 @@
     placeholder="john.doe@email.com"
     [formControl]="email"
     (blur)="updateEmailErrorMessage()"
+    type="email" name="email" id="email" autocomplete="email"
   />
   <button *ngIf="showModify" mat-button color="primary" type="submit" matSuffix i18n (click)="action()" class="button">
     Edit

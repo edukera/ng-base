@@ -3,6 +3,18 @@
 
 @include mat.core();
 
+@media (prefers-color-scheme: dark) {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active{
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: var(--mdc-outlined-text-field-input-text-color);;
+      transition: background-color 5000s ease-in-out 0s;
+      box-shadow: inset 0 0 20px 20px var(--mat-app-background-color);
+  }
+}
+
 $light-theme: mat.define-theme(
   (
     color: (
