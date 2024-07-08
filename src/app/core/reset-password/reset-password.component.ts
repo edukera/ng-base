@@ -6,10 +6,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormField, MatInputModule } from '@angular/material/input';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { NgContainerContentComponent } from '../../components/container-content/container-content.component';
 import { NgContainerComponent } from '../../components/container/container.component';
 import { EmailInputComponent } from '../../components/email-input/email-input.component';
+import { AuthService } from '../../services/auth.service';
 
 type ResetState =
   "EnterEmail" // first panel to enter email and click continue
@@ -39,7 +41,7 @@ export class ResetPasswordComponent {
 
   readonly email = new FormControl('', [Validators.required, Validators.email]);
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService, private _snackBar: MatSnackBar) {}
 
   showEnterEmail() : boolean {
     switch (this.state) {
@@ -56,13 +58,28 @@ export class ResetPasswordComponent {
   }
 
   continue() {
-    if(this.email.valid) {
+    if(this.email.value !== null && this.email.valid) {
       switch (this.state) {
         case "EnterEmail": {
-          this.state = "Resend";
+          this._send(this.email.value)
           break;
         }
       }
+    }
+  }
+
+  private _send(email: string) {
+    this.authService.sendPwdRestEmail(email).then(() => {
+      this.state = "Resend";
+    })
+    .catch(error => {
+      this._snackBar.open(error.message, "Dismiss")
+    })
+  }
+
+  resend() {
+    if(this.email.value !== null && this.email.valid) {
+      this._send(this.email.value)
     }
   }
 

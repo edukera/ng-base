@@ -1,5 +1,16 @@
 import { inject, Injectable } from '@angular/core';
-import { applyActionCode, Auth, createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from '@angular/fire/auth';
+import {
+  Auth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  sendPasswordResetEmail,
+  confirmPasswordReset,
+  applyActionCode,
+  signOut
+} from '@angular/fire/auth';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
 import { skip } from 'rxjs/operators';
@@ -89,8 +100,8 @@ export class AuthService {
     });
   }
 
-  sendResetPwdEmail(email: string) {
-    sendPasswordResetEmail(this.auth, email, )
+  sendPwdRestEmail(email: string) {
+    return sendPasswordResetEmail(this.auth, email)
   }
 
   get user$(): Observable<User | null> {
@@ -128,6 +139,10 @@ export class AuthService {
       return user.email
     }
     return null
+  }
+
+  confirmPwdReset(code: string, pwd: string) {
+    return confirmPasswordReset(this.auth, code, pwd)
   }
 
 }

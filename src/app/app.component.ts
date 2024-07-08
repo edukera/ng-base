@@ -22,12 +22,12 @@ export class AppComponent {
   ngOnInit() {
     this.authService.waitForAuthState().then(user => {
       const currentUrl = this.router.url;
-      if (user) {
-        if (!currentUrl.startsWith("/action")) {
+      if (!currentUrl.startsWith("/action")) {
+        if (user) {
           this.router.navigate(['/main']);
+        } else {
+          this.router.navigate(['/login']);
         }
-      } else {
-        this.router.navigate(['/login']);
       }
       this.loading = false;
     });

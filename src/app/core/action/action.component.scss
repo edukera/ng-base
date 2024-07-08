@@ -20,6 +20,10 @@
   line-height: 1.8;
 }
 
+.title.light {
+  font-weight: bold;
+}
+
 .element {
   width: 100%;
   padding-left: 8px;
@@ -38,4 +42,22 @@
 
 .bottom {
   margin-bottom: 12px;
+}
+
+.icon-container {
+  font-size: xx-large;
+  border: 2px solid var(--mdc-text-button-label-text-color);
+  border-radius: 100%;
+  padding: 20px;
+  width: 32px;
+  height: 32px;
+}
+
+.icon {
+  margin-top: 5px;
+  color: var(--mdc-text-button-label-text-color)
+}
+
+.element.check {
+  margin-bottom: 12px !important
 }

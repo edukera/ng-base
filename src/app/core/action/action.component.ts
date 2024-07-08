@@ -3,7 +3,8 @@ import { Component, OnInit, model } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ActivatedRoute, Router } from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormControl } from '@angular/forms';
 
 import { NgContainerContentComponent } from '../../components/container-content/container-content.component';
 import { NgContainerComponent } from '../../components/container/container.component';
@@ -11,10 +12,16 @@ import { AuthService } from '../../services/auth.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { ThemeService } from '../../services/theme.service';
 import { UserPreferencesService } from '../../services/preferences.service';
+import { PasswordInputComponent } from '../../components/password-input/password-input.component';
+import { PasswordFeedbackComponent } from '../../components/password-feedback/password-feedback.component';
+import { StrongPwdRegExp } from '../../components/password-feedback/password-feedback.component';
+import { MatIconModule } from '@angular/material/icon';
 
-type Action = "verifyEmail"
+type Action =
+  "verifyEmail"
+| "resetPassword"
+| "confirmResetPwd"
 
 @Component({
   selector: 'verify',
@@ -29,22 +36,35 @@ type Action = "verifyEmail"
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    PasswordInputComponent,
+    PasswordFeedbackComponent,
+    MatIconModule
   ]
 })
 export class ActionComponent implements OnInit {
-  action: Action = "verifyEmail"
+  action: Action  = "verifyEmail"
+  oobCode: string = ""
   name = model("")
+  readonly pwd1 = new FormControl('', []);
+  readonly pwd2 = new FormControl('', []);
 
   isVerifyEmail() : boolean {
     return this.action === "verifyEmail"
+  }
+
+  isResetPassword() : boolean {
+    return this.action === "resetPassword"
+  }
+
+  isConfirmResetPwd() : boolean {
+    return this.action === "confirmResetPwd"
   }
 
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
-    private themeService: ThemeService,
     private prefService: UserPreferencesService,
     private _snackBar: MatSnackBar
   ) { }
@@ -52,17 +72,19 @@ export class ActionComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       const mode = params['mode'];
-      const oobCode = params['oobCode'];
-      if (mode && oobCode) {
+      this.oobCode = params['oobCode'];
+      if (mode && this.oobCode !== "") {
         if (mode === 'verifyEmail') {
-          this.action = "verifyEmail"
-          this.verifyEmail(oobCode);
+          this.action = mode
+          this.applyCode(this.oobCode);
+        } else if (mode === 'resetPassword') {
+          this.action = mode
         }
       }
     });
   }
 
-  verifyEmail(oobCode: string) {
+  applyCode(oobCode: string) {
     this.authService.applyCode(oobCode).then(() => {
       console.log('Email verified.');
     }).catch(error => {
@@ -79,6 +101,29 @@ export class ActionComponent implements OnInit {
     if (value !== "" && this.prefService.preferences.name !== value) {
       this.prefService.setPreferences({ ...this.prefService.preferences, name: value })
     }
+  }
+
+  resetPwd() {
+    if (
+      this.pwd1.value !== null &&
+      this.pwd1.value === this.pwd2.value &&
+      StrongPwdRegExp.isValid(this.pwd1.value)
+    ) {
+      this.authService.confirmPwdReset(this.oobCode, this.pwd1.value).then(() => {
+        this.action = "confirmResetPwd"
+      })
+      .catch(error => {
+        this._snackBar.open(error.message, "Dismiss")
+      })
+    }
+  }
+
+  gotoLogin() {
+    this.router.navigate(['/login'])
+  }
+
+  showPwdFeedback() : boolean {
+    return this.pwd1.dirty
   }
 
 }

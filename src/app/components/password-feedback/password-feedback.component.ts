@@ -46,11 +46,31 @@ export class StrongPwdRegExp {
 })
 export class PasswordFeedbackComponent {
   @Input() pwd: FormControl = new FormControl('', [Validators.required]);
+  @Input() pwd2: FormControl | null = null;
 
   getPwdCheckItemClass(rule: PwdCheckRule) {
     return {
       'item': true,
       'check-item': StrongPwdRegExp.testRule(this.pwd?.value ?? "", rule)
+    }
+  }
+
+  getSamePwdClass() {
+    return {
+      'item': true,
+      'check-item': this.isSame()
+    }
+  }
+
+  checkSamePwd() : boolean {
+    return this.pwd2 !== null
+  }
+
+  private isSame() : boolean {
+    if (this.pwd2 !== null) {
+      return this.pwd.value === this.pwd2.value
+    } else {
+      return false
     }
   }
 }

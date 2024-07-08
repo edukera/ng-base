@@ -18,6 +18,23 @@
         </div>
         <button i18n mat-flat-button type="submit" (click)="accept()" class="element">Agree</button>
       </div>
+      <div *ngIf="isResetPassword()" class="container">
+        <div i18n class="title">Reset your password</div>
+        <password-input [pwd]="pwd1" placeholder="New Password" class="element"></password-input>
+        <password-input [pwd]="pwd2" placeholder="Re-enter new Password" class="element"></password-input>
+        <password-feedback *ngIf="showPwdFeedback()" [pwd]="pwd1" [pwd2]="pwd2" class="element check"></password-feedback>
+        <button i18n mat-flat-button type="submit" (click)="resetPwd()" class="element">Reset Password</button>
+      </div>
+      <div *ngIf="isConfirmResetPwd()" class="container">
+        <div class="icon-container">
+          <mat-icon inline class="icon">check</mat-icon>
+        </div>
+        <div i18n class="title light">Password Changed!</div>
+        <div i18n class="text bottom">
+          Your password has been changed successfully.
+        </div>
+        <button i18n mat-flat-button type="submit" (click)="gotoLogin()" class="element">Back to Ng Base</button>
+      </div>
     </mat-drawer-container>
   </ng-base-container-content>
 </ng-base-container>

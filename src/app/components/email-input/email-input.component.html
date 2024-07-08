@@ -8,8 +8,8 @@
     [formControl]="email"
     (blur)="updateEmailErrorMessage()"
   />
-  <button *ngIf="showModify" mat-button color="primary" type="submit" matSuffix i18n (click)="action()">
-    Modify
+  <button *ngIf="showModify" mat-button color="primary" type="submit" matSuffix i18n (click)="action()" class="button">
+    Edit
   </button>
   @if (email.invalid) {
     <mat-error>{{errorEmailMessage()}}</mat-error>
