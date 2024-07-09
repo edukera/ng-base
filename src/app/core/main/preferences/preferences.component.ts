@@ -11,6 +11,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatDividerModule } from '@angular/material/divider';
 import { CommonModule } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService } from '../../../services/auth.service';
 import { UserPreferencesService } from '../../../services/preferences.service';
@@ -76,12 +77,14 @@ export class PreferencesComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private themeService: ThemeService,
-    private prefService: UserPreferencesService
+    private prefService: UserPreferencesService,
+    private _snackBar: MatSnackBar,
   ) {
 
   }
 
   ngOnInit(): void {
+    this.authService.reloadUser();
     this.layoutchanges.subscribe(() =>
       this.breakpointChanged()
     );
@@ -173,6 +176,16 @@ export class PreferencesComponent implements OnInit {
 
   delete() {
     this.data.panel = "DeleteAccount"
+  }
+
+  sendVerif() {
+    this.authService.sendVerificationEmail()
+    .then(() => {
+      this._snackBar.open($localize `Email sent.`, "Dismiss")
+    })
+    .catch(error => {
+      this._snackBar.open(error.message, "Dismiss")
+    })
   }
 
 }

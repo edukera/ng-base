@@ -20,7 +20,7 @@
       </mat-form-field>
     </div>
     <div class="preference-item" *ngIf="isAccount() && isProviderEmail() && !isEmailVerified()">
-      <button mat-stroked-button tabindex="-1" class="fullwidth">Send verification email</button>
+      <button mat-stroked-button tabindex="-1" class="fullwidth" (click)="sendVerif()">Send verification email</button>
     </div>
     <div class="preference-item" *ngIf="isAccount()">
       <mat-form-field appearance="outline" class="fullwidth" subscriptSizing="dynamic">

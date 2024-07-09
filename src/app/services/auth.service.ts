@@ -154,4 +154,12 @@ export class AuthService {
     throw new Error("Null user")
   }
 
+  public reloadUser() {
+    const user = this.auth.currentUser;
+    if (user) {
+      return user.reload()
+    }
+    throw new Error("No user.")
+  }
+
 }
