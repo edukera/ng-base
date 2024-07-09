@@ -34,7 +34,6 @@ export class UserPreferencesService {
 
   private init() {
     this.authService.user$.subscribe(user => {
-      console.log(user)
       if (user !== null) {
         this._prefs = { ...this._prefs, email: user.email ?? 'NA', name: user.displayName ?? '' }
         this.docRef = doc(this.firestore, 'user_preferences/' + user.uid);
@@ -44,7 +43,6 @@ export class UserPreferencesService {
             if (prefs === undefined) {
               this.setPreferences(this._prefs)
             } else {
-              console.log(prefs);
               this._prefs = prefs;
               this.themeService.setTheme(this._prefs.theme)
             }
@@ -59,16 +57,11 @@ export class UserPreferencesService {
 
   public get preferences() { return this._prefs }
 
-  public setPreferences(preferences: UserPreferences, continuation ?: { () : void }) {
+  public setPreferences(preferences: UserPreferences) {
     if (this.docRef !== null) {
-      setDoc(this.docRef, preferences).then(() => {
-        console.log("pref written")
-        if (continuation)
-          continuation()
-      })
-    } else {
-      console.error('no doc ref!')
+      return setDoc(this.docRef, preferences)
     }
+    throw new Error("No doc.")
   }
 
   public deletePrefs() {

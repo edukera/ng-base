@@ -112,25 +112,34 @@ export class PreferencesComponent implements OnInit {
   onThemeChange(event: MatSelectChange) {
     this.selectedTheme.set(event.value)
     this.prefService.setPreferences({ ...this.prefs(), theme: this.selectedTheme() })
-    switch (event.value as Theme) {
-      case 'system': {
-        break
+    .then(() => {
+      switch (event.value as Theme) {
+        case 'system': {
+          break
+        }
+        default: {
+          const theme : Theme = event.value
+          this.themeService.setTheme(theme)
+        }
       }
-      default: {
-        const theme : Theme = event.value
-        this.themeService.setTheme(theme)
-      }
-    }
+    })
+    .catch(error => {
+      this._snackBar.open(error.message, "Dismiss")
+    })
   }
 
   onLangChange(event: MatSelectChange) {
     this.selectedLang.set(event.value)
-    this.prefService.setPreferences({ ...this.prefs(), lang: this.selectedLang() }, () => {
+    this.prefService.setPreferences({ ...this.prefs(), lang: this.selectedLang() })
+    .then(() => {
       if (this.selectedLang() === 'fr') {
         window.location.href = '/fr';
       } else if (this.selectedLang() === 'en') {
         window.location.href = '/en';
       }
+    })
+    .catch(error => {
+      this._snackBar.open(error.message, "Dismiss")
     })
   }
 
