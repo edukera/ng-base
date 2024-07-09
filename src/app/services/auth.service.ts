@@ -9,6 +9,7 @@ import {
   sendPasswordResetEmail,
   confirmPasswordReset,
   applyActionCode,
+  deleteUser,
   signOut
 } from '@angular/fire/auth';
 import { onAuthStateChanged, User } from 'firebase/auth';
@@ -143,6 +144,14 @@ export class AuthService {
 
   confirmPwdReset(code: string, pwd: string) {
     return confirmPasswordReset(this.auth, code, pwd)
+  }
+
+  deleteUser() {
+    const user = this.currentUser.getValue()
+    if (user !== null) {
+      return deleteUser(user)
+    }
+    throw new Error("Null user")
   }
 
 }

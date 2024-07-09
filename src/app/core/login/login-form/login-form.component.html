@@ -7,15 +7,13 @@
       <p>{{getDesc()}}</p>
     </mat-drawer-container>
   </div>
-  <div>
+  <div class="emailpwd">
     <email-input [email]="email" [action]="modifyEmail(state)" [showModify]="showModify()"/>
-    <div *ngIf="showPwd()">
-      <password-input placeholder="Password" [pwd]="pwd" />
-      <mat-drawer-container *ngIf="showForgot()" class="drawer-container">
-        <a i18n mat-button color="primary" type="submit" (click)="gotoReset()">Forgot password?</a>
-      </mat-drawer-container>
-    </div>
-    <password-feedback *ngIf="showPwdFeedback()" [pwd]="pwd" />
+    <password-input *ngIf="showPwd()" placeholder="Password" [pwd]="pwd" />
+    <mat-drawer-container *ngIf="showPwd() && showForgot()" class="drawer-container">
+      <a i18n mat-button color="primary" type="submit" (click)="gotoReset()">Forgot password?</a>
+    </mat-drawer-container>
+    <password-feedback *ngIf="showPwd() && showPwdFeedback()" [pwd]="pwd" />
   </div>
   <button i18n mat-flat-button color="primary" type="submit" class="login-form-element-simple" (click)="continue()">
     Continue

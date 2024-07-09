@@ -53,9 +53,13 @@
         </ng-template>
       </button>
       <mat-menu #menu="matMenu" class="profile-menu">
-        <button mat-menu-item (click)="openProfileDialog(1)">
+        <button mat-menu-item (click)="openProfileDialog('Account')">
+          <mat-icon>person</mat-icon>
+          <span i18n>Account</span>
+        </button>
+        <button mat-menu-item (click)="openProfileDialog('Settings')">
           <mat-icon>settings</mat-icon>
-          <span i18n>Preferences</span>
+          <span i18n>Settings</span>
         </button>
         <mat-divider></mat-divider>
         <button mat-menu-item (click)="signOut()">

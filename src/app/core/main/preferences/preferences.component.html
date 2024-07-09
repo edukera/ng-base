@@ -1,56 +1,76 @@
-<h2 mat-dialog-title i18n>Preferences</h2>
+<div class="header">
+  <div mat-dialog-title class="title">{{getDialogTitle()}}</div>
+  <button mat-icon-button class="close" (click)="close()" tabindex="-1">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-divider></mat-divider>
 <mat-dialog-content>
-  <form class="profile-panel">
-    <mat-form-field appearance="outline">
-      <mat-label i18n>Email</mat-label>
-      <input tabindex="-1" matInput readonly placeholder="Fill your email" [value]="prefs().email">
-      @if (isProviderEmail() && isEmailVerified()) {
-        <mat-hint i18n matTextSuffix>(verified)</mat-hint>
-      }
-      @if (isProviderEmail() && !isEmailVerified()) {
-        <mat-error i18n matTextSuffix>not verified!</mat-error>
-      }
-    </mat-form-field>
-    @if (isProviderEmail() && !isEmailVerified()) {
-      <button mat-button class="send-verif">Send verification email</button>
-    }
-    <mat-form-field appearance="outline">
-      <mat-label i18n>Name</mat-label>
-      <input
-        tabindex="-1"
-        matInput
-        [disabled]="!isNameEditable()"
-        placeholder="Fill your name"
-        [value]="prefs().name"
-        (blur)="onNameChange($event)"
-      >
-      @if (isNameEditable()) {
-        <mat-icon matSuffix>edit</mat-icon>
-      }
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label i18n>Theme</mat-label>
-      <mat-select tabindex="-1" (selectionChange)="onThemeChange($event)" [(value)]="selectedTheme">
-        @for (theme of possibleThemes; track theme) {
-          <mat-option [value]="theme.value">
-            {{ theme.viewValue }}
-          </mat-option>
+  <div class="preferences-panel">
+    <div class="preference-item" *ngIf="isAccount()">
+      <mat-form-field appearance="outline" class="fullwidth" subscriptSizing="dynamic">
+        <mat-label i18n>Email</mat-label>
+        <input tabindex="-1" matInput readonly placeholder="Fill your email" [value]="prefs().email">
+        @if (isProviderEmail() && isEmailVerified()) {
+          <mat-hint i18n matTextSuffix>(verified)</mat-hint>
         }
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label i18n>Language</mat-label>
-      <mat-select tabindex="-1" (selectionChange)="onLangChange($event)" [(value)]="selectedLang">
-        <mat-option value="en" i18n>English</mat-option>
-        <mat-option value="fr" i18n>French</mat-option>
-        <mat-option value="system" i18n>System</mat-option>
-        <!-- Ajoutez d'autres options de langue si nécessaire -->
-      </mat-select>
-    </mat-form-field>
-  </form>
+        @if (isProviderEmail() && !isEmailVerified()) {
+          <mat-error i18n matTextSuffix>not verified!</mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div class="preference-item" *ngIf="isAccount() && isProviderEmail() && !isEmailVerified()">
+      <button mat-stroked-button tabindex="-1" class="fullwidth">Send verification email</button>
+    </div>
+    <div class="preference-item" *ngIf="isAccount()">
+      <mat-form-field appearance="outline" class="fullwidth" subscriptSizing="dynamic">
+        <mat-label i18n>Name</mat-label>
+        <input
+          tabindex="-1"
+          matInput
+          [disabled]="!isNameEditable()"
+          placeholder="Fill your name"
+          [value]="prefs().name"
+          (blur)="onNameChange($event)"
+        >
+        @if (isNameEditable()) {
+          <mat-icon matSuffix>edit</mat-icon>
+        }
+      </mat-form-field>
+    </div>
+    <div class="preference-item" *ngIf="isAccount()">
+      <div i18n class="preference-label no-margin">Delete Account</div>
+      <div class="preference-control">
+        <button mat-stroked-button tabindex="-1" (click)="delete()" >Delete</button>
+      </div>
+    </div>
+    <div class="preference-item" *ngIf="isSettings()">
+      <div i18n class="preference-label">Theme</div>
+      <div class="preference-control">
+        <mat-form-field appearance="outline" class="fullwidth" subscriptSizing="dynamic">
+          <mat-select tabindex="-1" (selectionChange)="onThemeChange($event)" [(value)]="selectedTheme">
+            @for (theme of possibleThemes; track theme) {
+              <mat-option [value]="theme.value">
+                {{ theme.viewValue }}
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="preference-item" *ngIf="isSettings()">
+      <div i18n class="preference-label">Language</div>
+      <div class="preference-control">
+        <mat-form-field appearance="outline" class="fullwidth" subscriptSizing="dynamic">
+          <mat-select tabindex="-1" (selectionChange)="onLangChange($event)" [(value)]="selectedLang">
+            <mat-option value="en" i18n>English</mat-option>
+            <mat-option value="fr" i18n>French</mat-option>
+            <mat-option value="system" i18n>System</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <delete-account *ngIf="isDeleteAccount()" [dialogRef]="dialogRef"></delete-account>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-stroked-button (click)="close()">Ok</button>
-</mat-dialog-actions>
 

@@ -19,8 +19,11 @@ import { AuthService } from '../../services/auth.service';
 import { UserPreferences, UserPreferencesService } from '../../services/preferences.service';
 import { PreferencesComponent } from './preferences/preferences.component';
 
-export interface DialogData {
-  panelId: number;
+export type PreferencePanel = "Account" | "Settings" | "DeleteAccount"
+type DialogWidth = "auto" | "450px"
+
+export interface PreferenceData {
+  panel: PreferencePanel;
   prefs: UserPreferences
 }
 
@@ -45,13 +48,21 @@ export interface DialogData {
     RouterLinkActive
   ]
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
   rootRoutes = mainRoutes.filter(r=>r.path && r.path !== 'profile')
-  private breakpointObserver = inject(BreakpointObserver);
   isMinimized = false;
   readonly dialog = inject(MatDialog);
-  readonly profilePanel = model(0);
+  readonly profilePanel = model("Account");
+  dialogWidth: DialogWidth = 'auto'
 
+
+  private breakpointObserver = inject(BreakpointObserver);
+  layoutchanges = this.breakpointObserver.observe([
+    Breakpoints.Large,
+    Breakpoints.Medium,
+    Breakpoints.Small,
+    Breakpoints.Handset
+  ])
 
   toggleSidenavWidth() {
     this.isMinimized = !this.isMinimized;
@@ -62,6 +73,24 @@ export class MainComponent {
     public authService: AuthService,
     private prefsService : UserPreferencesService
   ) {}
+
+  ngOnInit(): void {
+    this.layoutchanges.subscribe(() =>
+      this.breakpointChanged()
+    );
+  }
+
+  breakpointChanged() {
+    if (this.breakpointObserver.isMatched(Breakpoints.Small)) {
+      this.dialogWidth = 'auto'
+    } else if (this.breakpointObserver.isMatched(Breakpoints.Medium)) {
+      this.dialogWidth = '450px'
+    } else if (this.breakpointObserver.isMatched(Breakpoints.Large)) {
+      this.dialogWidth = '450px'
+    } else if(this.breakpointObserver.isMatched(Breakpoints.Handset)) {
+      this.dialogWidth = 'auto'
+    }
+  }
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -82,10 +111,11 @@ export class MainComponent {
     });
   }
 
-  openProfileDialog(panelId: number): void {
-    this.profilePanel.set(panelId)
+  openProfileDialog(panel: PreferencePanel): void {
+    this.profilePanel.set(panel)
     const dialogRef = this.dialog.open(PreferencesComponent, {
-      data: { panelId: this.profilePanel(), prefs: this.prefsService.preferences },
+      width: this.dialogWidth,
+      data: { panel: this.profilePanel(), prefs: this.prefsService.preferences },
     });
 
     dialogRef.afterClosed().subscribe(result => {

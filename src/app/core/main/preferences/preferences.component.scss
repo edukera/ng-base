@@ -1,10 +1,50 @@
-.profile-panel {
-  padding-top: 4px;
-  min-width: 400px;
+.header {
   display: flex;
-  flex-direction: column;
+  flex-direction:row;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.send-verif {
-  margin-bottom: 18px;
+.title {
+  font-size: big
+}
+
+.close {
+  right: 18px;
+  top: 4px;
+}
+
+.preferences-panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  gap: 16px
+}
+
+.preference-item {
+  display: flex;
+  align-items: center;
+}
+
+.preference-label {
+  flex: 2;
+  text-align: left;
+  padding-right: 10px;
+  font-size: larger;
+  font-weight: lighter;
+}
+
+.preference-label.no-margin {
+  margin-bottom: 0px;
+}
+
+.preference-control {
+  flex: 2;
+  text-align: end;
+}
+
+.fullwidth {
+  width: 100%
 }

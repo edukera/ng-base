@@ -1,0 +1,36 @@
+<ul>
+  <li *ngFor="let line of warnings">
+    {{ line }}
+  </li>
+</ul>
+<div>
+  <div i18n class="instruction">Please type your account email.</div>
+  <mat-form-field
+    ngDefaultControl
+    name="mailInput"
+    [formControl]="email"
+    appearance="outline"
+    subscriptSizing="dynamic"
+    class="form-element">
+    <input matInput [placeholder]="getEmail()">
+  </mat-form-field>
+</div>
+<div>
+  <div i18n class="instruction">To proceed, type "DELETE" in the input field below.</div>
+  <mat-form-field
+    ngDefaultControl
+    name="deleteInput"
+    [formControl]="deletectrl"
+    appearance="outline"
+    subscriptSizing="dynamic"
+    class="form-element">
+    <input matInput>
+  </mat-form-field>
+</div>
+<button
+  i18n mat-flat-button [disabled]="!isEnabled()"
+  [ngClass]="getButtonClass()" class="form-element"
+  (click)="deleteAccount()">
+  <mat-icon>warning</mat-icon>
+  Permanently delete my account
+</button>
