@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { MatDrawerContainer } from '@angular/material/sidenav';
+import { ngbaseConfig } from '../../ngbase.config';
 
 @Component({
   selector: 'tagline',
@@ -11,7 +12,10 @@ import { MatDrawerContainer } from '@angular/material/sidenav';
   ]
 })
 export class TaglineComponent implements AfterViewInit {
-  dataText = ["ng-base", "The best place to start an Angular project."];
+  dataText = [
+    ngbaseConfig.appName,
+    $localize `The best place to start an Angular project.`
+  ];
   caretHidden = [ true, true ]
 
   ngAfterViewInit() {

@@ -73,7 +73,7 @@ export class ResetPasswordComponent {
       this.state = "Resend";
     })
     .catch(error => {
-      this._snackBar.open(error.message, "Dismiss")
+      this._snackBar.open(error.message, $localize`Dismiss`)
     })
   }
 

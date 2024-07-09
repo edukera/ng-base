@@ -1,22 +1,23 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, model } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component, model, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { NgContainerContentComponent } from '../../components/container-content/container-content.component';
 import { NgContainerComponent } from '../../components/container/container.component';
-import { AuthService } from '../../services/auth.service';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { UserPreferencesService } from '../../services/preferences.service';
-import { PasswordInputComponent } from '../../components/password-input/password-input.component';
 import { PasswordFeedbackComponent } from '../../components/password-feedback/password-feedback.component';
 import { StrongPwdRegExp } from '../../components/password-feedback/password-feedback.component';
-import { MatIconModule } from '@angular/material/icon';
+import { PasswordInputComponent } from '../../components/password-input/password-input.component';
+import { AuthService } from '../../services/auth.service';
+import { UserPreferencesService } from '../../services/preferences.service';
+import { ngbaseConfig } from '../ngbase.config';
 
 type Action =
   "verifyEmail"
@@ -48,6 +49,8 @@ export class ActionComponent implements OnInit {
   name = model("")
   readonly pwd1 = new FormControl('', []);
   readonly pwd2 = new FormControl('', []);
+  readonly termsLink: string = ngbaseConfig.termsLink
+  readonly privacyLink: string = ngbaseConfig.privacyLink
 
   isVerifyEmail() : boolean {
     return this.action === "verifyEmail"
@@ -88,7 +91,7 @@ export class ActionComponent implements OnInit {
     this.authService.applyCode(oobCode).then(() => {
       console.log('Email verified.');
     }).catch(error => {
-      this._snackBar.open(error.message, "Dismiss")
+      this._snackBar.open(error.message, $localize`Dismiss`)
     });
   }
 
@@ -113,7 +116,7 @@ export class ActionComponent implements OnInit {
         this.action = "confirmResetPwd"
       })
       .catch(error => {
-        this._snackBar.open(error.message, "Dismiss")
+        this._snackBar.open(error.message, $localize`Dismiss`)
       })
     }
   }

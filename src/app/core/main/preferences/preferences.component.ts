@@ -124,7 +124,7 @@ export class PreferencesComponent implements OnInit {
       }
     })
     .catch(error => {
-      this._snackBar.open(error.message, "Dismiss")
+      this._snackBar.open(error.message, $localize`Dismiss`)
     })
   }
 
@@ -139,7 +139,7 @@ export class PreferencesComponent implements OnInit {
       }
     })
     .catch(error => {
-      this._snackBar.open(error.message, "Dismiss")
+      this._snackBar.open(error.message, $localize`Dismiss`)
     })
   }
 
@@ -190,10 +190,10 @@ export class PreferencesComponent implements OnInit {
   sendVerif() {
     this.authService.sendVerificationEmail()
     .then(() => {
-      this._snackBar.open($localize `Email sent.`, "Dismiss")
+      this._snackBar.open($localize `Email sent.`, $localize`Dismiss`)
     })
     .catch(error => {
-      this._snackBar.open(error.message, "Dismiss")
+      this._snackBar.open(error.message, $localize`Dismiss`)
     })
   }
 

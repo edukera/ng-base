@@ -28,7 +28,7 @@
         <input
           tabindex="-1"
           matInput
-          [disabled]="!isNameEditable()"
+          [readonly]="!isNameEditable()"
           placeholder="Fill your name"
           [value]="prefs().name"
           (blur)="onNameChange($event)"

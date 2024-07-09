@@ -1,9 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Importer CommonModule
-import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+// Importer CommonModule
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+
+import { ngbaseConfig } from '../../core/ngbase.config';
 
 @Component({
   selector: 'ng-base-container-content',
@@ -19,5 +22,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   styleUrl: './container-content.component.scss'
 })
 export class NgContainerContentComponent {
-
+  readonly termsLink: string = ngbaseConfig.termsLink
+  readonly privacyLink: string = ngbaseConfig.privacyLink
 }

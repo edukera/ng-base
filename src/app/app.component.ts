@@ -14,7 +14,6 @@ import { AuthService } from './services/auth.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'ng-base';
   loading = true;
 
   constructor(private authService: AuthService, private router: Router) {}

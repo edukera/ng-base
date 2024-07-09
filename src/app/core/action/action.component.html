@@ -13,8 +13,8 @@
           >
         </mat-form-field>
         <div i18n class="text bottom">
-          By clicking "Agree", you agree to our <a href="https://www.google.com/" target="_blank" class="link">Terms</a>.
-          Our <a href="https://www.google.com/" target="_blank" class="link">Privacy Policy</a> explains how we process personal data.
+          By clicking "Agree", you agree to our <a [href]="termsLink" target="_blank" class="link">Terms</a>.
+          Our <a [href]="privacyLink" target="_blank" class="link">Privacy Policy</a> explains how we process personal data.
         </div>
         <button i18n mat-flat-button type="submit" (click)="accept()" class="element">Agree</button>
       </div>

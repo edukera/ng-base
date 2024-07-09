@@ -31,11 +31,13 @@ export class DeleteAccountComponent {
   @Input() dialogRef : MatDialogRef<PreferencesComponent> | null = null
 
   warnings: string[] = [
-    $localize `Deleting your account is permanent and cannot be undone.`,
-    $localize `Deletion will prevent you from accessing ng-base application.`,
-    $localize `You data will be deleted.`,
-    $localize `Read our help center article for more information.`
+    $localize`Deleting your account is permanent and cannot be undone.`,
+    $localize`Deletion will prevent you from accessing the application.`,
+    $localize`Your data will be deleted.`,
+    $localize`Read our help center article for more information.`
   ]
+
+  deleteKeyword: string = $localize`DELETE`
 
   email: FormControl = new FormControl('', []);
   deletectrl: FormControl = new FormControl('', []);
@@ -61,22 +63,22 @@ export class DeleteAccountComponent {
   isEnabled() : boolean {
     const email = this.email.value
     const deletectrl = this.deletectrl.value
-    return email === this.prefService.preferences.email && deletectrl === "DELETE"
+    return email === this.prefService.preferences.email && deletectrl === this.deleteKeyword
   }
 
   deleteAccount() {
     this.prefService.deletePrefs().then(() => {
       this.authservice.deleteUser().then(() => {
-        console.log("Account deleted.")
         if(this.dialogRef) {
           this.dialogRef.close()
         }
         this.router.navigate(['/login'])
+        this._snackBar.open($localize`Account deleted.`, $localize`Dismiss`)
       }).catch(error => {
-        this._snackBar.open(error.message, "Dismiss")
+        this._snackBar.open(error.message, $localize`Dismiss`)
       })
     }).catch(error => {
-      this._snackBar.open(error.message, "Dismiss")
+      this._snackBar.open(error.message, $localize`Dismiss`)
     })
   }
 }

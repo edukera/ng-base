@@ -15,6 +15,7 @@ import { PasswordInputComponent } from '../../../components/password-input/passw
 import { PasswordFeedbackComponent } from '../../../components/password-feedback/password-feedback.component';
 import { StrongPwdRegExp } from '../../../components/password-feedback/password-feedback.component';
 import { EmailInputComponent } from '../../../components/email-input/email-input.component';
+import { ngbaseConfig } from '../../ngbase.config';
 
 type LoginFormState =
   "Login1"     // enter email + go to register button
@@ -61,9 +62,9 @@ export class LoginFormComponent {
 
   getTitle() {
     switch (this.state) {
-      case "Login1": return "Welcome back";
-      case "Login2": return "Enter your password";
-      case "Register1": case "Register2": return "Create your account"
+      case "Login1": return $localize`Welcome back`;
+      case "Login2": return $localize`Enter your password`;
+      case "Register1": case "Register2": return $localize`Create your account`
     }
   }
 
@@ -76,8 +77,8 @@ export class LoginFormComponent {
 
   getDesc() {
     switch (this.state) {
-      case "Register1": return "Sign in to ng-base"
-      case "Register2": return "Define password to access ng-base"
+      case "Register1": return ($localize`Sign in to` +  ' ' + ngbaseConfig.appName)
+      case "Register2": return ($localize`Define password to access` + ' ' +  ngbaseConfig.appName)
       default: return "NA"
     }
   }
@@ -139,10 +140,10 @@ export class LoginFormComponent {
 
   private assertValidity() : asserts this is { email: FormControl<string>, pwd: FormControl<string> } {
     if (!this.email.valid || this.email.value === null) {
-      throw new Error("Invalid Email.")
+      throw new Error($localize`Invalid Email.`)
     }
     if (!this.pwd.valid || this.pwd.value === null) {
-      throw new Error("Invalid Password.")
+      throw new Error($localize`Invalid Password.`)
     }
   }
 
@@ -189,7 +190,7 @@ export class LoginFormComponent {
               // TODO: display error snack msg
             })
           } else {
-            throw new Error("Password does not follow rules.")
+            throw new Error($localize`Password does not follow rules.`)
           }
         } catch(e) {
           console.error(e)
