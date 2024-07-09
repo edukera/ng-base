@@ -15,7 +15,9 @@ export class TaglineComponent implements AfterViewInit {
   caretHidden = [ true, true ]
 
   ngAfterViewInit() {
-    this.startTextAnimation(0);
+    setTimeout(() => {
+      this.startTextAnimation(0);
+    }, 0)
   }
 
   typeWriter(textId: number, charId: number, fnCallback: () => void) {
