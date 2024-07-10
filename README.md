@@ -33,9 +33,22 @@ Edit %LINK% for email templates. Replace
 
 ```
 https://ng-base-2b40d.firebaseapp.com/__/auth/action
+```
 
 with dev link:
 
 ```
 http://localhost:4200/action
 ```
+
+## Style
+
+### Icons
+
+The 'outline' font set is used by default. Remove line:
+
+```ts
+{ provide: MAT_ICON_DEFAULT_OPTIONS, useValue: { fontSet: 'material-icons-outlined' } }
+```
+
+from [app.config.ts](./src/app/app.config.ts) file to use the default plain font set.

@@ -14,7 +14,7 @@ import { ngbaseConfig } from '../../ngbase.config';
 export class TaglineComponent implements AfterViewInit {
   dataText = [
     ngbaseConfig.appName,
-    $localize `The best place to start an Angular project.`
+    $localize `The best place to start an Angular/Firebase project.`
   ];
   caretHidden = [ true, true ]
 

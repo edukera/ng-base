@@ -1,8 +1,8 @@
 @use "@angular/material" as mat;
-@use "./app/core/main/main.component.theme" as layout-theme;
 
 @include mat.core();
 
+// fixing the webkit autocomplete fields (email, pwd, ...) style (white bg, dark font color) for dark theme
 @media (prefers-color-scheme: dark) {
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -23,6 +23,7 @@ $light-theme: mat.define-theme(
     ),
   )
 );
+
 $dark-theme: mat.define-theme(
   (
     color: (
@@ -33,15 +34,21 @@ $dark-theme: mat.define-theme(
   )
 );
 
+@mixin theme($theme) {
+  .sidenav {
+    background-color: mat.get-theme-color($theme, surface-bright);
+  }
+}
+
 html {
   @include mat.all-component-themes($light-theme);
-  @include layout-theme.theme($light-theme);
+  @include theme($light-theme);
 
   background: mat.get-theme-color($light-theme, surface);
 
   &.dark {
     @include mat.all-component-colors($dark-theme);
-    @include layout-theme.theme($dark-theme);
+    @include theme($dark-theme);
 
     background: mat.get-theme-color($dark-theme, surface);
   }
