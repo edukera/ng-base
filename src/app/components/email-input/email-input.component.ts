@@ -36,9 +36,9 @@ export class EmailInputComponent {
 
   updateEmailErrorMessage() {
     if (this.email.hasError('required')) {
-      this.errorEmailMessage.set('You must enter a value');
+      this.errorEmailMessage.set($localize `You must enter a value`);
     } else if (this.email.hasError('email')) {
-      this.errorEmailMessage.set('Not a valid email');
+      this.errorEmailMessage.set($localize `Not a valid email`);
     } else {
       this.errorEmailMessage.set('');
     }

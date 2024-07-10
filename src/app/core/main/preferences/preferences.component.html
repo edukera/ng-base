@@ -10,7 +10,7 @@
     <div class="preference-item" *ngIf="isAccount()">
       <mat-form-field appearance="outline" class="fullwidth" subscriptSizing="dynamic">
         <mat-label i18n>Email</mat-label>
-        <input tabindex="-1" matInput readonly placeholder="Fill your email" [value]="prefs().email">
+        <input tabindex="-1" matInput readonly i18n-placeholder placeholder="Fill your email" [value]="prefs().email">
         @if (isProviderEmail() && isEmailVerified()) {
           <mat-hint i18n matTextSuffix>(verified)</mat-hint>
         }
@@ -29,6 +29,7 @@
           tabindex="-1"
           matInput
           [readonly]="!isNameEditable()"
+          i18n-placeholder
           placeholder="Fill your name"
           [value]="prefs().name"
           (blur)="onNameChange($event)"
@@ -41,7 +42,7 @@
     <div class="preference-item" *ngIf="isAccount()">
       <div i18n class="preference-label no-margin">Delete Account</div>
       <div class="preference-control">
-        <button mat-stroked-button tabindex="-1" (click)="delete()" >Delete</button>
+        <button i18n mat-stroked-button tabindex="-1" (click)="delete()" >Delete</button>
       </div>
     </div>
     <div class="preference-item" *ngIf="isSettings()">

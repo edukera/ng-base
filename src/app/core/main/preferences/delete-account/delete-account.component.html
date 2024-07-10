@@ -28,9 +28,9 @@
   </mat-form-field>
 </div>
 <button
-  i18n mat-flat-button [disabled]="!isEnabled()"
+  mat-flat-button [disabled]="!isEnabled()"
   [ngClass]="getButtonClass()" class="form-element"
   (click)="deleteAccount()">
   <mat-icon>warning</mat-icon>
-  Permanently delete my account
+  <ng-container i18n>Permanently delete my account</ng-container>
 </button>

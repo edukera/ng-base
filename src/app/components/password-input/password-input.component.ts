@@ -24,7 +24,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   ]
 })
 export class PasswordInputComponent {
-  @Input() placeholder: string = 'Password';
+  @Input() placeholder: string = $localize `Password`;
   @Input() name: string = 'password'
   @Input() autocomplete: string = 'current-password'
   @Input() pwd: FormControl = new FormControl('', [Validators.required]);

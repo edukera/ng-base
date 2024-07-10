@@ -97,4 +97,4 @@ The login typewriter effect is inspired by this [source](https://css-tricks.com/
 
 ### Images
 
-The login [image](./public/assets/login-image.png) is from [www.cleanpng.com](https://www.cleanpng.com/).
+The login [image](./public/assets/login-image.png) is from [www.cleanpng.com](https://www.cleanpng.com/) (online [source](https://www.cleanpng.com/png-color-splash-art-clip-art-colour-splash-1165562/)).

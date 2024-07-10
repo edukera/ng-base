@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
 <file datatype="plaintext" original="ng2.template" source-language="en" target-language="fr">
 <body>
+<trans-unit datatype="html" id="1221596867309460035">
+<source xml:space="preserve">New Password</source>
+<target xml:space="preserve">Nouveau mot de passe</target>
+</trans-unit>
 <trans-unit datatype="html" id="1231272870081591724">
 <source xml:space="preserve">Invalid Email.</source>
 <target xml:space="preserve">E-mail non valide.</target>
 </trans-unit>
+<trans-unit datatype="html" id="1431416938026210429">
+<source xml:space="preserve">Password</source>
+<target xml:space="preserve">Mot de passe</target>
+</trans-unit>
+<trans-unit datatype="html" id="1446670643492611810">
+<source xml:space="preserve">Hide password</source>
+<target xml:space="preserve">Masquer mot de passe</target>
+</trans-unit>
 <trans-unit datatype="html" id="1455277686457167018">
 <source xml:space="preserve">Sign in to</source>
-<target xml:space="preserve">Connectez-vous à</target>
+<target xml:space="preserve">Inscrivez-vous à</target>
 </trans-unit>
 <trans-unit datatype="html" id="1536087519743707362">
 <source xml:space="preserve">Dismiss</source>
@@ -19,7 +31,7 @@
 </trans-unit>
 <trans-unit datatype="html" id="187187500641108332">
 <source xml:space="preserve">
-<x equiv-text="{{ placeholder }}" id="INTERPOLATION"/></source>
+<x equiv-text="{{getTitle()}}" id="INTERPOLATION"/></source>
 <target xml:space="preserve">
 <x equiv-text="{{ placeholder }}" id="INTERPOLATION"/></target>
 </trans-unit>
@@ -68,6 +80,10 @@
 <trans-unit datatype="html" id="2917314929120683887">
 <source xml:space="preserve"> Continue </source>
 <target xml:space="preserve"> Continuer </target>
+</trans-unit>
+<trans-unit datatype="html" id="2926267073284227852">
+<source xml:space="preserve">Re-enter new Password</source>
+<target xml:space="preserve">Entrez à nouveau le nouveau mot de passe</target>
 </trans-unit>
 <trans-unit datatype="html" id="29832309535656200">
 <source xml:space="preserve">System</source>
@@ -141,6 +157,10 @@
 <source xml:space="preserve">Password does not follow rules.</source>
 <target xml:space="preserve">Le mot de passe ne respecte pas les règles.</target>
 </trans-unit>
+<trans-unit datatype="html" id="5366191649343750023">
+<source xml:space="preserve">Permanently delete my account</source>
+<target xml:space="preserve">Supprimer définitivement mon compte</target>
+</trans-unit>
 <trans-unit datatype="html" id="5377078063439833222">
 <source xml:space="preserve"> Edit </source>
 <target xml:space="preserve"> Editer </target>
@@ -148,6 +168,10 @@
 <trans-unit datatype="html" id="5410539658917085810">
 <source xml:space="preserve">Account deleted.</source>
 <target xml:space="preserve">Compte supprimé.</target>
+</trans-unit>
+<trans-unit datatype="html" id="5554528553553249088">
+<source xml:space="preserve">Show password</source>
+<target xml:space="preserve">Afficher le mot de passe</target>
 </trans-unit>
 <trans-unit datatype="html" id="5746470327278332948">
 <source xml:space="preserve">Passwords must be identical.</source>
@@ -168,6 +192,10 @@
 <trans-unit datatype="html" id="6090931838305354672">
 <source xml:space="preserve">Privacy policy</source>
 <target xml:space="preserve">Politique de confidentialité</target>
+</trans-unit>
+<trans-unit datatype="html" id="6093776437807584103">
+<source xml:space="preserve">john.doe@email.com</source>
+<target xml:space="preserve">quidam@email.com</target>
 </trans-unit>
 <trans-unit datatype="html" id="6139690411590628704">
 <source xml:space="preserve">Click the link in the message to validate email address.</source>
@@ -201,6 +229,10 @@
 <source xml:space="preserve">Dashboard</source>
 <target xml:space="preserve">Tableau de bord</target>
 </trans-unit>
+<trans-unit datatype="html" id="6795661933747564358">
+<source xml:space="preserve">Fill your name</source>
+<target xml:space="preserve">Renseignez votre nom</target>
+</trans-unit>
 <trans-unit datatype="html" id="680171196543642816">
 <source xml:space="preserve">Please type your account email.</source>
 <target xml:space="preserve">Veuillez saisir l&apos;adresse e-mail de votre compte.</target>
@@ -217,13 +249,25 @@
 <source xml:space="preserve">Reset Password</source>
 <target xml:space="preserve">Ré-initialiser le mot de passe</target>
 </trans-unit>
+<trans-unit datatype="html" id="7022070615528435141">
+<source xml:space="preserve">Delete</source>
+<target xml:space="preserve">Supprimer</target>
+</trans-unit>
 <trans-unit datatype="html" id="7103588127254721505">
 <source xml:space="preserve">Theme</source>
 <target xml:space="preserve">Thème</target>
 </trans-unit>
+<trans-unit datatype="html" id="7196360912393502967">
+<source xml:space="preserve">You must enter a value</source>
+<target xml:space="preserve">Vous devez saisir une valeur</target>
+</trans-unit>
 <trans-unit datatype="html" id="7231134432681288778">
 <source xml:space="preserve">Deleting your account is permanent and cannot be undone.</source>
 <target xml:space="preserve">La suppression de votre compte est définitive et ne peut être annulée.</target>
+</trans-unit>
+<trans-unit datatype="html" id="7408541314475571768">
+<source xml:space="preserve">Not a valid email</source>
+<target xml:space="preserve">E-mail non valide</target>
 </trans-unit>
 <trans-unit datatype="html" id="7507948636555938109">
 <source xml:space="preserve">Log out</source>
@@ -258,6 +302,10 @@
 <trans-unit datatype="html" id="813263746069473514">
 <source xml:space="preserve">Connect</source>
 <target xml:space="preserve">Connexion</target>
+</trans-unit>
+<trans-unit datatype="html" id="8143854176554311990">
+<source xml:space="preserve">Fill your email</source>
+<target xml:space="preserve">Renseignez votre e-mail</target>
 </trans-unit>
 <trans-unit datatype="html" id="815051607554522412">
 <source xml:space="preserve">Go back to login</source>
