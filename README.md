@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## I18N
 
+### Localization
+
 Run the following command to generate (en) localization file:
 
 ```
@@ -16,7 +18,7 @@ Then translate and create the `src/locale/messages.fr.xlf` file, either manually
 
 More information on angular internalization and localization [here](https://angular.dev/guide/i18n).
 
-## Build
+### Test locally
 
 Run `ng build --localize` to build the project. The build artifacts will be stored in the `dist/` directory:
 * `dist/ng-base/en`
