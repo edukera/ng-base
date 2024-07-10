@@ -55,13 +55,13 @@ html {
   @include mat.all-component-themes($light-theme);
   @include theme($light-theme, 'light');
 
-  //background: mat.get-theme-color($light-theme, surface);
+  background: mat.get-theme-color($light-theme, surface);
 
   &.dark {
     @include mat.all-component-colors($dark-theme);
     @include theme($dark-theme, 'dark');
 
-    //background: mat.get-theme-color($dark-theme, surface);
+    background: mat.get-theme-color($dark-theme, surface);
   }
 }
 
