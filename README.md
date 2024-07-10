@@ -10,7 +10,7 @@ Run `ng build --localize` to build the project. The build artifacts will be stor
 
 Then copy `/src/environments/404.html` to `dist/ng-base` directory with:
 ```
-cd src/environments/404.html dist/ng-base
+cp src/environments/404.html dist/ng-base
 ```
 
 Run local `http-server` with:
@@ -45,7 +45,7 @@ http://localhost:4200/action
 
 ### Theme Palettes
 
-Ng-base defines the [Material Design 3 palette](https://m3.material.io/styles/color/system/overview) for a **light** and **dark** theme. A palette defines 6 sets of colors (primary, secondary, terciary, neutral, neutral-variant and error), each set containing 16 colors, hence a total of 96 colors! However Angular CLI provides a tool to generate a palette from one to four 'seed' colors:
+Ng-base defines the [Material Design 3 palette](https://m3.material.io/styles/color/system/overview) for a **light** and **dark** theme. A palette defines 6 sets of colors (primary, secondary, terciary, neutral, neutral-variant and error), each set containing 16 colors (26 for neutral), hence a total of 106 colors! However Angular CLI provides a tool to generate a palette from one to four 'seed' colors:
 
 ```
 ng generate @angular/material:m3-theme
