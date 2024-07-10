@@ -43,6 +43,18 @@ http://localhost:4200/action
 
 ## Style
 
+### Theme Palettes
+
+Ng-base defines the [Material Design 3 palette](https://m3.material.io/styles/color/system/overview) for a **light** and **dark** theme. A palette defines 6 sets of colors (primary, secondary, terciary, neutral, neutral-variant and error), each set containing 16 colors, hence a total of 96 colors! However Angular CLI provides a tool to generate a palette from one to four 'seed' colors:
+
+```
+ng generate @angular/material:m3-theme
+```
+
+Check the default [light](./src/app/themes/light_m3-theme.scss) and [dark](./src/app/themes/dark_m3-theme.scss) themes.
+
+Tier tool like [themes.angular-material.dev](https://themes.angular-material.dev/) may be used to visualize the material components from seed colors.
+
 ### Icons
 
 The 'outline' font set is used by default. Remove line:
