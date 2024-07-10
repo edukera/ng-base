@@ -2,6 +2,20 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
 
+## I18N
+
+Run the following command to generate (en) localization file:
+
+```
+ng extract-i18n --output-path src/locale
+```
+
+This generates the `src/locale/messages.xlf` file for transaltion.
+
+Then translate and create the `src/locale/messages.fr.xlf` file, either manually or with dedicated translation tools like [localazy](https://localazy.com/).
+
+More information on angular internalization and localization [here](https://angular.dev/guide/i18n).
+
 ## Build
 
 Run `ng build --localize` to build the project. The build artifacts will be stored in the `dist/` directory:
@@ -64,3 +78,21 @@ The 'outline' font set is used by default. Remove line:
 ```
 
 from [app.config.ts](./src/app/app.config.ts) file to use the default plain font set.
+
+## Resources
+
+### Technical Docs
+
+* [Angular](https://angular.dev/)
+* [Material Angular](https://material.angular.io/)
+* [Firebase](https://firebase.google.com/?authuser=0)
+* [Angularfire](https://github.com/angular/angularfire/blob/3639e41b52c0b2963c1e24734ff8401f4d21107e/docs/firestore.md)
+* [Material icons](https://fonts.google.com/icons?icon.size=24&icon.color=%23e8eaed)
+
+### Typewriter effect
+
+The login typewriter effect is inspired by this [source](https://css-tricks.com/snippets/css/typewriter-effect/).
+
+### Images
+
+The login [image](https://www.cleanpng.com/png-color-splash-art-clip-art-colour-splash-1165562/) is from [www.cleanpng.com](https://www.cleanpng.com/).
