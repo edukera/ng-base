@@ -6,6 +6,7 @@ import { Observable, Subscription } from 'rxjs';
 import { AuthService } from './auth.service';
 // Un service d'authentification que vous auriez défini pour gérer l'auth
 import { Theme, ThemeService } from './theme.service';
+import { LanguageService, SupportedLang } from './language.service';
 
 type Lang = 'fr' | 'en' | 'system'
 
@@ -27,7 +28,8 @@ export class UserPreferencesService {
 
   constructor(
     private authService: AuthService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private langService: LanguageService
   ) {
     this.init()
   }
@@ -45,6 +47,7 @@ export class UserPreferencesService {
             } else {
               this._prefs = prefs;
               this.themeService.setTheme(this._prefs.theme)
+              this.langService.switchToLang(this._prefs.lang as SupportedLang)
             }
           },
           error: (err) => {

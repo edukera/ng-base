@@ -16,6 +16,7 @@ import { PasswordFeedbackComponent } from '../../../components/password-feedback
 import { StrongPwdRegExp } from '../../../components/password-feedback/password-feedback.component';
 import { EmailInputComponent } from '../../../components/email-input/email-input.component';
 import { ngbaseConfig } from '../../ngbase.config';
+import { LanguageService } from '../../../services/language.service';
 
 type LoginFormState =
   "Login1"     // enter email + go to register button
@@ -49,7 +50,12 @@ export class LoginFormComponent {
   readonly pwd = new FormControl('', []);
   isLight: boolean;
 
-  constructor(public authService: AuthService, private router: Router, private themeService: ThemeService) {
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    private themeService: ThemeService,
+    private langService: LanguageService
+  ) {
     this.isLight = true
     effect(() => {
       var currentTheme = this.themeService.getTheme()()
