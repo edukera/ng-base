@@ -16,7 +16,7 @@ This generates the `src/locale/messages.xlf` file for transaltion.
 
 Then translate and create the `src/locale/messages.fr.xlf` file, either manually or with dedicated translation tools like [localazy](https://localazy.com/).
 
-More information on angular internalization and localization [here](https://angular.dev/guide/i18n).
+More information on angular internationalization and localization [here](https://angular.dev/guide/i18n).
 
 ### Test locally
 
@@ -97,4 +97,4 @@ The login typewriter effect is inspired by this [source](https://css-tricks.com/
 
 ### Images
 
-The login [image](https://www.cleanpng.com/png-color-splash-art-clip-art-colour-splash-1165562/) is from [www.cleanpng.com](https://www.cleanpng.com/).
+The login [image](./public/assets/login-image.png) is from [www.cleanpng.com](https://www.cleanpng.com/).
