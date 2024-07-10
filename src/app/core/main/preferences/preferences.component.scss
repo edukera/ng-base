@@ -28,6 +28,10 @@
   align-items: center;
 }
 
+.preference-item:last-of-type {
+  margin-bottom: 8px;
+}
+
 .preference-label {
   flex: 2;
   text-align: left;

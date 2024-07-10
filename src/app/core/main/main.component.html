@@ -3,30 +3,33 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar [class.minimized]="isMinimized">
-      <span *ngIf="!isMinimized" i18n>Menu</span>
-      <button mat-icon-button (click)="toggleSidenavWidth()" class="minimize-button hide-minimizer" [class.minimized]="isMinimized">
-        <mat-icon>{{ isMinimized ? "east" : "west" }}</mat-icon>
-      </button>
-    </mat-toolbar>
-    <mat-nav-list>
-      @for (item of rootRoutes; track $index) {
-        <a
-          mat-list-item
-          [routerLink]="item.path"
-          #link="routerLinkActive"
-          routerLinkActive="active-link"
-          [activated]="link.isActive"
-          [matTooltip]="isMinimized ? item.title : ''"
-          matTooltipPosition="after"
-        >
-        <mat-icon matListItemIcon>
-          {{ item.icon }}
-        </mat-icon>
-        <span *ngIf="!isMinimized">{{ item.title }}</span>
-        </a>
-      }
-    </mat-nav-list>
+    <div>
+      <mat-toolbar [class.minimized]="isMinimized">
+        <span *ngIf="!isMinimized" i18n>{{ appName }}</span>
+        <button mat-icon-button (click)="toggleSidenavWidth()" class="minimize-button hide-minimizer" [class.minimized]="isMinimized">
+          <mat-icon>{{ isMinimized ? "east" : "west" }}</mat-icon>
+        </button>
+      </mat-toolbar>
+      <mat-nav-list>
+        @for (item of rootRoutes; track $index) {
+          <a
+            mat-list-item
+            [routerLink]="item.path"
+            #link="routerLinkActive"
+            routerLinkActive="active-link"
+            [activated]="link.isActive"
+            [matTooltip]="isMinimized ? item.title : ''"
+            matTooltipPosition="after"
+          >
+          <mat-icon matListItemIcon>
+            {{ item.icon }}
+          </mat-icon>
+          <span *ngIf="!isMinimized">{{ item.title }}</span>
+          </a>
+        }
+      </mat-nav-list>
+    </div>
+    <div class="sidenav-footer"></div>
   </mat-sidenav>
   <mat-sidenav-content [class.minimized]="isMinimized">
     <mat-toolbar color="primary">
@@ -39,7 +42,7 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       }
-      <span>ng-base</span>
+      <span></span>
       <button
         *ngIf="authService.user$ | async as user"
         type="button"

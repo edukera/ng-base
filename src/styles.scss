@@ -1,6 +1,11 @@
 @use "@angular/material" as mat;
+@use './app/themes/light_m3-theme' as ltheme;
+@use './app/themes/dark_m3-theme' as dtheme;
 
 @include mat.core();
+
+$light-theme: ltheme.$light-theme;
+$dark-theme: dtheme.$dark-theme;
 
 // fixing the webkit autocomplete fields (email, pwd, ...) style (white bg, dark font color) for dark theme
 @media (prefers-color-scheme: dark) {
@@ -15,42 +20,48 @@
   }
 }
 
-$light-theme: mat.define-theme(
-  (
-    color: (
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
-    ),
-  )
-);
+//$light-theme: mat.define-theme(
+//  (
+//    color: (
+//      primary: mat.$azure-palette,
+//      tertiary: mat.$blue-palette,
+//    ),
+//  )
+//);
 
-$dark-theme: mat.define-theme(
-  (
-    color: (
-      theme-type: dark,
-      primary: mat.$magenta-palette,
-      tertiary: mat.$violet-palette,
-    ),
-  )
-);
+//$dark-theme: mat.define-theme(
+//  (
+//    color: (
+//      theme-type: dark,
+//      primary: mat.$magenta-palette,
+//      tertiary: mat.$violet-palette,
+//    ),
+//  )
+//);
 
-@mixin theme($theme) {
-  .sidenav {
-    background-color: mat.get-theme-color($theme, surface-bright);
+@mixin theme($theme, $theme-type) {
+  @if $theme-type == dark {
+    .sidenav {
+      background-color: mat.get-theme-color($theme, surface-bright);
+    }
+  } @else {
+    .sidenav {
+      background-color: mat.get-theme-color($theme, surface-container-low);
+    }
   }
 }
 
 html {
   @include mat.all-component-themes($light-theme);
-  @include theme($light-theme);
+  @include theme($light-theme, 'light');
 
-  background: mat.get-theme-color($light-theme, surface);
+  //background: mat.get-theme-color($light-theme, surface);
 
   &.dark {
     @include mat.all-component-colors($dark-theme);
-    @include theme($dark-theme);
+    @include theme($dark-theme, 'dark');
 
-    background: mat.get-theme-color($dark-theme, surface);
+    //background: mat.get-theme-color($dark-theme, surface);
   }
 }
 

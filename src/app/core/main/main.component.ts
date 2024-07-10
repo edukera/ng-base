@@ -18,6 +18,7 @@ import { mainRoutes } from '../../pages/pages.routes';
 import { AuthService } from '../../services/auth.service';
 import { UserPreferences, UserPreferencesService } from '../../services/preferences.service';
 import { PreferencesComponent } from './preferences/preferences.component';
+import { ngbaseConfig } from '../ngbase.config';
 
 export type PreferencePanel = "Account" | "Settings" | "DeleteAccount"
 type DialogWidth = "auto" | "450px"
@@ -50,6 +51,7 @@ export interface PreferenceData {
 })
 export class MainComponent implements OnInit {
   rootRoutes = mainRoutes.filter(r=>r.path && r.path !== 'profile')
+  appName = ngbaseConfig.appName
   isMinimized = false;
   readonly dialog = inject(MatDialog);
   readonly profilePanel = model("Account");
