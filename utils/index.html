@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <script>
+    // Fonction pour obtenir la langue préférée du navigateur
+    function getPreferredLanguage() {
+      const language = navigator.language || navigator.userLanguage;
+      return language.split('-')[0];
+    }
+
+    // Fonction pour rediriger en fonction de la langue
+    function redirectBasedOnLanguage() {
+      const preferredLanguage = getPreferredLanguage();
+      const supportedLanguages = ['en', 'fr'];
+      const defaultLanguage = 'en';
+
+      // Redirection en fonction de la langue
+      const redirectLanguage = supportedLanguages.includes(preferredLanguage) ? preferredLanguage : defaultLanguage;
+      window.location.href = '/' + redirectLanguage + '/';
+    }
+
+    // Exécuter la redirection au chargement de la page
+    window.onload = redirectBasedOnLanguage;
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>

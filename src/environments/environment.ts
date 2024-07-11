@@ -1,3 +1,4 @@
+// key values are found in .env file during build process
 export const environment = {
   production: true,
   firebase: {

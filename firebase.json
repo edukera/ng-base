@@ -12,15 +12,15 @@
     ],
     "rewrites": [
       {
+        "source": "/",
+        "destination": "/index.html"
+      },
+      {
         "source": "/fr/**",
         "destination": "/fr/index.html"
       },
       {
         "source": "/en/**",
-        "destination": "/en/index.html"
-      },
-      {
-        "source": "/",
         "destination": "/en/index.html"
       }
     ]
