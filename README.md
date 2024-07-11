@@ -2,7 +2,6 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
 
-
 ## Firebase
 
 Firebase is used for:
@@ -24,7 +23,27 @@ FIREBASE_APP_ID="XXXX"
 FIREBASE_MEASUREMENT_ID="XXXX"
 ```
 
-where `XXXX`s are replaced with actual values. These values are injected in the [`environment.ts`](./src/environments/environment.ts) file at build time, with the help of [dotenv-webpack]() package.
+where `XXXX`s are replaced with actual values. These values are injected in the [`environment.ts`](./src/environments/environment.ts) file at build time, with the help of [custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack) package.
+
+### Action link
+
+When you want to test email templates from local dev, edit %LINK% for email templates. Replace
+
+```
+https://ng-base-2b40d.firebaseapp.com/__/auth/action
+```
+
+with dev link:
+
+```
+http://localhost:4200/action
+```
+
+with prod link:
+
+```
+http://ng-base-2b40d.firebaseapp.com/en/action
+```
 
 ## I18N
 
@@ -62,24 +81,13 @@ http-server -p 8080
 
 [http-server](https://www.npmjs.com/package/http-server) is an nodejs http server.
 
-## Deploy
+## Build & Deploy
 
-Deploy on githup pages with [angular-cli-ghpages](https://www.npmjs.com/package/angular-cli-ghpages)
-
-## Firebase
-
-### Action link
-
-Edit %LINK% for email templates. Replace
+Build & deploy on firebase hosting with:
 
 ```
-https://ng-base-2b40d.firebaseapp.com/__/auth/action
-```
-
-with dev link:
-
-```
-http://localhost:4200/action
+npm run build
+firebase deploy
 ```
 
 ## Style
