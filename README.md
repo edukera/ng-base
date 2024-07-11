@@ -11,7 +11,7 @@ Firebase is used for:
 
 ### API Keys
 
-Find API keys in firebase console under project parameters, and create a `.env` file at the root of the project. The file looks like:
+Find firebase API keys in firebase console under project parameters, and create the `.env` file at the root of the project:
 
 ```
 FIREBASE_API_KEY="XXXX"
@@ -27,22 +27,22 @@ where `XXXX`s are replaced with actual values. These values are injected in the 
 
 ### Action link
 
-When you want to test email templates from local dev, edit %LINK% for email templates. Replace
+Edit %LINK% for email templates. Replace
 
 ```
 https://ng-base-2b40d.firebaseapp.com/__/auth/action
 ```
 
-with dev link:
-
-```
-http://localhost:4200/action
-```
-
-with prod link:
+* with prod link:
 
 ```
 http://ng-base-2b40d.firebaseapp.com/en/action
+```
+
+* with dev link when testing locally:
+
+```
+http://localhost:4200/action
 ```
 
 ## I18N
