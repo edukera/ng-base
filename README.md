@@ -2,6 +2,30 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
 
+
+## Firebase
+
+Firebase is used for:
+* authentication
+* firestore
+* hosting
+
+### API Keys
+
+Find API keys in firebase console under project parameters, and create a `.env` file at the root of the project. The file looks like:
+
+```
+FIREBASE_API_KEY="XXXX"
+FIREBASE_AUTH_DOMAIN="XXXX"
+FIREBASE_PROJECT_ID="XXXX"
+FIREBASE_STORAGE_BUCKET="XXXX"
+FIREBASE_MESSAGING_SENDER_ID="XXXX"
+FIREBASE_APP_ID="XXXX"
+FIREBASE_MEASUREMENT_ID="XXXX"
+```
+
+where `XXXX`s are replaced with actual values. These values are injected in the [`environment.ts`](./src/environments/environment.ts) file at build time, with the help of [dotenv-webpack]() package.
+
 ## I18N
 
 ### Localization
@@ -24,9 +48,10 @@ Run `ng build --localize` to build the project. The build artifacts will be stor
 * `dist/ng-base/en`
 * `dist/ng-base/fr`
 
-Then copy `/src/environments/404.html` to `dist/ng-base` directory with:
+Then copy `/utils/404.html` to `dist/ng-base` directory with:
+
 ```
-cp src/environments/404.html dist/ng-base
+cp ./utils/404.html ./dist/ng-base
 ```
 
 Run local `http-server` with:
