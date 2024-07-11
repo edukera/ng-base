@@ -9,14 +9,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../../../services/auth.service';
-import { ThemeService } from '../../../services/theme.service';
-import { PasswordInputComponent } from '../../../components/password-input/password-input.component';
+import { EmailInputComponent } from '../../../components/email-input/email-input.component';
 import { PasswordFeedbackComponent } from '../../../components/password-feedback/password-feedback.component';
 import { StrongPwdRegExp } from '../../../components/password-feedback/password-feedback.component';
-import { EmailInputComponent } from '../../../components/email-input/email-input.component';
-import { ngbaseConfig } from '../../ngbase.config';
+import { PasswordInputComponent } from '../../../components/password-input/password-input.component';
+import { AuthService } from '../../../services/auth.service';
 import { LanguageService } from '../../../services/language.service';
+import { ThemeService } from '../../../services/theme.service';
+import { ngbaseConfig } from '../../ngbase.config';
 
 type LoginFormState =
   "Login1"     // enter email + go to register button

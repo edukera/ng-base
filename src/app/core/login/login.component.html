@@ -6,7 +6,7 @@
       <tagline></tagline>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="rightSpan">
-      <div class="ng-base-container">
+      <div class="ng-base-container" [ngClass]="getContainerClass()">
         <ng-base-container-content>
           <login-form></login-form>
         </ng-base-container-content>

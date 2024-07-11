@@ -32,8 +32,15 @@
 
 .ng-base-container {
   height: 100%;
-  width: 100%;
   overflow: auto;
   display: flex;
   flex-direction: column;
+}
+
+.ng-base-container-width {
+  width: 60%;
+}
+
+.ng-base-container-width-handset {
+  width: 75%;
 }

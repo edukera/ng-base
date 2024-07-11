@@ -27,7 +27,7 @@ where `XXXX`s are replaced with actual values. These values are injected in the 
 
 ### Action link
 
-Edit %LINK% for email templates. Replace
+Edit %LINK% for email templates (firebase console/authnetication/models/edit). Replace
 
 ```
 https://ng-base-2b40d.firebaseapp.com/__/auth/action
@@ -126,7 +126,7 @@ from [app.config.ts](./src/app/app.config.ts) file to use the default plain font
 
 ### Typewriter effect
 
-The login typewriter effect is inspired by this [source](https://css-tricks.com/snippets/css/typewriter-effect/).
+The login typewriter effect is inspired by this [source](https://codepen.io/Danielgroen/pen/VeRPOq).
 
 ### Images
 
