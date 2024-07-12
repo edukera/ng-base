@@ -10,7 +10,7 @@
     <div class="preference-item" *ngIf="isAccount()">
       <mat-form-field appearance="outline" class="fullwidth" subscriptSizing="dynamic">
         <mat-label i18n>Email</mat-label>
-        <input tabindex="-1" matInput readonly i18n-placeholder placeholder="Fill your email" [value]="prefs().email">
+        <input tabindex="-1" matInput readonly i18n-placeholder placeholder="Fill your email" [value]="email">
         @if (isProviderEmail() && isEmailVerified()) {
           <mat-hint i18n matTextSuffix>(verified)</mat-hint>
         }
@@ -31,7 +31,7 @@
           [readonly]="!isNameEditable()"
           i18n-placeholder
           placeholder="Fill your name"
-          [value]="prefs().name"
+          [value]="selectedName"
           (blur)="onNameChange($event)"
         >
         @if (isNameEditable()) {

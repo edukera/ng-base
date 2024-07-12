@@ -33,6 +33,13 @@ export class LanguageService {
     window.location.href = '/' + lang
   }
 
+  resolveLang(lang: SupportedLang | 'system') : SupportedLang {
+    switch(lang) {
+      case 'system': return this.browserLang
+      default: return lang
+    }
+  }
+
   get browserLang() { return this.defaultLang }
 
 }

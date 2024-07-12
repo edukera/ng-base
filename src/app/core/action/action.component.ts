@@ -101,8 +101,8 @@ export class ActionComponent implements OnInit {
 
   onNameChange(event: FocusEvent) {
     const value = (event.target as HTMLInputElement).value.trim()
-    if (value !== "" && this.prefService.preferences.name !== value) {
-      this.prefService.setPreferences({ ...this.prefService.preferences, name: value })
+    if (value !== "" && this.prefService.prefs.name !== value) {
+      this.prefService.setPreferences({ ...this.prefService.prefs, name: value })
     }
   }
 

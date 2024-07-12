@@ -39,13 +39,6 @@ export class UserPreferencesService {
     }
   }
 
-  resolveLang(lang: SupportedLang | 'system') : SupportedLang {
-    switch(lang) {
-      case 'system': return this.langService.browserLang
-      default: return lang
-    }
-  }
-
   private init() {
     this.authService.user$.subscribe(user => {
       if (user !== null) {
@@ -58,7 +51,7 @@ export class UserPreferencesService {
               this.setPreferences(this._prefs)
             } else {
               this._prefs = prefs;
-              this.themeService.setTheme(this.resolveTheme(this._prefs.theme))
+              this.themeService.setTheme(this.resolveTheme(prefs.theme))
             }
           },
           error: (err) => {
@@ -69,7 +62,7 @@ export class UserPreferencesService {
     })
   }
 
-  public get preferences() { return this._prefs }
+  public get prefs() { return this._prefs }
 
   public setPreferences(preferences: UserPreferences) {
     if (this.docRef !== null) {

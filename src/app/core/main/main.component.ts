@@ -117,7 +117,7 @@ export class MainComponent implements OnInit {
     this.profilePanel.set(panel)
     const dialogRef = this.dialog.open(PreferencesComponent, {
       width: this.dialogWidth,
-      data: { panel: this.profilePanel(), prefs: this.prefsService.preferences },
+      data: { panel: this.profilePanel(), prefs: this.prefsService.prefs },
     });
 
     dialogRef.afterClosed().subscribe(result => {

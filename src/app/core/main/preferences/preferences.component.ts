@@ -15,10 +15,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService } from '../../../services/auth.service';
 import { UserPreferencesService } from '../../../services/preferences.service';
-import { Theme, ThemeService } from '../../../services/theme.service';
+import { Theme } from '../../../services/theme.service';
 import { PreferenceData } from '../main.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
-import { LanguageService, SupportedLang } from '../../../services/language.service';
+import { LanguageService } from '../../../services/language.service';
 
 interface ThemeValue {
   value: Theme | "system";
@@ -52,9 +52,10 @@ export class PreferencesComponent implements OnInit {
   readonly dialogRef = inject(MatDialogRef<PreferencesComponent>);
   readonly data = inject<PreferenceData>(MAT_DIALOG_DATA);
   readonly panel = model(this.data.panel);
-  readonly prefs   = model(this.data.prefs)
   readonly selectedTheme = model(this.data.prefs.theme)
   readonly selectedLang = model(this.data.prefs.lang)
+  readonly selectedName = model(this.data.prefs.name)
+  readonly email = model(this.data.prefs.email)
 
   private breakpointObserver = inject(BreakpointObserver);
 
@@ -105,8 +106,9 @@ export class PreferencesComponent implements OnInit {
 
   onNameChange(event: FocusEvent) {
     const value = (event.target as HTMLInputElement).value.trim()
-    if (this.prefService.preferences.name !== value) {
-      this.prefService.setPreferences({ ...this.prefs(), name: value })
+    if (this.prefService.prefs.name !== value) {
+      this.selectedName.set(value)
+      this.prefService.setPreferences({ ...this.prefService.prefs, name: value })
     }
   }
 
@@ -116,7 +118,7 @@ export class PreferencesComponent implements OnInit {
    */
   onThemeChange(event: MatSelectChange) {
     this.selectedTheme.set(event.value)
-    this.prefService.setPreferences({ ...this.prefs(), theme: this.selectedTheme() })
+    this.prefService.setPreferences({ ...this.prefService.prefs, theme: this.selectedTheme() })
     .catch(error => {
       this._snackBar.open(error.message, $localize`Dismiss`)
     })
@@ -128,13 +130,14 @@ export class PreferencesComponent implements OnInit {
    */
   onLangChange(event: MatSelectChange) {
     const langNow = event.value
-    const langBefore = this.prefs().lang
+    const langBefore = this.prefService.prefs.lang
     this.selectedLang.set(langNow)
-    this.prefService.setPreferences({ ...this.prefs(), lang: langNow })
+    this.prefService.setPreferences({ ...this.prefService.prefs, lang: langNow })
     .then(() => {
-      if (langNow !== this.prefService.resolveLang(langBefore)) {
-        // change lang now
-        this.langService.setLang(langNow)
+      const resolvedLangBefore = this.langService.resolveLang(langBefore)
+      const resolvedLangNow = this.langService.resolveLang(langNow)
+      if (resolvedLangNow !== resolvedLangBefore) {
+        this.langService.setLang(resolvedLangNow)
       }
     })
     .catch(error => {

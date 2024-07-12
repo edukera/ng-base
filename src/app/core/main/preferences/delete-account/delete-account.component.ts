@@ -50,7 +50,7 @@ export class DeleteAccountComponent {
   ) {}
 
   getEmail() {
-    return this.prefService.preferences.email
+    return this.prefService.prefs.email
   }
 
   getButtonClass() {
@@ -63,7 +63,7 @@ export class DeleteAccountComponent {
   isEnabled() : boolean {
     const email = this.email.value
     const deletectrl = this.deletectrl.value
-    return email === this.prefService.preferences.email && deletectrl === this.deleteKeyword
+    return email === this.prefService.prefs.email && deletectrl === this.deleteKeyword
   }
 
   deleteAccount() {
