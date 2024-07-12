@@ -30,14 +30,8 @@ export class LanguageService {
   }
 
   setLang(lang: SupportedLang) {
+    localStorage.setItem('appLang', lang);
     window.location.href = '/' + lang
-  }
-
-  resolveLang(lang: SupportedLang | 'system') : SupportedLang {
-    switch(lang) {
-      case 'system': return this.browserLang
-      default: return lang
-    }
   }
 
   get browserLang() { return this.defaultLang }

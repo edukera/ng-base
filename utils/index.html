@@ -7,8 +7,13 @@
   <script>
     // Fonction pour obtenir la langue préférée du navigateur
     function getPreferredLanguage() {
-      const language = navigator.language || navigator.userLanguage;
-      return language.split('-')[0];
+      const currentLang = localStorage.getItem('appLang');
+      if (currentLang === null) {
+        const language = navigator.language || navigator.userLanguage;
+        return language.split('-')[0];
+      } else {
+        return currentLang
+      }
     }
 
     // Fonction pour rediriger en fonction de la langue

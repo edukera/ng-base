@@ -119,10 +119,6 @@ export class MainComponent implements OnInit {
       width: this.dialogWidth,
       data: { panel: this.profilePanel(), prefs: this.prefsService.prefs },
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
   }
 
 }

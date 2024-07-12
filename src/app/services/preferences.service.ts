@@ -1,7 +1,7 @@
 // src/app/services/user-preferences.service.ts
 import { inject, Injectable } from '@angular/core';
 import { doc, docData, DocumentData, DocumentReference, Firestore, setDoc, deleteDoc } from '@angular/fire/firestore';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, firstValueFrom } from 'rxjs';
 
 import { AuthService } from './auth.service';
 // Un service d'authentification que vous auriez défini pour gérer l'auth
@@ -32,10 +32,25 @@ export class UserPreferencesService {
     this.init()
   }
 
+  resolveLang(lang: SupportedLang | 'system') : SupportedLang {
+    switch(lang) {
+      case 'system': return this.langService.browserLang
+      default: return lang
+    }
+  }
+
   private resolveTheme(theme: Theme | 'system') : Theme {
     switch(theme) {
       case 'system': return this.themeService.defaultTheme;
       default: return theme
+    }
+  }
+
+  private setLanguage(lang: SupportedLang) {
+    const currentLang = localStorage.getItem('appLang');
+    if (currentLang !== lang) {
+      localStorage.setItem('appLang', lang);
+      this.langService.setLang(lang)
     }
   }
 
@@ -45,6 +60,10 @@ export class UserPreferencesService {
         this._prefs = { ...this._prefs, email: user.email ?? 'NA', name: user.displayName ?? '' }
         this.docRef = doc(this.firestore, 'user_preferences/' + user.uid);
         const prefObservable = docData(this.docRef) as Observable<UserPreferences>
+        firstValueFrom(prefObservable).then((prefs) => {
+          console.log('first')
+          this.setLanguage(this.resolveLang(prefs.lang))
+        })
         this.prefSubscription = prefObservable.subscribe({
           next : (prefs) => {
             if (prefs === undefined) {

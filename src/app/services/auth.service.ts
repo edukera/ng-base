@@ -43,14 +43,14 @@ export class AuthService {
   googleSignIn() {
     const provider = new GoogleAuthProvider();
     return signInWithPopup(this.auth, provider)
-      .then(result => {
-        this.currentUser.next(result.user);
-        return result;
-      })
-      .catch((error) => {
-        console.error(error)
-        throw error
-      });
+    .then(result => {
+      this.currentUser.next(result.user);
+      return result;
+    })
+    .catch((error) => {
+      console.error(error)
+      throw error
+    });
   }
 
   pwdSignIn(email: string, password: string) {

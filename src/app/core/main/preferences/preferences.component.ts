@@ -134,8 +134,8 @@ export class PreferencesComponent implements OnInit {
     this.selectedLang.set(langNow)
     this.prefService.setPreferences({ ...this.prefService.prefs, lang: langNow })
     .then(() => {
-      const resolvedLangBefore = this.langService.resolveLang(langBefore)
-      const resolvedLangNow = this.langService.resolveLang(langNow)
+      const resolvedLangBefore = this.prefService.resolveLang(langBefore)
+      const resolvedLangNow = this.prefService.resolveLang(langNow)
       if (resolvedLangNow !== resolvedLangBefore) {
         this.langService.setLang(resolvedLangNow)
       }
