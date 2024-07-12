@@ -60,13 +60,6 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  getContainerClass() {
-    return {
-      'ng-base-container-width': !this.isHandset,
-      'ng-base-container-width-handset': this.isHandset
-    }
-  }
-
 }
 
 

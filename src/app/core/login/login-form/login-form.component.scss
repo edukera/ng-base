@@ -2,9 +2,12 @@
 @import '../../../../styles.scss';
 
 .login-form {
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
-  gap: 12px
+  gap: 12px;
 }
 
 .login-form-element-simple {
