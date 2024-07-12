@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import { MatDrawerContainer } from '@angular/material/sidenav';
 import { ngbaseConfig } from '../../ngbase.config';
 
@@ -11,17 +11,28 @@ import { ngbaseConfig } from '../../ngbase.config';
     MatDrawerContainer
   ]
 })
-export class TaglineComponent implements AfterViewInit {
+export class TaglineComponent implements AfterViewInit, OnDestroy {
   dataText = [
     ngbaseConfig.appName,
     $localize `The best place to start an Angular/Firebase project.`
   ];
   caretHidden = [ true, true ]
+  timeouts: any[] = [];
+
+  clearTimeouts() {
+    this.timeouts.forEach(timeout => clearTimeout(timeout));
+    this.timeouts = [];
+  }
 
   ngAfterViewInit() {
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       this.startTextAnimation(0);
     }, 0)
+    this.timeouts.push(timeoutId);
+  }
+
+  ngOnDestroy() {
+    this.clearTimeouts()
   }
 
   typeWriter(textId: number, charId: number, fnCallback: () => void) {
@@ -46,22 +57,25 @@ export class TaglineComponent implements AfterViewInit {
       }
 
       // wait for a while and call this function again for next character
-      setTimeout(() => {
+      const timeoutId = setTimeout(() => {
         this.typeWriter(textId, charId + 1, fnCallback);
       }, 100);
+      this.timeouts.push(timeoutId);
     } else if (typeof fnCallback === 'function') {
       if (textId !== this.dataText.length - 1)
         this.caretHidden[elementId] = true
       // text finished, call callback if there is a callback function
-      setTimeout(fnCallback, 700);
+      const timeoutId = setTimeout(fnCallback, 700);
+      this.timeouts.push(timeoutId);
     }
   }
 
   startTextAnimation(i: number) {
     if (typeof this.dataText[i] === 'undefined') {
-      setTimeout(() => {
+      const timeoutId = setTimeout(() => {
         this.startTextAnimation(0);
       }, 20000);
+      this.timeouts.push(timeoutId);
     } else if (i < this.dataText.length) {
       // text exists! start typewriter animation
       this.typeWriter(i, 0, () => {
