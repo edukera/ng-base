@@ -8,13 +8,11 @@ import { AuthService } from './auth.service';
 import { Theme, ThemeService } from './theme.service';
 import { LanguageService, SupportedLang } from './language.service';
 
-type Lang = 'fr' | 'en' | 'system'
-
 export interface UserPreferences {
-  name: string;
-  email: string;
-  theme: Theme | 'system'
-  lang: Lang
+  name  : string;
+  email : string;
+  theme : Theme         | 'system'
+  lang  : SupportedLang | 'system'
 }
 
 @Injectable({
@@ -34,6 +32,20 @@ export class UserPreferencesService {
     this.init()
   }
 
+  private resolveTheme(theme: Theme | 'system') : Theme {
+    switch(theme) {
+      case 'system': return this.themeService.defaultTheme;
+      default: return theme
+    }
+  }
+
+  resolveLang(lang: SupportedLang | 'system') : SupportedLang {
+    switch(lang) {
+      case 'system': return this.langService.browserLang
+      default: return lang
+    }
+  }
+
   private init() {
     this.authService.user$.subscribe(user => {
       if (user !== null) {
@@ -46,8 +58,7 @@ export class UserPreferencesService {
               this.setPreferences(this._prefs)
             } else {
               this._prefs = prefs;
-              this.themeService.setTheme(this._prefs.theme)
-              this.langService.switchToLang(this._prefs.lang as SupportedLang)
+              this.themeService.setTheme(this.resolveTheme(this._prefs.theme))
             }
           },
           error: (err) => {

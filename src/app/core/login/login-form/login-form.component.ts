@@ -58,10 +58,7 @@ export class LoginFormComponent {
   ) {
     this.isLight = true
     effect(() => {
-      var currentTheme = this.themeService.getTheme()()
-      if (currentTheme == 'system') {
-        currentTheme = this.themeService.getDefaultTheme()
-      }
+      var currentTheme = this.themeService.theme
       this.isLight = currentTheme === 'light'
     })
   }

@@ -1,22 +1,21 @@
 import { DOCUMENT } from '@angular/common';
 import { Injectable, effect, inject, signal } from '@angular/core';
 
-export type Theme = 'light' | 'dark' | 'system';
+export type Theme = 'light' | 'dark';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
-  theme = signal<Theme>('light');
-  private defaultTheme : Theme = 'light'
+  private _theme = signal<Theme>('light');
+  private _defaultTheme : Theme = 'light'
 
   private _document = inject(DOCUMENT);
 
   constructor() {
     this.detectColorScheme()
     effect(() => {
-      const theme = this.theme() === 'system' ? this.defaultTheme : this.theme()
-      if (theme === 'dark') {
+      if (this._theme() === 'dark') {
         this._document.documentElement.classList.add('dark');
       } else {
         this._document.documentElement.classList.remove('dark');
@@ -27,32 +26,22 @@ export class ThemeService {
   detectColorScheme() {
     const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
     if (darkThemeMq.matches) {
-      this.defaultTheme = 'dark'
+      this._defaultTheme = 'dark'
     } else {
-      this.defaultTheme = 'light'
+      this._defaultTheme = 'light'
     }
-    this.theme.set(this.defaultTheme)
-
-    //darkThemeMq.addEventListener('change', (e) => {
-    //  if (e.matches) {
-    //    this.theme.set('dark')
-    //  } else {
-    //    this.theme.set('light')
-    //  }
-    //});
+    this._theme.set(this.defaultTheme)
   }
 
   setTheme(theme: Theme) {
-    this.theme.update(() => {
-      return theme;
-    });
+    this._theme.set(theme);
   }
 
-  getTheme() {
-    return this.theme;
+  get theme() {
+    return this._theme();
   }
 
-  getDefaultTheme() {
-    return this.defaultTheme
+  get defaultTheme() {
+    return this._defaultTheme
   }
 }

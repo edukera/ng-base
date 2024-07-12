@@ -67,14 +67,10 @@ Run `ng build --localize` to build the project. The build artifacts will be stor
 * `dist/ng-base/en`
 * `dist/ng-base/fr`
 
-Then copy `/utils/404.html` to `dist/ng-base` directory with:
+Then copy `/utils/404.html` to `dist/ng-base` directory with and start a local http server:
 
 ```
 cp ./utils/404.html ./dist/ng-base
-```
-
-Run local `http-server` with:
-```
 cd dist/ng-base
 http-server -p 8080
 ```

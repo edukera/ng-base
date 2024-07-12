@@ -18,9 +18,10 @@ import { UserPreferencesService } from '../../../services/preferences.service';
 import { Theme, ThemeService } from '../../../services/theme.service';
 import { PreferenceData } from '../main.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import { LanguageService, SupportedLang } from '../../../services/language.service';
 
 interface ThemeValue {
-  value: Theme;
+  value: Theme | "system";
   viewValue: string;
 }
 
@@ -76,8 +77,8 @@ export class PreferencesComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private themeService: ThemeService,
     private prefService: UserPreferencesService,
+    private langService: LanguageService,
     private _snackBar: MatSnackBar,
   ) {
 
@@ -109,33 +110,31 @@ export class PreferencesComponent implements OnInit {
     }
   }
 
+  /**
+   * Note that setPreferences updates theme
+   * @param event
+   */
   onThemeChange(event: MatSelectChange) {
     this.selectedTheme.set(event.value)
     this.prefService.setPreferences({ ...this.prefs(), theme: this.selectedTheme() })
-    .then(() => {
-      switch (event.value as Theme) {
-        case 'system': {
-          break
-        }
-        default: {
-          const theme : Theme = event.value
-          this.themeService.setTheme(theme)
-        }
-      }
-    })
     .catch(error => {
       this._snackBar.open(error.message, $localize`Dismiss`)
     })
   }
 
+  /**
+   * Note that setPreferences updates lang
+   * @param event
+   */
   onLangChange(event: MatSelectChange) {
-    this.selectedLang.set(event.value)
-    this.prefService.setPreferences({ ...this.prefs(), lang: this.selectedLang() })
+    const langNow = event.value
+    const langBefore = this.prefs().lang
+    this.selectedLang.set(langNow)
+    this.prefService.setPreferences({ ...this.prefs(), lang: langNow })
     .then(() => {
-      if (this.selectedLang() === 'fr') {
-        window.location.href = '/fr';
-      } else if (this.selectedLang() === 'en') {
-        window.location.href = '/en';
+      if (langNow !== this.prefService.resolveLang(langBefore)) {
+        // change lang now
+        this.langService.setLang(langNow)
       }
     })
     .catch(error => {
@@ -154,18 +153,6 @@ export class PreferencesComponent implements OnInit {
   isAccount() { return this.data.panel === "Account" }
   isSettings() { return this.data.panel === "Settings" }
   isDeleteAccount() { return this.data.panel === "DeleteAccount" }
-
-  getThemeIcon(theme : Theme) : string {
-    switch (theme) {
-      case 'dark': return "dark_mode";
-      case 'light': return "light_mode";
-      case 'system': return "contrast"
-    }
-  }
-
-  getSelectedThemeIcon() {
-    return this.getThemeIcon(this.selectedTheme())
-  }
 
   close() {
     this.dialogRef.close();
