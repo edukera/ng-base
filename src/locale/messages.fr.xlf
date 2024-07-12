@@ -83,7 +83,7 @@
 </trans-unit>
 <trans-unit datatype="html" id="2926267073284227852">
 <source xml:space="preserve">Re-enter new Password</source>
-<target xml:space="preserve">Entrez à nouveau le nouveau mot de passe</target>
+<target xml:space="preserve">Entrez à nouveau le mot de passe</target>
 </trans-unit>
 <trans-unit datatype="html" id="29832309535656200">
 <source xml:space="preserve">System</source>
@@ -127,7 +127,7 @@
 </trans-unit>
 <trans-unit datatype="html" id="4371680625121499898">
 <source xml:space="preserve">Reset your password</source>
-<target xml:space="preserve">Reinitialisez votre mot de passe</target>
+<target xml:space="preserve">Réinitialisez votre mot de passe</target>
 </trans-unit>
 <trans-unit datatype="html" id="4635433474100431381">
 <source xml:space="preserve">The best place to start an Angular/Firebase project.</source>
@@ -247,7 +247,7 @@
 </trans-unit>
 <trans-unit datatype="html" id="6972105223770675605">
 <source xml:space="preserve">Reset Password</source>
-<target xml:space="preserve">Ré-initialiser le mot de passe</target>
+<target xml:space="preserve">Réinitialiser le mot de passe</target>
 </trans-unit>
 <trans-unit datatype="html" id="7022070615528435141">
 <source xml:space="preserve">Delete</source>
@@ -337,7 +337,7 @@
 </trans-unit>
 <trans-unit datatype="html" id="841602220743726491">
 <source xml:space="preserve">Please check your e-mail address <x equiv-text="{{email.value}}" id="INTERPOLATION"/> to know how to reset your password.</source>
-<target xml:space="preserve">Veuillez vérifier votre adresse e-mail<x equiv-text="{{email.value}}" id="INTERPOLATION"/> pour savoir comment réinitialiser votre mot de passe.</target>
+<target xml:space="preserve">Veuillez vérifier votre adresse e-mail <x equiv-text="{{email.value}}" id="INTERPOLATION"/> pour savoir comment réinitialiser votre mot de passe.</target>
 </trans-unit>
 <trans-unit datatype="html" id="8605279680337771404">
 <source xml:space="preserve">Resend email</source>
