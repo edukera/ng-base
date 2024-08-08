@@ -17,8 +17,9 @@ import { map, shareReplay } from 'rxjs/operators';
 import { mainRoutes } from '../../pages/pages.routes';
 import { AuthService } from '../../services/auth.service';
 import { UserPreferences, UserPreferencesService } from '../../services/preferences.service';
-import { PreferencesComponent } from './preferences/preferences.component';
+import { ThemeService } from '../../services/theme.service';
 import { ngbaseConfig } from '../ngbase.config';
+import { PreferencesComponent } from './preferences/preferences.component';
 
 export type PreferencePanel = "Account" | "Settings" | "DeleteAccount"
 type DialogWidth = "auto" | "450px"
@@ -49,10 +50,11 @@ export interface PreferenceData {
     RouterLinkActive
   ]
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
   rootRoutes = mainRoutes.filter(r=>r.path && r.path !== 'profile')
   appName = ngbaseConfig.appName
   isMinimized = false;
+  showMinimizer = true;
   readonly dialog = inject(MatDialog);
   readonly profilePanel = model("Account");
   dialogWidth: DialogWidth = 'auto'
@@ -73,30 +75,25 @@ export class MainComponent implements OnInit {
   constructor(
     private router: Router,
     public authService: AuthService,
-    private prefsService : UserPreferencesService
+    private prefsService : UserPreferencesService,
+    private themeService : ThemeService
   ) {}
 
-  ngOnInit(): void {
-    this.layoutchanges.subscribe(() =>
-      this.breakpointChanged()
-    );
-  }
-
-  breakpointChanged() {
-    if (this.breakpointObserver.isMatched(Breakpoints.Small)) {
-      this.dialogWidth = 'auto'
-    } else if (this.breakpointObserver.isMatched(Breakpoints.Medium)) {
-      this.dialogWidth = '450px'
-    } else if (this.breakpointObserver.isMatched(Breakpoints.Large)) {
-      this.dialogWidth = '450px'
-    } else if(this.breakpointObserver.isMatched(Breakpoints.Handset)) {
-      this.dialogWidth = 'auto'
-    }
-  }
-
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall])
     .pipe(
-      map(result => result.matches),
+      map(result => {
+        this.isMinimized = false
+        this.showMinimizer = false
+        const breakpoints = result.breakpoints
+        if (breakpoints[Breakpoints.Small] || breakpoints[Breakpoints.XSmall]) {
+          this.dialogWidth = 'auto'
+          return true
+        } else {
+          this.dialogWidth= '450px'
+          this.showMinimizer = true
+          return false
+        }
+      }),
       shareReplay()
     );
 
@@ -119,6 +116,10 @@ export class MainComponent implements OnInit {
       width: this.dialogWidth,
       data: { panel: this.profilePanel(), prefs: this.prefsService.prefs },
     });
+  }
+
+  getTheme() {
+    return this.themeService.theme
   }
 
 }

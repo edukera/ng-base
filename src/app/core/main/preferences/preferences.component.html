@@ -39,18 +39,22 @@
         }
       </mat-form-field>
     </div>
-    <div class="preference-item" *ngIf="isAccount()">
-      <div i18n class="preference-label no-margin">Delete Account</div>
-      <div class="preference-control">
-        <button i18n mat-stroked-button tabindex="-1" (click)="delete()" >Delete</button>
-      </div>
-    </div>
+    <mat-accordion *ngIf="isAccount()" displayMode="flat" class="accordion">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header tabindex="-1">
+          <mat-panel-title><mat-icon class="warning-icon">warning</mat-icon><ng-container i18n>Danger zone</ng-container></mat-panel-title>
+        </mat-expansion-panel-header>
+          <div class="danger-control">
+            <button i18n mat-flat-button (click)="delete()" class="delete">Delete Account</button>
+          </div>
+      </mat-expansion-panel>
+    </mat-accordion>
     <div class="preference-item" *ngIf="isSettings()">
       <div i18n class="preference-label">Theme</div>
       <div class="preference-control">
         <mat-form-field appearance="outline" class="fullwidth" subscriptSizing="dynamic">
           <mat-select tabindex="-1" (selectionChange)="onThemeChange($event)" [(value)]="selectedTheme">
-            @for (theme of possibleThemes; track theme) {
+            @for (theme of possibleThemes; track theme.value) {
               <mat-option [value]="theme.value">
                 {{ theme.viewValue }}
               </mat-option>

@@ -7,6 +7,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { ngbaseConfig } from '../../core/ngbase.config';
+import { Theme, ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'ng-base-container-content',
@@ -24,4 +25,9 @@ import { ngbaseConfig } from '../../core/ngbase.config';
 export class NgContainerContentComponent {
   readonly termsLink: string = ngbaseConfig.termsLink
   readonly privacyLink: string = ngbaseConfig.privacyLink
+
+  constructor(private themeService: ThemeService) {}
+
+  getTheme() : Theme { return this.themeService.theme }
+
 }

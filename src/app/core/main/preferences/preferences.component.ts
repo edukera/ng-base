@@ -1,24 +1,25 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { CommonModule } from '@angular/common';
 import { Component, inject, model, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
-import { MatTabsModule } from '@angular/material/tabs';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { MatDividerModule } from '@angular/material/divider';
-import { CommonModule } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { AuthService } from '../../../services/auth.service';
+import { LanguageService } from '../../../services/language.service';
 import { UserPreferencesService } from '../../../services/preferences.service';
 import { Theme } from '../../../services/theme.service';
 import { PreferenceData } from '../main.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
-import { LanguageService } from '../../../services/language.service';
 
 interface ThemeValue {
   value: Theme | "system";
@@ -45,7 +46,8 @@ interface ThemeValue {
     MatGridListModule,
     CommonModule,
     MatDividerModule,
-    DeleteAccountComponent
+    MatExpansionModule,
+    DeleteAccountComponent,
   ],
 })
 export class PreferencesComponent implements OnInit {

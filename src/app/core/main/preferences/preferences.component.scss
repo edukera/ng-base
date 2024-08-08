@@ -49,6 +49,40 @@
   text-align: end;
 }
 
+.danger-control {
+  text-align: center;
+}
+
 .fullwidth {
   width: 100%
 }
+
+.accordion {
+  margin-left: -24px;
+  margin-right: -24px
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none !important
+}
+
+.mat-accordion .mat-expansion-panel:last-of-type {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0
+}
+
+.mat-accordion .mat-expansion-panel:first-of-type {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0
+}
+
+.delete {
+  background-color: #ff3c3c;
+  color: white
+}
+
+.warning-icon {
+  margin-right: 12px
+}
+
+

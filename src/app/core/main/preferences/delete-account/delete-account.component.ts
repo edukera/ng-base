@@ -50,7 +50,7 @@ export class DeleteAccountComponent {
   ) {}
 
   getEmail() {
-    return this.prefService.prefs.email
+    return '(' + $localize`type in '` + this.prefService.prefs.email + `')`
   }
 
   getButtonClass() {

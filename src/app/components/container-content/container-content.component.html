@@ -1,6 +1,7 @@
 
 <div class="header">
-  <img src="./assets/logo.png" class="logo"/>
+  <img *ngIf="getTheme() == 'dark'" src="./assets/logo-dark.png" class="logo"/>
+  <img *ngIf="getTheme() == 'light'" src="./assets/logo-light.png" class="logo"/>
 </div>
 <ng-content></ng-content>
 <div class="footer">

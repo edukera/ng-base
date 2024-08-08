@@ -5,9 +5,13 @@
       [opened]="(isHandset$ | async) === false">
     <div>
       <mat-toolbar [class.minimized]="isMinimized">
-        <span *ngIf="!isMinimized" i18n>{{ appName }}</span>
-        <button mat-icon-button (click)="toggleSidenavWidth()" class="minimize-button hide-minimizer" [class.minimized]="isMinimized">
-          <mat-icon>{{ isMinimized ? "east" : "west" }}</mat-icon>
+        <img *ngIf="getTheme() == 'dark' && !isMinimized" src="./assets/logo-dark.png" class="logo"/>
+        <img *ngIf="getTheme() == 'light' && !isMinimized" src="./assets/logo-light.png" class="logo"/>
+        <span *ngIf="!isMinimized" i18n>Ng-Base</span>
+        <button *ngIf="showMinimizer" mat-icon-button (click)="toggleSidenavWidth()" class="minimize-button hide-minimizer" [class.minimized]="isMinimized">
+          <mat-icon *ngIf="!isMinimized">{{ isMinimized ? "east" : "west" }}</mat-icon>
+          <img *ngIf="getTheme() == 'dark' && isMinimized" src="./assets/logo-dark.png" class="logo"/>
+          <img *ngIf="getTheme() == 'light' && isMinimized" src="./assets/logo-light.png" class="logo"/>
         </button>
       </mat-toolbar>
       <mat-nav-list>
