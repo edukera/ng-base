@@ -184,7 +184,7 @@ export class PreferencesComponent implements OnInit {
     .then(() => {
       this._snackBar.open($localize `Email sent.`, $localize`Dismiss`)
     })
-    .catch(error => {
+    .catch((error: any) => {
       this._snackBar.open(error.message, $localize`Dismiss`)
     })
   }
