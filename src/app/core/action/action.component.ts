@@ -96,7 +96,7 @@ export class ActionComponent implements OnInit {
   }
 
   accept() {
-    this.router.navigate(['/main']);
+    this.router.navigate(['/login']);
   }
 
   onNameChange(event: FocusEvent) {

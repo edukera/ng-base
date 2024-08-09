@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { NgContainerContentComponent } from '../../components/container-content/container-content.component';
 import { NgContainerComponent } from '../../components/container/container.component';
@@ -19,14 +20,19 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './verify-email-sent.component.scss'
 })
 export class VerifyEmailSentComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private _snackBar : MatSnackBar) {}
 
   getEmail() {
     return this.authService.getEmail()
   }
 
   sendEmail() {
-    return this.authService.sendVerificationEmail()
+    this.authService.sendVerificationEmail().then(() => {
+      this._snackBar.open($localize`Email sent.`, $localize`Dismiss`);
+    })
+    .catch(error => {
+      this._snackBar.open(error.message, $localize`Dismiss`)
+    })
   }
 
 }

@@ -7,7 +7,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { EmailInputComponent } from '../../../components/email-input/email-input.component';
 import { PasswordFeedbackComponent } from '../../../components/password-feedback/password-feedback.component';
@@ -41,7 +43,8 @@ type LoginFormState =
     MatIconModule,
     EmailInputComponent,
     PasswordInputComponent,
-    PasswordFeedbackComponent
+    PasswordFeedbackComponent,
+    MatProgressSpinnerModule
   ]
 })
 export class LoginFormComponent {
@@ -49,14 +52,17 @@ export class LoginFormComponent {
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   readonly pwd = new FormControl('', []);
   isLight: boolean;
+  showSpinner: boolean;
 
   constructor(
     public authService: AuthService,
     private router: Router,
     private themeService: ThemeService,
-    private langService: LanguageService
+    private langService: LanguageService,
+    private _snackBar: MatSnackBar
   ) {
     this.isLight = true
+    this.showSpinner = false
     effect(() => {
       var currentTheme = this.themeService.theme
       this.isLight = currentTheme === 'light'
@@ -158,16 +164,22 @@ export class LoginFormComponent {
         break;
       }
       case "Login2": {
+        this.showSpinner = true
         try {
           this.assertValidity()
           this.authService.pwdSignIn(this.email.value, this.pwd.value).then(res => {
             this.router.navigate(['/main'])
           }).catch((err: any) => {
+            this.showSpinner = false
             if (err.code === "auth/invalid-credential") {
               this.pwd.setErrors({ invalidAuth: true })
+            } else {
+              console.error(err)
+              this._snackBar.open(err.message, $localize`Dismiss`)
             }
           });
         } catch(e) {
+          this.showSpinner = false
           console.error(e)
         }
         break;
@@ -178,19 +190,21 @@ export class LoginFormComponent {
         break;
       }
       case "Register2": {
+        this.showSpinner = true
         try {
           this.assertValidity()
           if (StrongPwdRegExp.isValid(this.pwd.value)) {
             this.authService.createUserWithPwd(this.email.value, this.pwd.value).then(() => {
               this.authService.sendVerificationEmail().then(() => {
+                this.showSpinner = false
                 this.router.navigate(['/verify-email'])
               })
               .catch((err: Error) => {
-                // todo: display error snack msg
+                this._snackBar.open(err.message, $localize`Dismiss`);
               })
             })
             .catch((err: Error) => {
-              // TODO: display error snack msg
+              this._snackBar.open(err.message, $localize`Dismiss`);
             })
           } else {
             throw new Error($localize`Password does not follow rules.`)
@@ -198,6 +212,7 @@ export class LoginFormComponent {
         } catch(e) {
           console.error(e)
         }
+        this.showSpinner = false
         break
       }
     }
@@ -222,7 +237,7 @@ export class LoginFormComponent {
       console.log('Logged in successfully', res);
       this.router.navigate(['/main'])
     }).catch(err => {
-      // TODO: display error snack bar
+      this._snackBar.open(err.message, $localize`Dismiss`);
     });
   }
 
