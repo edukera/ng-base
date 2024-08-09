@@ -1,7 +1,7 @@
 <div class="login-form">
   <div>
     <mat-drawer-container class="form-title">
-      <h5 i18n>{{getTitle()}}</h5>
+      <h5>{{getTitle()}}</h5>
     </mat-drawer-container>
     <mat-drawer-container *ngIf="showDesc()" class="desc">
       <p>{{getDesc()}}</p>
@@ -15,14 +15,12 @@
     </mat-drawer-container>
     <password-feedback *ngIf="showPwd() && showPwdFeedback()" [pwd]="pwd" />
   </div>
-  @if (showSpinner) {
+  @if (showSpinner()) {
     <div class="spin-container">
       <mat-spinner diameter="40" *ngIf="showSpinner"></mat-spinner>
     </div>
   } @else {
-    <button i18n mat-flat-button color="primary" type="submit" class="login-form-element-simple" (click)="continue()">
-      Continue
-    </button>
+    <button i18n mat-flat-button color="primary" type="submit" class="login-form-element-simple" (click)="continue()">Continue</button>
   }
   <div *ngIf="showSignIn()" class="divider">
     <mat-drawer-container class="login-form-text" i18n>Don't have an account yet? </mat-drawer-container>
@@ -37,17 +35,17 @@
     <mat-drawer-container class="login-form-or" i18n>OR</mat-drawer-container>
     <mat-divider class="divider-element"></mat-divider>
   </div>
-  <button i18n mat-stroked-button color="primary" type="submit" (click)="signInWithGoogle()" class="login-form-element">
+  <button mat-stroked-button color="primary" type="submit" (click)="signInWithGoogle()" class="login-form-element">
     <img src="./assets/google-logo.png" class="google-logo"/>
-    Continue with Google
+    <ng-container i18n>Continue with Google</ng-container>
   </button>
-  <button i18n mat-stroked-button color="primary" type="submit" class="login-form-element">
+  <button mat-stroked-button color="primary" type="submit" class="login-form-element">
     <img src="./assets/microsoft-logo.png" class="microsoft-logo"/>
-    Continue with Microsoft
+    <ng-container i18n>Continue with Microsoft</ng-container>
   </button>
-  <button i18n mat-stroked-button color="primary" type="submit" class="login-form-element">
+  <button mat-stroked-button color="primary" type="submit" class="login-form-element">
     <img [hidden]="!isLight" src="./assets/apple-logo-light.png" class="apple-logo"/>
     <img [hidden]="isLight" src="./assets/apple-logo-dark.png" class="apple-logo"/>
-    Continue with Apple
+    <ng-container i18n>Continue with Apple</ng-container>
   </button>
 </div>

@@ -3,9 +3,12 @@
     <mat-drawer-container class="wrapper">
       <div *ngIf="isVerifyEmail()" class="container">
         <div i18n class="title">Email verified!</div>
-        <div i18n class="text bottom">
-          By clicking "Agree and connect", you agree to our <a [href]="termsLink" target="_blank" class="link">Terms</a>.
-          Our <a [href]="privacyLink" target="_blank" class="link">Privacy Policy</a> explains how we process personal data.
+        <div class="text bottom">
+          <ng-container i18n="@@agreeMessage|Text before terms link">By clicking "Agree and connect", you agree to our </ng-container>
+          <a i18n="@@termsLink|Link to terms and conditions" [href]="termsLink" target="_blank" class="link">Terms</a>
+          <ng-container i18n="@@middleText|Text between terms and privacy policy links">. Our </ng-container>
+          <a i18n="@@privacyPolicyLink|Link to privacy policy" [href]="privacyLink" target="_blank" class="link">Privacy Policy</a>
+          <ng-container i18n="@@endMessage|Text after privacy policy link"> explains how we process personal data.</ng-container>
         </div>
         <button i18n mat-flat-button type="submit" (click)="accept()" class="element">Agree and connect</button>
       </div>
@@ -14,16 +17,18 @@
         <password-input [pwd]="pwd1" i18n-placeholder placeholder="New Password" name="newPassword" autocomplete="new-password" class="element"></password-input>
         <password-input [pwd]="pwd2" i18n-placeholder placeholder="Re-enter new Password" class="element"></password-input>
         <password-feedback *ngIf="showPwdFeedback()" [pwd]="pwd1" [pwd2]="pwd2" class="element check"></password-feedback>
-        <button i18n mat-flat-button type="submit" (click)="resetPwd()" class="element">Reset Password</button>
+        @if (showSpinner()) {
+          <mat-spinner diameter="40" *ngIf="showSpinner"></mat-spinner>
+        } @else {
+          <button i18n mat-flat-button type="submit" (click)="resetPwd()" class="element">Reset Password</button>
+        }
       </div>
       <div *ngIf="isConfirmResetPwd()" class="container">
         <div class="icon-container">
           <mat-icon inline class="icon">check</mat-icon>
         </div>
         <div i18n class="title light">Password Changed!</div>
-        <div i18n class="text bottom">
-          Your password has been changed successfully.
-        </div>
+        <div i18n class="text bottom">Your password has been changed successfully.</div>
         <button i18n mat-flat-button type="submit" (click)="gotoLogin()" class="element">Back to Ng Base</button>
       </div>
     </mat-drawer-container>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, model, OnInit } from '@angular/core';
+import { Component, model, OnInit, signal } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { NgContainerContentComponent } from '../../components/container-content/container-content.component';
 import { NgContainerComponent } from '../../components/container/container.component';
@@ -40,7 +41,8 @@ type Action =
     FormsModule,
     PasswordInputComponent,
     PasswordFeedbackComponent,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
   ]
 })
 export class ActionComponent implements OnInit {
@@ -51,6 +53,7 @@ export class ActionComponent implements OnInit {
   readonly pwd2 = new FormControl('', []);
   readonly termsLink: string = ngbaseConfig.termsLink
   readonly privacyLink: string = ngbaseConfig.privacyLink
+  showSpinner = signal(false)
 
   isVerifyEmail() : boolean {
     return this.action === "verifyEmail"
@@ -106,18 +109,22 @@ export class ActionComponent implements OnInit {
     }
   }
 
-  resetPwd() {
+  async resetPwd() {
     if (
       this.pwd1.value !== null &&
       this.pwd1.value === this.pwd2.value &&
       StrongPwdRegExp.isValid(this.pwd1.value)
     ) {
-      this.authService.confirmPwdReset(this.oobCode, this.pwd1.value).then(() => {
+      this.showSpinner.set(true)
+      try {
+        await this.authService.confirmPwdReset(this.oobCode, this.pwd1.value)
         this.action = "confirmResetPwd"
-      })
-      .catch(error => {
+      } catch(error: any) {
+        this.showSpinner.set(false)
         this._snackBar.open(error.message, $localize`Dismiss`)
-      })
+        return
+      }
+      this.showSpinner.set(false)
     }
   }
 

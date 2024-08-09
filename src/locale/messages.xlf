@@ -196,55 +196,51 @@
         <source>Reset Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.html</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="422728401863883064" datatype="html">
         <source>Password Changed!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.html</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2637392770964391064" datatype="html">
         <source>Your password has been changed successfully.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.html</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5863436468244278293" datatype="html">
         <source>Back to Ng Base</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.html</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1536087519743707362" datatype="html">
         <source>Dismiss</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.ts</context>
-          <context context-type="linenumber">94</context>
+          <context context-type="linenumber">97</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.ts</context>
-          <context context-type="linenumber">119</context>
+          <context context-type="linenumber">124</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
-          <context context-type="linenumber">178</context>
+          <context context-type="linenumber">179</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
-          <context context-type="linenumber">203</context>
+          <context context-type="linenumber">206</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
-          <context context-type="linenumber">207</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
-          <context context-type="linenumber">240</context>
+          <context context-type="linenumber">233</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/delete-account/delete-account.component.ts</context>
@@ -276,15 +272,19 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/reset-password/reset-password.component.ts</context>
-          <context context-type="linenumber">77</context>
+          <context context-type="linenumber">83</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/reset-password/reset-password.component.ts</context>
+          <context context-type="linenumber">87</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/verify-email/verify-email-sent.component.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">41</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/verify-email/verify-email-sent.component.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2727496946419791472" datatype="html">
@@ -302,7 +302,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2334377088678069338" datatype="html">
@@ -414,7 +414,7 @@
         <source>Password does not follow rules.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
-          <context context-type="linenumber">210</context>
+          <context context-type="linenumber">201</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4635433474100431381" datatype="html">
@@ -653,8 +653,12 @@
           <context context-type="linenumber">185</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/reset-password/reset-password.component.ts</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/verify-email/verify-email-sent.component.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8883057762733540577" datatype="html">
@@ -668,32 +672,32 @@
         <source>Go back to login</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3665633898603528438" datatype="html">
         <source>Check your e-mail messages</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8605279680337771404" datatype="html">
         <source>Resend email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">28</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/verify-email/verify-email-sent.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1583265433004471731" datatype="html">
         <source>Please check your e-mail address <x id="PH" equiv-text="this.email.value"/> to know how to reset your password.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/reset-password/reset-password.component.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6518759458783907073" datatype="html">

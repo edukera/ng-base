@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, signal } from '@angular/core';
+import { Component, effect, signal, WritableSignal } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -52,7 +52,7 @@ export class LoginFormComponent {
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   readonly pwd = new FormControl('', []);
   isLight: boolean;
-  showSpinner: boolean;
+  showSpinner: WritableSignal<boolean>;
 
   constructor(
     public authService: AuthService,
@@ -62,7 +62,7 @@ export class LoginFormComponent {
     private _snackBar: MatSnackBar
   ) {
     this.isLight = true
-    this.showSpinner = false
+    this.showSpinner = signal(false)
     effect(() => {
       var currentTheme = this.themeService.theme
       this.isLight = currentTheme === 'light'
@@ -156,7 +156,7 @@ export class LoginFormComponent {
     }
   }
 
-  continue() {
+  async continue() {
     switch (this.state) {
       case "Login1": {
         if (this.email.valid)
@@ -164,24 +164,22 @@ export class LoginFormComponent {
         break;
       }
       case "Login2": {
-        this.showSpinner = true
+        console.log("login")
+        this.showSpinner.set(true)
         try {
           this.assertValidity()
-          this.authService.pwdSignIn(this.email.value, this.pwd.value).then(res => {
-            this.router.navigate(['/main'])
-          }).catch((err: any) => {
-            this.showSpinner = false
-            if (err.code === "auth/invalid-credential") {
-              this.pwd.setErrors({ invalidAuth: true })
-            } else {
-              console.error(err)
-              this._snackBar.open(err.message, $localize`Dismiss`)
-            }
-          });
-        } catch(e) {
-          this.showSpinner = false
-          console.error(e)
+          await this.authService.pwdSignIn(this.email.value, this.pwd.value)
+          this.router.navigate(['/main'])
+        } catch(err: any) {
+          this.showSpinner.set(false)
+          if (err.code === "auth/invalid-credential") {
+            this.pwd.setErrors({ invalidAuth: true })
+          } else {
+            console.error(err)
+            this._snackBar.open(err.message, $localize`Dismiss`)
+          }
         }
+        this.showSpinner.set(false)
         break;
       }
       case "Register1": {
@@ -190,29 +188,24 @@ export class LoginFormComponent {
         break;
       }
       case "Register2": {
-        this.showSpinner = true
+        console.log("register")
+        this.showSpinner.set(true)
         try {
           this.assertValidity()
           if (StrongPwdRegExp.isValid(this.pwd.value)) {
-            this.authService.createUserWithPwd(this.email.value, this.pwd.value).then(() => {
-              this.authService.sendVerificationEmail().then(() => {
-                this.showSpinner = false
-                this.router.navigate(['/verify-email'])
-              })
-              .catch((err: Error) => {
-                this._snackBar.open(err.message, $localize`Dismiss`);
-              })
-            })
-            .catch((err: Error) => {
-              this._snackBar.open(err.message, $localize`Dismiss`);
-            })
+            await this.authService.createUserWithPwd(this.email.value, this.pwd.value)
+            await this.authService.sendVerificationEmail()
+            this.showSpinner.set(false)
+            this.router.navigate(['/verify-email'])
           } else {
             throw new Error($localize`Password does not follow rules.`)
           }
-        } catch(e) {
-          console.error(e)
         }
-        this.showSpinner = false
+        catch(err: any) {
+          this.showSpinner.set(false)
+          this._snackBar.open(err.message, $localize`Dismiss`);
+        }
+        this.showSpinner.set(false)
         break
       }
     }

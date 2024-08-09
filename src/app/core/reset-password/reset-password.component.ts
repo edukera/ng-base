@@ -7,6 +7,7 @@ import { MatFormField, MatInputModule } from '@angular/material/input';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { NgContainerContentComponent } from '../../components/container-content/container-content.component';
 import { NgContainerComponent } from '../../components/container/container.component';
@@ -15,7 +16,7 @@ import { AuthService } from '../../services/auth.service';
 
 type ResetState =
   "EnterEmail" // first panel to enter email and click continue
-| "Resend"     // seconde panel with resent reset email button
+| "Resend"     // second panel with resent reset email button
 
 @Component({
   selector: 'app-reset-password',
@@ -31,15 +32,18 @@ type ResetState =
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    EmailInputComponent
+    EmailInputComponent,
+    MatProgressSpinnerModule
   ],
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.scss'
 })
 export class ResetPasswordComponent {
   state : ResetState = "EnterEmail"
+  showSpinner = signal(false)
 
   readonly email = new FormControl('', [Validators.required, Validators.email]);
+  checkEmailPhrase = $localize`Please check your e-mail address ${this.email.value} to know how to reset your password.`
 
   constructor(private router: Router, private authService: AuthService, private _snackBar: MatSnackBar) {}
 
@@ -57,24 +61,30 @@ export class ResetPasswordComponent {
     }
   }
 
-  continue() {
+  async continue() {
     if(this.email.value !== null && this.email.valid) {
       switch (this.state) {
         case "EnterEmail": {
-          this._send(this.email.value)
+          await this._send(this.email.value)
           break;
         }
       }
     }
   }
 
-  private _send(email: string) {
-    this.authService.sendPwdRestEmail(email).then(() => {
+  private async _send(email: string) {
+    this.showSpinner.set(true)
+    try {
+      await this.authService.sendPwdRestEmail(email)
       this.state = "Resend";
-    })
-    .catch(error => {
+    }
+    catch(error: any) {
+      this.showSpinner.set(false)
       this._snackBar.open(error.message, $localize`Dismiss`)
-    })
+      return
+    }
+    this.showSpinner.set(false)
+    this._snackBar.open($localize`Email sent.`, $localize`Dismiss`)
   }
 
   resend() {

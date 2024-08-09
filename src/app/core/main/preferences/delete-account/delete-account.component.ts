@@ -38,6 +38,7 @@ export class DeleteAccountComponent {
   ]
 
   deleteKeyword: string = $localize`DELETE`
+  deletePhrase: string= $localize`To proceed, type ${this.deleteKeyword} in the input field below.`
 
   email: FormControl = new FormControl('', []);
   deletectrl: FormControl = new FormControl('', []);

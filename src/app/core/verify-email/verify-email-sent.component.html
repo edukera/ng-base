@@ -3,9 +3,17 @@
     <mat-drawer-container>
       <div class="container">
         <div i18n class="title">E-mail address verification</div>
-        <div i18n class="text">We have just sent an email to {{getEmail()}}.</div>
+        <div class="text">
+          <ng-container i18n>We have just sent an email to </ng-container>{{getEmail()}}.
+        </div>
         <div i18n class="text bottom">Click the link in the message to validate email address.</div>
-        <button i18n mat-button type="submit" (click)="sendEmail()">Resend email</button>
+        @if (showSpinner()) {
+          <div class="spin-container">
+            <mat-spinner diameter="40" *ngIf="showSpinner"></mat-spinner>
+          </div>
+        } @else {
+          <button i18n mat-button type="submit" (click)="sendEmail()">Resend email</button>
+        }
       </div>
     </mat-drawer-container>
   </ng-base-container-content>
