@@ -6,14 +6,14 @@
         <source>Terms of use</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/container-content/container-content.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6090931838305354672" datatype="html">
         <source>Privacy policy</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/container-content/container-content.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3967269098753656610" datatype="html">
@@ -30,11 +30,11 @@
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5377078063439833222" datatype="html">
-        <source> Edit </source>
+      <trans-unit id="7585826646011739428" datatype="html">
+        <source>Edit</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/email-input/email-input.component.html</context>
-          <context context-type="linenumber">13,15</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7196360912393502967" datatype="html">
@@ -118,54 +118,60 @@
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="6863210655315748884" datatype="html">
-        <source>Tell us about you</source>
+      <trans-unit id="5634180635200972996" datatype="html">
+        <source>Email verified!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.html</context>
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8953033926734869941" datatype="html">
-        <source>Name</source>
+      <trans-unit id="agreeMessage|Text before terms link" datatype="html">
+        <source>By clicking &quot;Agree and connect&quot;, you agree to our </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.html</context>
-          <context context-type="linenumber">27</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="6795661933747564358" datatype="html">
-        <source>Fill your name</source>
+      <trans-unit id="termsLink|Link to terms and conditions" datatype="html">
+        <source>Terms</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.html</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.html</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="9033860768249418345" datatype="html">
-        <source> By clicking &quot;Agree&quot;, you agree to our <x id="START_LINK" ctype="x-a" equiv-text="&lt;a [href]=&quot;termsLink&quot; target=&quot;_blank&quot; class=&quot;link&quot;&gt;"/>Terms<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. Our <x id="START_LINK_1" equiv-text="&lt;a [href]=&quot;privacyLink&quot; target=&quot;_blank&quot; class=&quot;link&quot;&gt;"/>Privacy Policy<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> explains how we process personal data. </source>
+      <trans-unit id="middleText|Text between terms and privacy policy links" datatype="html">
+        <source>. Our </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.html</context>
-          <context context-type="linenumber">16,19</context>
+          <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8682986632515891204" datatype="html">
-        <source>Agree</source>
+      <trans-unit id="privacyPolicyLink|Link to privacy policy" datatype="html">
+        <source>Privacy Policy</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.html</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="endMessage|Text after privacy policy link" datatype="html">
+        <source> explains how we process personal data.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/action/action.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4610189547409168632" datatype="html">
+        <source>Agree and connect</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/action/action.component.html</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4371680625121499898" datatype="html">
         <source>Reset your password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.html</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">16</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/reset-password/reset-password.component.html</context>
@@ -176,42 +182,42 @@
         <source>New Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.html</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2926267073284227852" datatype="html">
         <source>Re-enter new Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6972105223770675605" datatype="html">
         <source>Reset Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.html</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="422728401863883064" datatype="html">
         <source>Password Changed!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.html</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2731427867948993597" datatype="html">
-        <source> Your password has been changed successfully. </source>
+      <trans-unit id="2637392770964391064" datatype="html">
+        <source>Your password has been changed successfully.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.html</context>
-          <context context-type="linenumber">34,36</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5863436468244278293" datatype="html">
         <source>Back to Ng Base</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/action/action.component.html</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1536087519743707362" datatype="html">
@@ -225,47 +231,60 @@
           <context context-type="linenumber">119</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/main/preferences/delete-account/delete-account.component.ts</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
+          <context context-type="linenumber">178</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
+          <context context-type="linenumber">203</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
+          <context context-type="linenumber">207</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
+          <context context-type="linenumber">240</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/delete-account/delete-account.component.ts</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">77</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/delete-account/delete-account.component.ts</context>
-          <context context-type="linenumber">81</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/main/preferences/delete-account/delete-account.component.ts</context>
+          <context context-type="linenumber">82</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.ts</context>
-          <context context-type="linenumber">127</context>
+          <context context-type="linenumber">125</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.ts</context>
-          <context context-type="linenumber">142</context>
+          <context context-type="linenumber">146</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.ts</context>
-          <context context-type="linenumber">193</context>
+          <context context-type="linenumber">185</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.ts</context>
-          <context context-type="linenumber">196</context>
+          <context context-type="linenumber">188</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/reset-password/reset-password.component.ts</context>
-          <context context-type="linenumber">76</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="187187500641108332" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{getTitle()}}"/></source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">77</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/main/main.component.html</context>
-          <context context-type="linenumber">8,9</context>
+          <context context-type="sourcefile">src/app/core/verify-email/verify-email-sent.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/verify-email/verify-email-sent.component.ts</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2727496946419791472" datatype="html">
@@ -275,123 +294,127 @@
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2917314929120683887" datatype="html">
-        <source> Continue </source>
+      <trans-unit id="6962699013778688473" datatype="html">
+        <source>Continue</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.html</context>
-          <context context-type="linenumber">18,20</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2334377088678069338" datatype="html">
         <source>Don&apos;t have an account yet? </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5207635742003539443" datatype="html">
         <source>Sign in</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.html</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6207438724033771807" datatype="html">
         <source>Already have an account? </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.html</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="813263746069473514" datatype="html">
         <source>Connect</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.html</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="290735093992020324" datatype="html">
         <source>OR</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2488274627859218996" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;./assets/google-logo.png&quot; class=&quot;google-logo&quot;/&gt;"/> Continue with Google </source>
+      <trans-unit id="3655082891939518750" datatype="html">
+        <source>Continue with Google</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.html</context>
-          <context context-type="linenumber">35,37</context>
+          <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8006610790244263371" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img src=&quot;./assets/microsoft-logo.png&quot; class=&quot;microsoft-logo&quot;/&gt;"/> Continue with Microsoft </source>
+      <trans-unit id="7512763792746430085" datatype="html">
+        <source>Continue with Microsoft</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.html</context>
-          <context context-type="linenumber">39,41</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="6452919217103164178" datatype="html">
-        <source><x id="TAG_IMG" ctype="image" equiv-text="&lt;img [hidden]=&quot;!isLight&quot; src=&quot;./assets/apple-logo-light.png&quot; class=&quot;apple-logo&quot;/&gt;"/><x id="TAG_IMG_1" ctype="x-img_1" equiv-text="&lt;img [hidden]=&quot;isLight&quot; src=&quot;./assets/apple-logo-dark.png&quot; class=&quot;apple-logo&quot;/&gt;"/> Continue with Apple </source>
+      <trans-unit id="7530287534197575240" datatype="html">
+        <source>Continue with Apple</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.html</context>
-          <context context-type="linenumber">43,46</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4200317694838753109" datatype="html">
         <source>Welcome back</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="linenumber">74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2772023564304193657" datatype="html">
         <source>Enter your password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2224947564116830026" datatype="html">
         <source>Create your account</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1455277686457167018" datatype="html">
         <source>Sign in to</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
-          <context context-type="linenumber">80</context>
+          <context context-type="linenumber">89</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3273926370415408106" datatype="html">
         <source>Define password to access</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
-          <context context-type="linenumber">81</context>
+          <context context-type="linenumber">90</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1231272870081591724" datatype="html">
         <source>Invalid Email.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
-          <context context-type="linenumber">143</context>
+          <context context-type="linenumber">152</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7945180466295706639" datatype="html">
         <source>Invalid Password.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
-          <context context-type="linenumber">146</context>
+          <context context-type="linenumber">155</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5295181203891140012" datatype="html">
         <source>Password does not follow rules.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/login/login-form/login-form.component.ts</context>
-          <context context-type="linenumber">193</context>
+          <context context-type="linenumber">210</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4635433474100431381" datatype="html">
@@ -401,33 +424,40 @@
           <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4086606389696938932" datatype="html">
-        <source>Account</source>
+      <trans-unit id="8806713938659239131" datatype="html">
+        <source>Ng-Base</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/main.component.html</context>
-          <context context-type="linenumber">61</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.ts</context>
-          <context context-type="linenumber">148</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4930506384627295710" datatype="html">
-        <source>Settings</source>
+      <trans-unit id="4086606389696938932" datatype="html">
+        <source>Account</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/main.component.html</context>
           <context context-type="linenumber">65</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.ts</context>
-          <context context-type="linenumber">149</context>
+          <context context-type="linenumber">152</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4930506384627295710" datatype="html">
+        <source>Settings</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/main/main.component.html</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.ts</context>
+          <context context-type="linenumber">153</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7507948636555938109" datatype="html">
         <source>Log out</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/main.component.html</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="680171196543642816" datatype="html">
@@ -435,13 +465,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/delete-account/delete-account.component.html</context>
           <context context-type="linenumber">7</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7761746481704294111" datatype="html">
-        <source>To proceed, type <x id="INTERPOLATION" equiv-text="{{deleteKeyword}}"/> in the input field below.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/main/preferences/delete-account/delete-account.component.html</context>
-          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5366191649343750023" datatype="html">
@@ -486,11 +509,25 @@
           <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="6808324827031505786" datatype="html">
+        <source>To proceed, type <x id="PH" equiv-text="this.deleteKeyword"/> in the input field below.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/main/preferences/delete-account/delete-account.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1816408497229498063" datatype="html">
+        <source>type in &apos;</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/main/preferences/delete-account/delete-account.component.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="5410539658917085810" datatype="html">
         <source>Account deleted.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/delete-account/delete-account.component.ts</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4768749765465246664" datatype="html">
@@ -521,85 +558,103 @@
           <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="8953033926734869941" datatype="html">
+        <source>Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6795661933747564358" datatype="html">
+        <source>Fill your name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2547571169649786686" datatype="html">
+        <source>Danger zone</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.html</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="7705508697330810763" datatype="html">
         <source>Delete Account</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.html</context>
-          <context context-type="linenumber">43</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7022070615528435141" datatype="html">
-        <source>Delete</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.html</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7103588127254721505" datatype="html">
         <source>Theme</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.html</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2826581353496868063" datatype="html">
         <source>Language</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.html</context>
-          <context context-type="linenumber">63</context>
+          <context context-type="linenumber">67</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5866254605255506989" datatype="html">
         <source>English</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.html</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7633754075223722162" datatype="html">
         <source>French</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.html</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="29832309535656200" datatype="html">
         <source>System</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.html</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">73</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.ts</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="413116577994876478" datatype="html">
         <source>Light</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.ts</context>
-          <context context-type="linenumber">72</context>
+          <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3892161059518616136" datatype="html">
         <source>Dark</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.ts</context>
-          <context context-type="linenumber">73</context>
+          <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9047425577025089618" datatype="html">
         <source>Delete account - are you sure?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.ts</context>
-          <context context-type="linenumber">150</context>
+          <context context-type="linenumber">154</context>
         </context-group>
       </trans-unit>
       <trans-unit id="505583234304370420" datatype="html">
         <source>Email sent.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/main/preferences/preferences.component.ts</context>
-          <context context-type="linenumber">193</context>
+          <context context-type="linenumber">185</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/verify-email/verify-email-sent.component.ts</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8883057762733540577" datatype="html">
@@ -607,13 +662,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/reset-password/reset-password.component.html</context>
           <context context-type="linenumber">6</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6962699013778688473" datatype="html">
-        <source>Continue</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="815051607554522412" datatype="html">
@@ -630,13 +678,6 @@
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="841602220743726491" datatype="html">
-        <source>Please check your e-mail address <x id="INTERPOLATION" equiv-text="{{email.value}}"/> to know how to reset your password.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">16</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="8605279680337771404" datatype="html">
         <source>Resend email</source>
         <context-group purpose="location">
@@ -645,7 +686,14 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/verify-email/verify-email-sent.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1583265433004471731" datatype="html">
+        <source>Please check your e-mail address <x id="PH" equiv-text="this.email.value"/> to know how to reset your password.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/reset-password/reset-password.component.ts</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6518759458783907073" datatype="html">
@@ -655,18 +703,18 @@
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="6501721996413082676" datatype="html">
-        <source>We have just sent an email to <x id="INTERPOLATION" equiv-text="{{getEmail()}}"/>.</source>
+      <trans-unit id="6889041363787286320" datatype="html">
+        <source>We have just sent an email to </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/verify-email/verify-email-sent.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6139690411590628704" datatype="html">
         <source>Click the link in the message to validate email address.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/verify-email/verify-email-sent.component.html</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6570363013146073520" datatype="html">

@@ -1,372 +1,370 @@
 <?xml version="1.0" encoding="UTF-8"?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
 <file datatype="plaintext" original="ng2.template" source-language="en" target-language="fr">
 <body>
-<trans-unit datatype="html" id="1221596867309460035">
-<source xml:space="preserve">New Password</source>
-<target xml:space="preserve">Nouveau mot de passe</target>
-</trans-unit>
-<trans-unit datatype="html" id="1231272870081591724">
-<source xml:space="preserve">Invalid Email.</source>
-<target xml:space="preserve">E-mail non valide.</target>
-</trans-unit>
-<trans-unit datatype="html" id="1431416938026210429">
-<source xml:space="preserve">Password</source>
-<target xml:space="preserve">Mot de passe</target>
-</trans-unit>
-<trans-unit datatype="html" id="1446670643492611810">
-<source xml:space="preserve">Hide password</source>
-<target xml:space="preserve">Masquer mot de passe</target>
-</trans-unit>
-<trans-unit datatype="html" id="1455277686457167018">
-<source xml:space="preserve">Sign in to</source>
-<target xml:space="preserve">Inscrivez-vous à</target>
-</trans-unit>
-<trans-unit datatype="html" id="1536087519743707362">
-<source xml:space="preserve">Dismiss</source>
-<target xml:space="preserve">Ignorer</target>
-</trans-unit>
-<trans-unit datatype="html" id="1573561306072316026">
-<source xml:space="preserve">Terms of use</source>
-<target xml:space="preserve">Conditions d&apos;utilisations</target>
-</trans-unit>
-<trans-unit datatype="html" id="187187500641108332">
-<source xml:space="preserve">
-<x equiv-text="{{getTitle()}}" id="INTERPOLATION"/></source>
-<target xml:space="preserve">
-<x equiv-text="{{ placeholder }}" id="INTERPOLATION"/></target>
-</trans-unit>
-<trans-unit datatype="html" id="1937414853866332779">
-<source xml:space="preserve">
-<x ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;" id="START_TAG_MAT_ICON"/>warning<x ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;" id="CLOSE_TAG_MAT_ICON"/> Permanently delete my account
-</source>
-<target xml:space="preserve">
-<x ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;" id="START_TAG_MAT_ICON"/>avertissement Supprimer <x ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;" id="CLOSE_TAG_MAT_ICON"/> définitivement mon compte
-</target>
-</trans-unit>
-<trans-unit datatype="html" id="2224947564116830026">
-<source xml:space="preserve">Create your account</source>
-<target xml:space="preserve">Créez votre compte</target>
-</trans-unit>
-<trans-unit datatype="html" id="2334377088678069338">
-<source xml:space="preserve">Don&apos;t have an account yet? </source>
-<target xml:space="preserve">Vous n&apos;avez pas de compte ? </target>
-</trans-unit>
-<trans-unit datatype="html" id="2488274627859218996">
-<source xml:space="preserve">
-<x ctype="image" equiv-text="&lt;img src=&quot;./assets/google-logo.png&quot; class=&quot;google-logo&quot;/&gt;" id="TAG_IMG"/> Continue with Google </source>
-<target xml:space="preserve">
-<x ctype="image" equiv-text="&lt;img src=&quot;./assets/google-logo.png&quot; class=&quot;google-logo&quot;/&gt;" id="TAG_IMG"/>Continuer avec Google </target>
-</trans-unit>
-<trans-unit datatype="html" id="2727496946419791472">
-<source xml:space="preserve">Forgot password?</source>
-<target xml:space="preserve">Mot de passe oublié ?</target>
-</trans-unit>
-<trans-unit datatype="html" id="2731427867948993597">
-<source xml:space="preserve"> Your password has been changed successfully. </source>
-<target xml:space="preserve"> Votre mot de passe a été modifié avec succès. </target>
-</trans-unit>
-<trans-unit datatype="html" id="2772023564304193657">
-<source xml:space="preserve">Enter your password</source>
-<target xml:space="preserve">Entrez votre mot de passe</target>
-</trans-unit>
-<trans-unit datatype="html" id="2826581353496868063">
-<source xml:space="preserve">Language</source>
-<target xml:space="preserve">Langue</target>
-</trans-unit>
-<trans-unit datatype="html" id="290735093992020324">
-<source xml:space="preserve">OR</source>
-<target xml:space="preserve">OU</target>
-</trans-unit>
-<trans-unit datatype="html" id="2917314929120683887">
-<source xml:space="preserve"> Continue </source>
-<target xml:space="preserve"> Continuer </target>
-</trans-unit>
-<trans-unit datatype="html" id="2926267073284227852">
-<source xml:space="preserve">Re-enter new Password</source>
-<target xml:space="preserve">Entrez à nouveau le mot de passe</target>
-</trans-unit>
-<trans-unit datatype="html" id="29832309535656200">
-<source xml:space="preserve">System</source>
-<target xml:space="preserve">Système</target>
-</trans-unit>
-<trans-unit datatype="html" id="3273926370415408106">
-<source xml:space="preserve">Define password to access</source>
-<target xml:space="preserve">Définir le mot de passe pour accéder à</target>
-</trans-unit>
-<trans-unit datatype="html" id="3665633898603528438">
-<source xml:space="preserve">Check your e-mail messages</source>
-<target xml:space="preserve">Vérifier vos e-mails</target>
-</trans-unit>
-<trans-unit datatype="html" id="381389385558268687">
-<source xml:space="preserve">Blank</source>
-<target xml:space="preserve">Blanc</target>
-</trans-unit>
-<trans-unit datatype="html" id="3892161059518616136">
-<source xml:space="preserve">Dark</source>
-<target xml:space="preserve">Sombre</target>
-</trans-unit>
-<trans-unit datatype="html" id="3967269098753656610">
-<source xml:space="preserve">Email address</source>
-<target xml:space="preserve">Adresse e-mail</target>
-</trans-unit>
-<trans-unit datatype="html" id="4086606389696938932">
-<source xml:space="preserve">Account</source>
-<target xml:space="preserve">Compte</target>
-</trans-unit>
-<trans-unit datatype="html" id="413116577994876478">
-<source xml:space="preserve">Light</source>
-<target xml:space="preserve">Clair</target>
-</trans-unit>
-<trans-unit datatype="html" id="4200317694838753109">
-<source xml:space="preserve">Welcome back</source>
-<target xml:space="preserve">Bienvenue</target>
-</trans-unit>
-<trans-unit datatype="html" id="422728401863883064">
-<source xml:space="preserve">Password Changed!</source>
-<target xml:space="preserve">Mot de passe modifié !</target>
-</trans-unit>
-<trans-unit datatype="html" id="4371680625121499898">
-<source xml:space="preserve">Reset your password</source>
-<target xml:space="preserve">Réinitialisez votre mot de passe</target>
-</trans-unit>
-<trans-unit datatype="html" id="4635433474100431381">
-<source xml:space="preserve">The best place to start an Angular/Firebase project.</source>
-<target xml:space="preserve">La meilleure façon de démarrer un projet Angular/Firebase.</target>
-</trans-unit>
-<trans-unit datatype="html" id="4768749765465246664">
-<source xml:space="preserve">Email</source>
-<target xml:space="preserve">E-mail</target>
-</trans-unit>
-<trans-unit datatype="html" id="4930506384627295710">
-<source xml:space="preserve">Settings</source>
-<target xml:space="preserve">Paramètres</target>
-</trans-unit>
-<trans-unit datatype="html" id="505583234304370420">
-<source xml:space="preserve">Email sent.</source>
-<target xml:space="preserve">E-mail envoyé.</target>
-</trans-unit>
-<trans-unit datatype="html" id="5136808626535739053">
-<source xml:space="preserve">(verified)</source>
-<target xml:space="preserve">(vérifié)</target>
-</trans-unit>
-<trans-unit datatype="html" id="5207635742003539443">
-<source xml:space="preserve">Sign in</source>
-<target xml:space="preserve">Inscription</target>
-</trans-unit>
-<trans-unit datatype="html" id="5295181203891140012">
-<source xml:space="preserve">Password does not follow rules.</source>
-<target xml:space="preserve">Le mot de passe ne respecte pas les règles.</target>
-</trans-unit>
-<trans-unit datatype="html" id="5366191649343750023">
-<source xml:space="preserve">Permanently delete my account</source>
-<target xml:space="preserve">Supprimer définitivement mon compte</target>
-</trans-unit>
-<trans-unit datatype="html" id="5377078063439833222">
-<source xml:space="preserve"> Edit </source>
-<target xml:space="preserve"> Editer </target>
-</trans-unit>
-<trans-unit datatype="html" id="5410539658917085810">
-<source xml:space="preserve">Account deleted.</source>
-<target xml:space="preserve">Compte supprimé.</target>
-</trans-unit>
-<trans-unit datatype="html" id="5554528553553249088">
-<source xml:space="preserve">Show password</source>
-<target xml:space="preserve">Afficher le mot de passe</target>
-</trans-unit>
-<trans-unit datatype="html" id="5746470327278332948">
-<source xml:space="preserve">Passwords must be identical.</source>
-<target xml:space="preserve">Les mots de passe doivent être identiques.</target>
-</trans-unit>
-<trans-unit datatype="html" id="5863436468244278293">
-<source xml:space="preserve">Back to Ng Base</source>
-<target xml:space="preserve">Retour à Ng Base</target>
-</trans-unit>
-<trans-unit datatype="html" id="5866254605255506989">
-<source xml:space="preserve">English</source>
-<target xml:space="preserve">Anglais</target>
-</trans-unit>
-<trans-unit datatype="html" id="6080070763362927611">
-<source xml:space="preserve">At least one special character.</source>
-<target xml:space="preserve">Au moins un caractère spécial.</target>
-</trans-unit>
-<trans-unit datatype="html" id="6090931838305354672">
-<source xml:space="preserve">Privacy policy</source>
-<target xml:space="preserve">Politique de confidentialité</target>
-</trans-unit>
-<trans-unit datatype="html" id="6093776437807584103">
-<source xml:space="preserve">john.doe@email.com</source>
-<target xml:space="preserve">quidam@email.com</target>
-</trans-unit>
-<trans-unit datatype="html" id="6139690411590628704">
-<source xml:space="preserve">Click the link in the message to validate email address.</source>
-<target xml:space="preserve">Cliquez sur le lien contenu dans le message pour valider l&apos;adresse e-mail.</target>
-</trans-unit>
-<trans-unit datatype="html" id="6145199420634079384">
-<source xml:space="preserve">Your data will be deleted.</source>
-<target xml:space="preserve">Vos données seront supprimées.</target>
-</trans-unit>
-<trans-unit datatype="html" id="6207438724033771807">
-<source xml:space="preserve">Already have an account? </source>
-<target xml:space="preserve">Vous avez déjà un compte ? </target>
-</trans-unit>
-<trans-unit datatype="html" id="6452919217103164178">
-<source xml:space="preserve">
-<x ctype="image" equiv-text="&lt;img [hidden]=&quot;!isLight&quot; src=&quot;./assets/apple-logo-light.png&quot; class=&quot;apple-logo&quot;/&gt;" id="TAG_IMG"/>
-<x ctype="x-img_1" equiv-text="&lt;img [hidden]=&quot;isLight&quot; src=&quot;./assets/apple-logo-dark.png&quot; class=&quot;apple-logo&quot;/&gt;" id="TAG_IMG_1"/> Continue with Apple </source>
-<target xml:space="preserve">
-<x ctype="image" equiv-text="&lt;img [hidden]=&quot;!isLight&quot; src=&quot;./assets/apple-logo-light.png&quot; class=&quot;apple-logo&quot;/&gt;" id="TAG_IMG"/>
-<x ctype="x-img_1" equiv-text="&lt;img [hidden]=&quot;isLight&quot; src=&quot;./assets/apple-logo-dark.png&quot; class=&quot;apple-logo&quot;/&gt;" id="TAG_IMG_1"/>Continuer avec Apple </target>
-</trans-unit>
-<trans-unit datatype="html" id="6501721996413082676">
-<source xml:space="preserve">We have just sent an email to <x equiv-text="{{getEmail()}}" id="INTERPOLATION"/>.</source>
-<target xml:space="preserve">Nous venons d&apos;envoyer un e-mail à<x equiv-text="{{getEmail()}}" id="INTERPOLATION"/>.</target>
-</trans-unit>
-<trans-unit datatype="html" id="6518759458783907073">
-<source xml:space="preserve">E-mail address verification</source>
-<target xml:space="preserve">Vérification de l&apos;adresse e-mail</target>
-</trans-unit>
-<trans-unit datatype="html" id="6570363013146073520">
-<source xml:space="preserve">Dashboard</source>
-<target xml:space="preserve">Tableau de bord</target>
-</trans-unit>
-<trans-unit datatype="html" id="6795661933747564358">
-<source xml:space="preserve">Fill your name</source>
-<target xml:space="preserve">Renseignez votre nom</target>
-</trans-unit>
-<trans-unit datatype="html" id="680171196543642816">
-<source xml:space="preserve">Please type your account email.</source>
-<target xml:space="preserve">Veuillez saisir l&apos;adresse e-mail de votre compte.</target>
-</trans-unit>
-<trans-unit datatype="html" id="6863210655315748884">
-<source xml:space="preserve">Tell us about you</source>
-<target xml:space="preserve">Parlez-nous de vous</target>
-</trans-unit>
-<trans-unit datatype="html" id="6962699013778688473">
-<source xml:space="preserve">Continue</source>
-<target xml:space="preserve">Continuer</target>
-</trans-unit>
-<trans-unit datatype="html" id="6972105223770675605">
-<source xml:space="preserve">Reset Password</source>
-<target xml:space="preserve">Réinitialiser le mot de passe</target>
-</trans-unit>
-<trans-unit datatype="html" id="7022070615528435141">
-<source xml:space="preserve">Delete</source>
-<target xml:space="preserve">Supprimer</target>
-</trans-unit>
-<trans-unit datatype="html" id="7103588127254721505">
-<source xml:space="preserve">Theme</source>
-<target xml:space="preserve">Thème</target>
-</trans-unit>
-<trans-unit datatype="html" id="7196360912393502967">
-<source xml:space="preserve">You must enter a value</source>
-<target xml:space="preserve">Vous devez saisir une valeur</target>
-</trans-unit>
-<trans-unit datatype="html" id="7231134432681288778">
-<source xml:space="preserve">Deleting your account is permanent and cannot be undone.</source>
-<target xml:space="preserve">La suppression de votre compte est définitive et ne peut être annulée.</target>
-</trans-unit>
-<trans-unit datatype="html" id="7408541314475571768">
-<source xml:space="preserve">Not a valid email</source>
-<target xml:space="preserve">E-mail non valide</target>
-</trans-unit>
-<trans-unit datatype="html" id="7507948636555938109">
-<source xml:space="preserve">Log out</source>
-<target xml:space="preserve">Déconnexion</target>
-</trans-unit>
-<trans-unit datatype="html" id="7633754075223722162">
-<source xml:space="preserve">French</source>
-<target xml:space="preserve">Français</target>
-</trans-unit>
-<trans-unit datatype="html" id="7705508697330810763">
-<source xml:space="preserve">Delete Account</source>
-<target xml:space="preserve">Supprimer le compte</target>
-</trans-unit>
-<trans-unit datatype="html" id="7761746481704294111">
-<source xml:space="preserve">To proceed, type <x equiv-text="{{deleteKeyword}}" id="INTERPOLATION"/> in the input field below.</source>
-<target xml:space="preserve">Pour continuer, tapez <x equiv-text="{{deleteKeyword}}" id="INTERPOLATION"/> dans le champ de saisie ci-dessous.</target>
-</trans-unit>
-<trans-unit datatype="html" id="7915938650131423720">
-<source xml:space="preserve">Your password must contain:</source>
-<target xml:space="preserve">Votre mot de passe doit contenir :</target>
-</trans-unit>
-<trans-unit datatype="html" id="7945180466295706639">
-<source xml:space="preserve">Invalid Password.</source>
-<target xml:space="preserve">Mot de passe non valide.</target>
-</trans-unit>
-<trans-unit datatype="html" id="8006610790244263371">
-<source xml:space="preserve">
-<x ctype="image" equiv-text="&lt;img src=&quot;./assets/microsoft-logo.png&quot; class=&quot;microsoft-logo&quot;/&gt;" id="TAG_IMG"/> Continue with Microsoft </source>
-<target xml:space="preserve">
-<x ctype="image" equiv-text="&lt;img src=&quot;./assets/microsoft-logo.png&quot; class=&quot;microsoft-logo&quot;/&gt;" id="TAG_IMG"/>Continuer avec Microsoft </target>
-</trans-unit>
-<trans-unit datatype="html" id="813263746069473514">
-<source xml:space="preserve">Connect</source>
-<target xml:space="preserve">Connexion</target>
-</trans-unit>
-<trans-unit datatype="html" id="8143854176554311990">
-<source xml:space="preserve">Fill your email</source>
-<target xml:space="preserve">Renseignez votre e-mail</target>
-</trans-unit>
-<trans-unit datatype="html" id="815051607554522412">
-<source xml:space="preserve">Go back to login</source>
-<target xml:space="preserve">Retourner à la connexion</target>
-</trans-unit>
-<trans-unit datatype="html" id="8277232008329375061">
-<source xml:space="preserve">At least one digit.</source>
-<target xml:space="preserve">Au moins un chiffre.</target>
-</trans-unit>
-<trans-unit datatype="html" id="8288238877926002807">
-<source xml:space="preserve">Invalid password</source>
-<target xml:space="preserve">Mot de passe non valide</target>
-</trans-unit>
-<trans-unit datatype="html" id="8328157063685479359">
-<source xml:space="preserve">Read our help center article for more information.</source>
-<target xml:space="preserve">Lisez l&apos;article de notre centre d&apos;aide pour plus d&apos;informations.</target>
-</trans-unit>
-<trans-unit datatype="html" id="8339908516599193548">
-<source xml:space="preserve">At least 12 characters</source>
-<target xml:space="preserve">Au moins 12 caractères</target>
-</trans-unit>
-<trans-unit datatype="html" id="8365717775364450335">
-<source xml:space="preserve">Deletion will prevent you from accessing the application.</source>
-<target xml:space="preserve">La suppression vous empêchera d&apos;accéder à l&apos;application.</target>
-</trans-unit>
-<trans-unit datatype="html" id="841311519047609428">
-<source xml:space="preserve">DELETE</source>
-<target xml:space="preserve">SUPPRIMER</target>
-</trans-unit>
-<trans-unit datatype="html" id="841602220743726491">
-<source xml:space="preserve">Please check your e-mail address <x equiv-text="{{email.value}}" id="INTERPOLATION"/> to know how to reset your password.</source>
-<target xml:space="preserve">Veuillez vérifier votre adresse e-mail <x equiv-text="{{email.value}}" id="INTERPOLATION"/> pour savoir comment réinitialiser votre mot de passe.</target>
-</trans-unit>
-<trans-unit datatype="html" id="8605279680337771404">
-<source xml:space="preserve">Resend email</source>
-<target xml:space="preserve">Renvoyer un e-mail</target>
-</trans-unit>
-<trans-unit datatype="html" id="8682986632515891204">
-<source xml:space="preserve">Agree</source>
-<target xml:space="preserve">Accepter</target>
-</trans-unit>
-<trans-unit datatype="html" id="8883057762733540577">
-<source xml:space="preserve">Enter your e-mail address and we will send you instructions to reset your password.</source>
-<target xml:space="preserve">Entrez votre adresse e-mail et nous vous enverrons les instructions pour réinitialiser votre mot de passe.</target>
-</trans-unit>
-<trans-unit datatype="html" id="8946068448271182779">
-<source xml:space="preserve">not verified!</source>
-<target xml:space="preserve">non vérifié !</target>
-</trans-unit>
-<trans-unit datatype="html" id="8953033926734869941">
-<source xml:space="preserve">Name</source>
-<target xml:space="preserve">Nom</target>
-</trans-unit>
-<trans-unit datatype="html" id="9033860768249418345">
-<source xml:space="preserve"> By clicking &quot;Agree&quot;, you agree to our <x ctype="x-a" equiv-text="&lt;a [href]=&quot;termsLink&quot; target=&quot;_blank&quot; class=&quot;link&quot;&gt;" id="START_LINK"/>Terms<x ctype="x-a" equiv-text="&lt;/a&gt;" id="CLOSE_LINK"/>. Our <x equiv-text="&lt;a [href]=&quot;privacyLink&quot; target=&quot;_blank&quot; class=&quot;link&quot;&gt;" id="START_LINK_1"/>Privacy Policy<x ctype="x-a" equiv-text="&lt;/a&gt;" id="CLOSE_LINK"/> explains how we process personal data. </source>
-<target xml:space="preserve"> En cliquant sur « Accepter », vous acceptez nos <x ctype="x-a" equiv-text="&lt;a [href]=&quot;termsLink&quot; target=&quot;_blank&quot; class=&quot;link&quot;&gt;" id="START_LINK"/> conditions<x ctype="x-a" equiv-text="&lt;/a&gt;" id="CLOSE_LINK"/>. Notre <x equiv-text="&lt;a [href]=&quot;privacyLink&quot; target=&quot;_blank&quot; class=&quot;link&quot;&gt;" id="START_LINK_1"/> Politique de confidentialité <x ctype="x-a" equiv-text="&lt;/a&gt;" id="CLOSE_LINK"/> explique comment nous traitons les données personnelles. </target>
-</trans-unit>
-<trans-unit datatype="html" id="9047425577025089618">
-<source xml:space="preserve">Delete account - are you sure?</source>
-<target xml:space="preserve">Supprimer le compte – êtes-vous sûr ?</target>
-</trans-unit>
+  <trans-unit id="1573561306072316026" datatype="html">
+    <source>Terms of use</source>
+    <target>Conditions d'utilisation</target>
+  </trans-unit>
+  <trans-unit id="6090931838305354672" datatype="html">
+    <source>Privacy policy</source>
+    <target>Politique de confidentialité</target>
+  </trans-unit>
+  <trans-unit id="3967269098753656610" datatype="html">
+    <source>Email address</source>
+    <target>Adresse e-mail</target>
+  </trans-unit>
+  <trans-unit id="6093776437807584103" datatype="html">
+    <source>john.doe@email.com</source>
+    <target>john.doe@email.com</target>
+  </trans-unit>
+  <trans-unit id="7585826646011739428" datatype="html">
+    <source>Edit</source>
+    <target>Éditer</target>
+  </trans-unit>
+  <trans-unit id="7196360912393502967" datatype="html">
+    <source>You must enter a value</source>
+    <target>Vous devez entrer une valeur</target>
+  </trans-unit>
+  <trans-unit id="7408541314475571768" datatype="html">
+    <source>Not a valid email</source>
+    <target>E-mail non valide</target>
+  </trans-unit>
+  <trans-unit id="7915938650131423720" datatype="html">
+    <source>Your password must contain:</source>
+    <target>Votre mot de passe doit contenir :</target>
+  </trans-unit>
+  <trans-unit id="8339908516599193548" datatype="html">
+    <source>At least 12 characters</source>
+    <target>Au moins 12 caractères</target>
+  </trans-unit>
+  <trans-unit id="8277232008329375061" datatype="html">
+    <source>At least one digit.</source>
+    <target>Au moins un chiffre.</target>
+  </trans-unit>
+  <trans-unit id="6080070763362927611" datatype="html">
+    <source>At least one special character.</source>
+    <target>Au moins un caractère spécial.</target>
+  </trans-unit>
+  <trans-unit id="5746470327278332948" datatype="html">
+    <source>Passwords must be identical.</source>
+    <target>Les mots de passe doivent être identiques.</target>
+  </trans-unit>
+  <trans-unit id="5554528553553249088" datatype="html">
+    <source>Show password</source>
+    <target>Afficher le mot de passe</target>
+  </trans-unit>
+  <trans-unit id="1446670643492611810" datatype="html">
+    <source>Hide password</source>
+    <target>Masquer le mot de passe</target>
+  </trans-unit>
+  <trans-unit id="8288238877926002807" datatype="html">
+    <source>Invalid password</source>
+    <target>Mot de passe invalide</target>
+  </trans-unit>
+  <trans-unit id="1431416938026210429" datatype="html">
+    <source>Password</source>
+    <target>Mot de passe</target>
+  </trans-unit>
+  <trans-unit id="5634180635200972996" datatype="html">
+    <source>Email verified!</source>
+    <target>E-mail vérifié !</target>
+  </trans-unit>
+  <trans-unit id="agreeMessage|Text before terms link" datatype="html">
+    <source>By clicking "Agree and connect", you agree to our </source>
+    <target>En cliquant sur "Accepter et connecter", vous acceptez nos </target>
+  </trans-unit>
+  <trans-unit id="termsLink|Link to terms and conditions" datatype="html">
+    <source>Terms</source>
+    <target>Conditions</target>
+  </trans-unit>
+  <trans-unit id="middleText|Text between terms and privacy policy links" datatype="html">
+    <source>. Our </source>
+    <target>Notre </target>
+  </trans-unit>
+  <trans-unit id="privacyPolicyLink|Link to privacy policy" datatype="html">
+    <source>Privacy Policy</source>
+    <target>Politique de confidentialité</target>
+  </trans-unit>
+  <trans-unit id="endMessage|Text after privacy policy link" datatype="html">
+    <source> explains how we process personal data.</source>
+    <target> explique comment nous traitons les données personnelles.</target>
+  </trans-unit>
+  <trans-unit id="4610189547409168632" datatype="html">
+    <source>Agree and connect</source>
+    <target>Accepter et connecter</target>
+  </trans-unit>
+  <trans-unit id="4371680625121499898" datatype="html">
+    <source>Reset your password</source>
+    <target>Réinitialisez votre mot de passe</target>
+  </trans-unit>
+  <trans-unit id="1221596867309460035" datatype="html">
+    <source>New Password</source>
+    <target>Nouveau mot de passe</target>
+  </trans-unit>
+  <trans-unit id="2926267073284227852" datatype="html">
+    <source>Re-enter new Password</source>
+    <target>Entrez à nouveau le nouveau mot de passe</target>
+  </trans-unit>
+  <trans-unit id="6972105223770675605" datatype="html">
+    <source>Reset Password</source>
+    <target>Réinitialiser le mot de passe</target>
+  </trans-unit>
+  <trans-unit id="422728401863883064" datatype="html">
+    <source>Password Changed!</source>
+    <target>Mot de passe modifié !</target>
+  </trans-unit>
+  <trans-unit id="2637392770964391064" datatype="html">
+    <source>Your password has been changed successfully.</source>
+    <target>Votre mot de passe a été modifié avec succès.</target>
+  </trans-unit>
+  <trans-unit id="5863436468244278293" datatype="html">
+    <source>Back to Ng Base</source>
+    <target>Retour à Ng Base</target>
+  </trans-unit>
+  <trans-unit id="1536087519743707362" datatype="html">
+    <source>Dismiss</source>
+    <target>Ignorer</target>
+  </trans-unit>
+  <trans-unit id="2727496946419791472" datatype="html">
+    <source>Forgot password?</source>
+    <target>Mot de passe oublié ?</target>
+  </trans-unit>
+  <trans-unit id="6962699013778688473" datatype="html">
+    <source>Continue</source>
+    <target>Continuer</target>
+  </trans-unit>
+  <trans-unit id="2334377088678069338" datatype="html">
+    <source>Don't have an account yet? </source>
+    <target>Vous n'avez pas encore de compte ? </target>
+  </trans-unit>
+  <trans-unit id="5207635742003539443" datatype="html">
+    <source>Sign in</source>
+    <target>Se connecter</target>
+  </trans-unit>
+  <trans-unit id="6207438724033771807" datatype="html">
+    <source>Already have an account? </source>
+    <target>Vous avez déjà un compte ? </target>
+  </trans-unit>
+  <trans-unit id="813263746069473514" datatype="html">
+    <source>Connect</source>
+    <target>Se connecter</target>
+  </trans-unit>
+  <trans-unit id="290735093992020324" datatype="html">
+    <source>OR</source>
+    <target>OU</target>
+  </trans-unit>
+  <trans-unit id="3655082891939518750" datatype="html">
+    <source>Continue with Google</source>
+    <target>Continuer avec Google</target>
+  </trans-unit>
+  <trans-unit id="7512763792746430085" datatype="html">
+    <source>Continue with Microsoft</source>
+    <target>Continuer avec Microsoft</target>
+  </trans-unit>
+  <trans-unit id="7530287534197575240" datatype="html">
+    <source>Continue with Apple</source>
+    <target>Continuer avec Apple</target>
+  </trans-unit>
+  <trans-unit id="4200317694838753109" datatype="html">
+    <source>Welcome back</source>
+    <target>Bienvenue</target>
+  </trans-unit>
+  <trans-unit id="2772023564304193657" datatype="html">
+    <source>Enter your password</source>
+    <target>Entrez votre mot de passe</target>
+  </trans-unit>
+  <trans-unit id="2224947564116830026" datatype="html">
+    <source>Create your account</source>
+    <target>Créez votre compte</target>
+  </trans-unit>
+  <trans-unit id="1455277686457167018" datatype="html">
+    <source>Sign in to</source>
+    <target>Connectez-vous à</target>
+  </trans-unit>
+  <trans-unit id="3273926370415408106" datatype="html">
+    <source>Define password to access</source>
+    <target>Définissez un mot de passe pour accéder à</target>
+  </trans-unit>
+  <trans-unit id="1231272870081591724" datatype="html">
+    <source>Invalid Email.</source>
+    <target>E-mail invalide.</target>
+  </trans-unit>
+  <trans-unit id="7945180466295706639" datatype="html">
+    <source>Invalid Password.</source>
+    <target>Mot de passe invalide.</target>
+  </trans-unit>
+  <trans-unit id="5295181203891140012" datatype="html">
+    <source>Password does not follow rules.</source>
+    <target>Le mot de passe ne respecte pas les règles.</target>
+  </trans-unit>
+  <trans-unit id="4635433474100431381" datatype="html">
+    <source>The best place to start an Angular/Firebase project.</source>
+    <target>Le meilleur endroit pour démarrer un projet Angular/Firebase.</target>
+  </trans-unit>
+  <trans-unit id="8806713938659239131" datatype="html">
+    <source>Ng-Base</source>
+    <target>Ng-Base</target>
+  </trans-unit>
+  <trans-unit id="4086606389696938932" datatype="html">
+    <source>Account</source>
+    <target>Compte</target>
+  </trans-unit>
+  <trans-unit id="4930506384627295710" datatype="html">
+    <source>Settings</source>
+    <target>Paramètres</target>
+  </trans-unit>
+  <trans-unit id="7507948636555938109" datatype="html">
+    <source>Log out</source>
+    <target>Se déconnecter</target>
+  </trans-unit>
+  <trans-unit id="680171196543642816" datatype="html">
+    <source>Please type your account email.</source>
+    <target>Veuillez saisir l'e-mail de votre compte.</target>
+  </trans-unit>
+  <trans-unit id="5366191649343750023" datatype="html">
+    <source>Permanently delete my account</source>
+    <target>Supprimer définitivement mon compte</target>
+  </trans-unit>
+  <trans-unit id="7231134432681288778" datatype="html">
+    <source>Deleting your account is permanent and cannot be undone.</source>
+    <target>La suppression de votre compte est définitive et ne peut pas être annulée.</target>
+  </trans-unit>
+  <trans-unit id="8365717775364450335" datatype="html">
+    <source>Deletion will prevent you from accessing the application.</source>
+    <target>La suppression vous empêchera d'accéder à l'application.</target>
+  </trans-unit>
+  <trans-unit id="6145199420634079384" datatype="html">
+    <source>Your data will be deleted.</source>
+    <target>Vos données seront supprimées.</target>
+  </trans-unit>
+  <trans-unit id="8328157063685479359" datatype="html">
+    <source>Read our help center article for more information.</source>
+    <target>Lisez notre article du centre d'aide pour plus d'informations.</target>
+  </trans-unit>
+  <trans-unit id="841311519047609428" datatype="html">
+    <source>DELETE</source>
+    <target>SUPPRIMER</target>
+  </trans-unit>
+  <trans-unit id="6808324827031505786" datatype="html">
+    <source>To proceed, type </source>
+    <target>Pour continuer, tapez </target>
+  </trans-unit>
+  <trans-unit id="1816408497229498063" datatype="html">
+    <source>type in '</source>
+    <target>tapez '</target>
+  </trans-unit>
+  <trans-unit id="5410539658917085810" datatype="html">
+    <source>Account deleted.</source>
+    <target>Compte supprimé.</target>
+  </trans-unit>
+  <trans-unit id="4768749765465246664" datatype="html">
+    <source>Email</source>
+    <target>E-mail</target>
+  </trans-unit>
+  <trans-unit id="8143854176554311990" datatype="html">
+    <source>Fill your email</source>
+    <target>Remplissez votre e-mail</target>
+  </trans-unit>
+  <trans-unit id="5136808626535739053" datatype="html">
+    <source>(verified)</source>
+    <target>(vérifié)</target>
+  </trans-unit>
+  <trans-unit id="8946068448271182779" datatype="html">
+    <source>not verified!</source>
+    <target>non vérifié !</target>
+  </trans-unit>
+  <trans-unit id="8953033926734869941" datatype="html">
+    <source>Name</source>
+    <target>Nom</target>
+  </trans-unit>
+  <trans-unit id="6795661933747564358" datatype="html">
+    <source>Fill your name</source>
+    <target>Remplissez votre nom</target>
+  </trans-unit>
+  <trans-unit id="2547571169649786686" datatype="html">
+    <source>Danger zone</source>
+    <target>Zone de danger</target>
+  </trans-unit>
+  <trans-unit id="7705508697330810763" datatype="html">
+    <source>Delete Account</source>
+    <target>Supprimer le compte</target>
+  </trans-unit>
+  <trans-unit id="7103588127254721505" datatype="html">
+    <source>Theme</source>
+    <target>Thème</target>
+  </trans-unit>
+  <trans-unit id="2826581353496868063" datatype="html">
+    <source>Language</source>
+    <target>Langue</target>
+  </trans-unit>
+  <trans-unit id="5866254605255506989" datatype="html">
+    <source>English</source>
+    <target>Anglais</target>
+  </trans-unit>
+  <trans-unit id="7633754075223722162" datatype="html">
+    <source>French</source>
+    <target>Français</target>
+  </trans-unit>
+  <trans-unit id="29832309535656200" datatype="html">
+    <source>System</source>
+    <target>Système</target>
+  </trans-unit>
+  <trans-unit id="413116577994876478" datatype="html">
+    <source>Light</source>
+    <target>Clair</target>
+  </trans-unit>
+  <trans-unit id="3892161059518616136" datatype="html">
+    <source>Dark</source>
+    <target>Sombre</target>
+  </trans-unit>
+  <trans-unit id="9047425577025089618" datatype="html">
+    <source>Delete account - are you sure?</source>
+    <target>Supprimer le compte - êtes-vous sûr ?</target>
+  </trans-unit>
+  <trans-unit id="505583234304370420" datatype="html">
+    <source>Email sent.</source>
+    <target>E-mail envoyé.</target>
+  </trans-unit>
+  <trans-unit id="8883057762733540577" datatype="html">
+    <source>Enter your e-mail address and we will send you instructions to reset your password.</source>
+    <target>Entrez votre adresse e-mail et nous vous enverrons les instructions pour réinitialiser votre mot de passe.</target>
+  </trans-unit>
+  <trans-unit id="815051607554522412" datatype="html">
+    <source>Go back to login</source>
+    <target>Retour à la connexion</target>
+  </trans-unit>
+  <trans-unit id="3665633898603528438" datatype="html">
+    <source>Check your e-mail messages</source>
+    <target>Vérifiez vos messages e-mail</target>
+  </trans-unit>
+  <trans-unit id="8605279680337771404" datatype="html">
+    <source>Resend email</source>
+    <target>Renvoyer l'e-mail</target>
+  </trans-unit>
+  <trans-unit id="1583265433004471731" datatype="html">
+    <source>Please check your e-mail address </source>
+    <target>Veuillez vérifier votre adresse e-mail </target>
+  </trans-unit>
+  <trans-unit id="6518759458783907073" datatype="html">
+    <source>E-mail address verification</source>
+    <target>Vérification de l'adresse e-mail</target>
+  </trans-unit>
+  <trans-unit id="6889041363787286320" datatype="html">
+    <source>We have just sent an email to </source>
+    <target>Nous venons d'envoyer un e-mail à </target>
+  </trans-unit>
+  <trans-unit id="6139690411590628704" datatype="html">
+    <source>Click the link in the message to validate email address.</source>
+    <target>Cliquez sur le lien dans le message pour valider l'adresse e-mail.</target>
+  </trans-unit>
+  <trans-unit id="6570363013146073520" datatype="html">
+    <source>Dashboard</source>
+    <target>Tableau de bord</target>
+  </trans-unit>
+  <trans-unit id="381389385558268687" datatype="html">
+    <source>Blank</source>
+    <target>Vide</target>
+  </trans-unit>
 </body>
 </file>
 </xliff>
