@@ -14,8 +14,8 @@
       </div>
       <div *ngIf="isResetPassword()" class="container">
         <div i18n class="title">Reset your password</div>
-        <password-input [pwd]="pwd1" i18n-placeholder placeholder="New Password" name="newPassword" autocomplete="new-password" class="element"></password-input>
-        <password-input [pwd]="pwd2" i18n-placeholder placeholder="Re-enter new Password" class="element"></password-input>
+        <password-input [control]="pwd1" i18n-placeholder placeholder="New Password" name="newPassword" autocomplete="new-password" class="element"></password-input>
+        <password-input [control]="pwd2" i18n-placeholder placeholder="Re-enter new Password" class="element"></password-input>
         <password-feedback *ngIf="showPwdFeedback()" [pwd]="pwd1" [pwd2]="pwd2" class="element check"></password-feedback>
         @if (showSpinner()) {
           <mat-spinner diameter="40" *ngIf="showSpinner"></mat-spinner>

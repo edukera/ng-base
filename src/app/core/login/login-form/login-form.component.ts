@@ -6,10 +6,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { EmailInputComponent } from '../../../components/email-input/email-input.component';
 import { PasswordFeedbackComponent } from '../../../components/password-feedback/password-feedback.component';
@@ -174,6 +174,9 @@ export class LoginFormComponent {
           this.showSpinner.set(false)
           if (err.code === "auth/invalid-credential") {
             this.pwd.setErrors({ invalidAuth: true })
+          } else if (err.code === "auth/missing-password") {
+            this.pwd.markAllAsTouched()
+            this.pwd.setErrors({ missingPwd: true })
           } else {
             console.error(err)
             this._snackBar.open(err.message, $localize`Dismiss`)

@@ -27,7 +27,7 @@ export class PasswordInputComponent {
   @Input() placeholder: string = $localize `Password`;
   @Input() name: string = 'password'
   @Input() autocomplete: string = 'current-password'
-  @Input() pwd: FormControl = new FormControl('', [Validators.required]);
+  @Input() control: FormControl = new FormControl('', [Validators.required]);
 
   hidePwd = true;
 
