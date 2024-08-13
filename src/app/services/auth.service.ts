@@ -1,17 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import {
-  Auth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
-  sendPasswordResetEmail,
-  confirmPasswordReset,
-  applyActionCode,
-  deleteUser,
-  signOut
-} from '@angular/fire/auth';
+import { applyActionCode, Auth, confirmPasswordReset, createUserWithEmailAndPassword, deleteUser, GoogleAuthProvider, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from '@angular/fire/auth';
+import { httpsCallable } from '@angular/fire/functions';
+import { Functions, HttpsCallableResult } from '@angular/fire/functions';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
 import { skip } from 'rxjs/operators';
@@ -23,6 +13,7 @@ export class AuthService {
   private currentUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
   private auth = inject(Auth);
+  private functions = inject(Functions)
 
   constructor() {
     this.initAuthListener();
@@ -82,18 +73,34 @@ export class AuthService {
     });
   }
 
-  sendVerificationEmail() {
+  async sendVerificationEmail(): Promise<HttpsCallableResult<unknown>> {
     const user = this.currentUser.getValue()
-    if (user !== null) {
-      return sendEmailVerification(user).then(() => {
-        console.log("Verification email sent")
-      }).catch((error) => {
+    if (user?.email) {
+      const callable = httpsCallable(this.functions, 'sendVerificationEmail');
+      try {
+        return callable({ });
+      } catch (error: any) {
         console.error(error)
-        throw error
-      });
+        throw new Error("Cannot send verification email", error.msg)
+      }
+    } else {
+      throw new Error("Cannot send verification email: null user")
     }
-    throw new Error("Cannot send verification email: null user")
   }
+
+
+  //sendVerificationEmail() {
+  //  const user = this.currentUser.getValue()
+  //  if (user !== null) {
+  //    return sendEmailVerification(user).then(() => {
+  //      console.log("Verification email sent")
+  //    }).catch((error) => {
+  //      console.error(error)
+  //      throw error
+  //    });
+  //  }
+  //  throw new Error("Cannot send verification email: null user")
+  //}
 
   signOut() {
     return signOut(this.auth).then(() => {
