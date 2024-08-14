@@ -88,19 +88,19 @@ export class AuthService {
     }
   }
 
+  sendPwdRestEmail(email: string) {
+    const callable = httpsCallable(this.functions, 'sendPasswordResetEmail');
+    try {
+      return callable({ email: email });
+    } catch (error: any) {
+      console.error(error)
+      throw new Error("Cannot send verification email", error.msg)
+    }
+  }
 
-  //sendVerificationEmail() {
-  //  const user = this.currentUser.getValue()
-  //  if (user !== null) {
-  //    return sendEmailVerification(user).then(() => {
-  //      console.log("Verification email sent")
-  //    }).catch((error) => {
-  //      console.error(error)
-  //      throw error
-  //    });
-  //  }
-  //  throw new Error("Cannot send verification email: null user")
-  //}
+  confirmPwdReset(code: string, pwd: string) {
+    return confirmPasswordReset(this.auth, code, pwd)
+  }
 
   signOut() {
     return signOut(this.auth).then(() => {
@@ -108,9 +108,7 @@ export class AuthService {
     });
   }
 
-  sendPwdRestEmail(email: string) {
-    return sendPasswordResetEmail(this.auth, email)
-  }
+
 
   get user$(): Observable<User | null> {
     return this.currentUser.asObservable();
@@ -147,10 +145,6 @@ export class AuthService {
       return user.email
     }
     return null
-  }
-
-  confirmPwdReset(code: string, pwd: string) {
-    return confirmPasswordReset(this.auth, code, pwd)
   }
 
   deleteUser() {

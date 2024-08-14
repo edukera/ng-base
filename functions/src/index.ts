@@ -7,18 +7,11 @@ admin.initializeApp();
 
 const postmarkAPIKey = defineString('POSTMARK_APIKEY');
 
-type EmailType = 'verification' | 'resetpwd';
-
 async function sendEmail(
-  request: https.CallableRequest<any>,
-  emailtype: EmailType
+  email: string,
+  emailtype: 'verification' | 'resetpwd'
 ) {
   let client = new postmark.ServerClient(postmarkAPIKey.value());
-
-  const email = request.auth?.token.email;
-  if (!email) {
-    throw new https.HttpsError('failed-precondition', 'Not authenticated.');
-  }
   try {
     let url = '';
     let template = '';
@@ -30,7 +23,7 @@ async function sendEmail(
       }
       case 'resetpwd': {
         url = await admin.auth().generatePasswordResetLink(email);
-        template = 'ng-base-pwdreset-template';
+        template = 'ng-base-pwdreset';
         break;
       }
     }
@@ -54,9 +47,18 @@ async function sendEmail(
 }
 
 export const sendVerificationEmail = https.onCall(async (request: https.CallableRequest<any>) => {
-  await sendEmail(request, 'verification');
+  const email = request.auth?.token.email;
+  if (!email) {
+    throw new https.HttpsError('failed-precondition', 'Not authenticated.');
+  }
+  await sendEmail(email, 'verification');
 });
 
-export const sendPasswordResetEmail = https.onCall(async (request: https.CallableRequest<any>) => {
-  await sendEmail(request, 'resetpwd');
+type PwdResetData = {
+  email: string
+}
+
+export const sendPasswordResetEmail = https.onCall(async (request: https.CallableRequest<PwdResetData>) => {
+  const email = request.data.email
+  await sendEmail(email, 'resetpwd');
 });
