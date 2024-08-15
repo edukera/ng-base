@@ -237,6 +237,15 @@ export class LoginFormComponent {
     });
   }
 
+  signInWithMicrosoft() {
+    this.authService.microsoftSignIn().then(res => {
+      console.log('Logged in successfully', res);
+      this.router.navigate(['/main'])
+    }).catch(err => {
+      this._snackBar.open(err.message, $localize`Dismiss`);
+    });
+  }
+
   gotoReset() {
     this.router.navigate(['/reset-password'])
   }

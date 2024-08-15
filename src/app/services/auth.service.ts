@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
-import { applyActionCode, Auth, confirmPasswordReset, createUserWithEmailAndPassword, deleteUser, GoogleAuthProvider, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from '@angular/fire/auth';
+import { applyActionCode, Auth, confirmPasswordReset, createUserWithEmailAndPassword, deleteUser, GoogleAuthProvider, OAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from '@angular/fire/auth';
 import { httpsCallable } from '@angular/fire/functions';
 import { Functions, HttpsCallableResult } from '@angular/fire/functions';
-import { onAuthStateChanged, User } from 'firebase/auth';
+import { AuthProvider, onAuthStateChanged, User } from 'firebase/auth';
 import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
 import { skip } from 'rxjs/operators';
 
@@ -31,8 +31,7 @@ export class AuthService {
     ));
   }
 
-  googleSignIn() {
-    const provider = new GoogleAuthProvider();
+  private signInWithAuthProvider(provider: AuthProvider) {
     return signInWithPopup(this.auth, provider)
     .then(result => {
       this.currentUser.next(result.user);
@@ -42,6 +41,16 @@ export class AuthService {
       console.error(error)
       throw error
     });
+  }
+
+  googleSignIn() {
+    const provider = new GoogleAuthProvider();
+    return this.signInWithAuthProvider(provider)
+  }
+
+  microsoftSignIn() {
+    const provider = new OAuthProvider('microsoft.com')
+    return this.signInWithAuthProvider(provider)
   }
 
   pwdSignIn(email: string, password: string) {

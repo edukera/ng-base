@@ -39,7 +39,7 @@
     <img src="./assets/google-logo.png" class="google-logo"/>
     <ng-container i18n>Continue with Google</ng-container>
   </button>
-  <button mat-stroked-button color="primary" type="submit" class="login-form-element">
+  <button mat-stroked-button color="primary" type="submit" (click)="signInWithMicrosoft()" class="login-form-element">
     <img src="./assets/microsoft-logo.png" class="microsoft-logo"/>
     <ng-container i18n>Continue with Microsoft</ng-container>
   </button>
