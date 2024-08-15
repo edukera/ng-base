@@ -7,13 +7,13 @@ $handset-breakpoint: 960px;
 }
 
 .sidenav {
+  width: $default-sidenav-width;
   ::ng-deep .mat-drawer-inner-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
   }
-  width: $default-sidenav-width;
 }
 
 .sidenav .mat-toolbar {
